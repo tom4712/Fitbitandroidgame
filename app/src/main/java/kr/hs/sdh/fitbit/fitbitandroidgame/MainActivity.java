@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(new Intent(MainActivity.this, Popup.class));
                                 return true;
                             case R.id.bottombaritem_trips:
-                                startActivity(new Intent(MainActivity.this, Fragmentmain.class));
+                                startActivity(new Intent(MainActivity.this, ShopActivity.class));
                                 return true;
                         }
                         return false;
