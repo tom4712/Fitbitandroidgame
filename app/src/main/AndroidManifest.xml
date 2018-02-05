@@ -26,8 +26,8 @@
             android:theme="@style/AppTheme2" />
         <activity android:name=".GGoolvoice" />
         <activity android:name=".GGOOLRANK" />
-        <activity android:name=".Fragmentmain" />
         <activity android:name=".GGoolSetting" />
+        <activity android:name=".ShopActivity"></activity>
     </application>
 
 </manifest>
