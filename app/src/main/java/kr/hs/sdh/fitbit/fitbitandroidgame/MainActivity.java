@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                                 return true;
                             case R.id.bottombaritem_trips:
                                 startActivity(new Intent(MainActivity.this, ShopActivity.class));
+                                finish();
                                 return true;
                         }
                         return false;
