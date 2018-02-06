@@ -102,7 +102,6 @@ public class DBhelper extends SQLiteOpenHelper {
     }
 
     public void buyitem(int price){
-        Fragmentmain frgm = new Fragmentmain();
         int value;
         SQLiteDatabase db = getReadableDatabase();
         String DBback = "";
