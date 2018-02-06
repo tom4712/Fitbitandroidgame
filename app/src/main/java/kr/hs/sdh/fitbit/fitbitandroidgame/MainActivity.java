@@ -1,6 +1,8 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -93,6 +95,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         versionInfo.setOnClickListener(this);
         characterSex.setOnClickListener(this);
 
+        dbhelper = new DBhelper(getApplication());
+        dbhelper.open();
+        SharedPreferences pref = getSharedPreferences("isFirst", Activity.MODE_PRIVATE);
+        boolean first = pref.getBoolean("isFirst", false);
+        if(first==false){
+            dbhelper.insertGarbage();
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putBoolean("isFirst",true);
+            editor.commit();
+        }
     }
 
 
