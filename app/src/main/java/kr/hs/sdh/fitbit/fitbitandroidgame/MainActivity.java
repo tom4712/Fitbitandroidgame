@@ -1,13 +1,8 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -62,9 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        final DBhelper dbHelper = new DBhelper(getApplicationContext(), "COIN.db", null, 1);
-
         mainView = findViewById(R.id.mainView);
         settingView = findViewById(R.id.settingView);
         Coin = findViewById(R.id.Coin);
@@ -118,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.Game:
                 break;
             case R.id.Shop:
+                Intent i = new Intent(getApplicationContext(), ShopActivity.class);
+                startActivity(i);
                 break;
             case R.id.Inventory:
                 break;
