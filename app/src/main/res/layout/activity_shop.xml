@@ -47,7 +47,9 @@
                            android:layout_alignParentBottom="true"
                            android:layout_alignParentEnd="true"
                            android:layout_weight="3"
-                           android:text="구입"
+                           android:onClick="onClick"
+                           android:text="1원"
+                           android:id="@+id/one"
                            android:textSize="25dp"
                            android:layout_alignParentRight="true" />
 
@@ -80,7 +82,9 @@
                            android:layout_alignParentBottom="true"
                            android:layout_alignParentEnd="true"
                            android:layout_weight="3"
-                           android:text="구입"
+                           android:text="2원"
+                           android:onClick="onClick"
+                           android:id="@+id/two"
                            android:textSize="25dp"
                            android:layout_alignParentRight="true" />
 
@@ -111,7 +115,9 @@
                            android:layout_alignParentBottom="true"
                            android:layout_alignParentEnd="true"
                            android:layout_weight="3"
-                           android:text="구입"
+                           android:text="3원"
+                           android:onClick="onClick"
+                           android:id="@+id/sre"
                            android:textSize="25dp"
                            android:layout_alignParentRight="true" />
 
@@ -128,6 +134,7 @@
 
 
     </LinearLayout>
+
 
 
 
@@ -175,7 +182,9 @@
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentEnd="true"
                             android:layout_weight="3"
-                            android:text="구입"
+                            android:text="1원"
+                            android:onClick="onClick"
+                            android:id="@+id/one_2"
                             android:textSize="25dp"
                             android:layout_alignParentRight="true" />
 
@@ -208,7 +217,9 @@
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentEnd="true"
                             android:layout_weight="3"
-                            android:text="구입"
+                            android:text="2원"
+                            android:onClick="onClick"
+                            android:id="@+id/two_2"
                             android:textSize="25dp"
                             android:layout_alignParentRight="true" />
 
@@ -239,7 +250,9 @@
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentEnd="true"
                             android:layout_weight="3"
-                            android:text="구입"
+                            android:text="3원"
+                            android:onClick="onClick"
+                            android:id="@+id/sre_2"
                             android:textSize="25dp"
                             android:layout_alignParentRight="true" />
 
@@ -299,7 +312,9 @@
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentEnd="true"
                             android:layout_weight="3"
-                            android:text="구입"
+                            android:onClick="onClick"
+                            android:text="1원"
+                            android:id="@+id/one_3"
                             android:textSize="25dp"
                             android:layout_alignParentRight="true" />
 
@@ -332,7 +347,9 @@
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentEnd="true"
                             android:layout_weight="3"
-                            android:text="구입"
+                            android:onClick="onClick"
+                            android:text="2원"
+                            android:id="@+id/two_3"
                             android:textSize="25dp"
                             android:layout_alignParentRight="true" />
 
@@ -363,7 +380,10 @@
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentEnd="true"
                             android:layout_weight="3"
-                            android:text="구입"
+                            android:onClick="onClick"
+
+                            android:text="3원"
+                            android:id="@+id/sre_3"
                             android:textSize="25dp"
                             android:layout_alignParentRight="true" />
 
