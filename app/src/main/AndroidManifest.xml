@@ -20,13 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".CommunityActivity" />
-        <activity
-            android:name=".Popup"
-            android:label="aasd"
-            android:theme="@style/AppTheme2" />
-        <activity android:name=".GGoolvoice" />
-        <activity android:name=".GGOOLRANK" />
-        <activity android:name=".GGoolSetting" />
         <activity android:name=".ShopActivity"></activity>
     </application>
 
