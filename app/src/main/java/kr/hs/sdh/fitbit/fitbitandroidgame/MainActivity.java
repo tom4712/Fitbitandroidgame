@@ -1,17 +1,22 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String sql;
     private String dbName = "coin.db";
@@ -28,25 +33,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Spinner spinner;
     private ArrayAdapter spinnerAdapter;
+    private Switch mSwitch;
 
     private final long FINISH_INTERVAL_TIME = 2000;
-    private long   backPressedTime = 0;
+    private long backPressedTime = 0;
 
     @Override
     public void onBackPressed() {
-        long tempTime        = System.currentTimeMillis();
-        long intervalTime    = tempTime - backPressedTime;
-        if(mainView.getVisibility() == View.GONE) {
+        long tempTime = System.currentTimeMillis();
+        long intervalTime = tempTime - backPressedTime;
+        if (mainView.getVisibility() == View.GONE) {
             mainView.setVisibility(View.VISIBLE);
             settingView.setVisibility(View.GONE);
-        }
-        else
-        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime)
-        {
+        } else if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
             super.onBackPressed();
-        }
-        else
-        {
+        } else {
             backPressedTime = tempTime;
             Toast.makeText(getApplicationContext(), "한번 더 누를 시 종료됩니다.", Toast.LENGTH_SHORT).show();
         }
@@ -56,7 +57,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        dbhelper = new DBhelper(getApplication());
+        dbhelper.open();
+        SharedPreferences pref = getSharedPreferences("isFirst", Activity.MODE_PRIVATE);
+        boolean first = pref.getBoolean("isFirst", false);
+        if (first == false) {
+            dbhelper.insertGarbage();
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putBoolean("isFirst", true);
+            editor.commit();
+        }
         mainView = findViewById(R.id.mainView);
         settingView = findViewById(R.id.settingView);
         Coin = findViewById(R.id.Coin);
@@ -74,11 +84,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         versionInfo = findViewById(R.id.versionInfo);
         characterSex = findViewById(R.id.characterSex);
         spinner = findViewById(R.id.spinner);
+        mSwitch = findViewById(R.id.Switch);
 
-        spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.characterSex,
+        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b)
+                    dbhelper.updateAlarm(0);
+                else
+                    dbhelper.updateAlarm(1);
+
+            }
+        });
+
+        spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.characterSex,
                 android.R.layout.simple_spinner_dropdown_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
+
+        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                dbhelper.updateSex(i);
+            }
+        });
 
         Settings.setOnClickListener(this);
         Share.setOnClickListener(this);
@@ -92,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         accountManagement.setOnClickListener(this);
         versionInfo.setOnClickListener(this);
         characterSex.setOnClickListener(this);
+
 
     }
 

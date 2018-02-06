@@ -50,6 +50,11 @@ public class DBhelper {
         }
     }
 
+    public void insertGarbage(){
+        mDb.execSQL("INSERT INTO first_table VALUES(0,0,0,0,0);");
+        mDb.close();
+    }
+
     public void open() throws SQLException {
 
         mDbHelper = new DatabaseHelper(mCtx);
@@ -65,26 +70,34 @@ public class DBhelper {
         mDbHelper.close();
     }
 
-    public void insertSex(int Sex){
-     insertStmt = mDb.compileStatement("INSERT INTO first_table(SEX)VALUES(?)");
+    public void updateSex(int Sex){
+     insertStmt = mDb.compileStatement("UPDATE first_table SET SEX  = ?");
      insertStmt.clearBindings();
      insertStmt.bindLong(1,Sex);
      insertStmt.execute();
     }
 
-    public void insertCoin(int coin){
-        insertStmt = mDb.compileStatement("INSERT INTO first_table(COIN)VALUES(?)");
+    public void updateCoin(int coin){
+        insertStmt = mDb.compileStatement("UPDATE first_table SET COIN = ?");
         insertStmt.clearBindings();
         insertStmt.bindLong(1,coin);
         insertStmt.execute();
     }
 
-    public void insertGarments(int garments) {
-        insertStmt = mDb.compileStatement("INSERT INTO first_table(GARMENTS)VALUES(?)");
+    public void updateGarments(int garments) {
+        insertStmt = mDb.compileStatement("UPDATE first_table SET GARMENTS = ?");
         insertStmt.clearBindings();
         insertStmt.bindLong(1,garments);
         insertStmt.execute();
     }
+
+    public void updateAlarm(int alarm){
+        insertStmt = mDb.compileStatement("UPDATE first_table SET ALARM = ?");
+        insertStmt.clearBindings();
+        insertStmt.bindLong(1,alarm);
+        insertStmt.execute();
+    }
+
     public Cursor AllRows() {
         return mDb.query(DATABASE_TABLE, null, null, null, null, null, null);
     }
