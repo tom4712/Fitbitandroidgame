@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout mainView, settingView;
 
     private TextView Coin, charName, versionInfo;
-    private Button Settings, Share, thrSec, Game, Shop, Inventory, Inventory_, Cafe, characterDetails, accountManagement, characterSex;
+    private Button Settings, Share, thrSec, Game, Shop, Inventory, Inventory_, Cafe, characterDetails, accountManagement;
 
     private Spinner spinner;
     private ArrayAdapter spinnerAdapter;
@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         characterDetails = findViewById(R.id.characterDetails);
         accountManagement = findViewById(R.id.accountManagement);
         versionInfo = findViewById(R.id.versionInfo);
-        characterSex = findViewById(R.id.characterSex);
         spinner = findViewById(R.id.spinner);
         mSwitch = findViewById(R.id.Switch);
 
@@ -102,10 +101,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
 
-        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 dbhelper.updateSex(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
@@ -120,11 +124,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         characterDetails.setOnClickListener(this);
         accountManagement.setOnClickListener(this);
         versionInfo.setOnClickListener(this);
-        characterSex.setOnClickListener(this);
-
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        dbhelper.close();
+    }
 
     @Override
     public void onClick(View view) {
@@ -144,16 +151,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.Inventory:
-                break;
+
             case R.id.Inventory_:
                 break;
             case R.id.accountManagement:
                 break;
             case R.id.Cafe:
+                i = new Intent(getApplicationContext(), CommunityActivity.class);
+                startActivity(i);
                 break;
             case R.id.characterDetails:
-                break;
-            case R.id.characterSex:
                 break;
         }
     }
