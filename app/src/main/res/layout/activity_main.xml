@@ -5,15 +5,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.MainActivity">
+
     <LinearLayout
+        android:id="@+id/mainView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/mainView">
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.21"/>
+            android:layout_weight="0.21" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,12 +29,12 @@
                 android:background="#777">
 
                 <TextView
+                    android:id="@+id/Coin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="100코인"
-                    android:id="@+id/Coin"/>
+                    android:text="100코인" />
             </LinearLayout>
 
             <LinearLayout
@@ -41,18 +43,18 @@
                 android:layout_weight="1">
 
                 <Button
+                    android:id="@+id/Share"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="공유"
-                    android:textSize="10sp"
-                    android:id="@+id/Share"/>
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#777"/>
+                android:background="#777" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,18 +62,18 @@
                 android:layout_weight="0.9">
 
                 <Button
+                    android:id="@+id/Settings"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="설정"
-                    android:textSize="10sp"
-                    android:id="@+id/Settings"/>
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.22"
-                android:background="#777"/>
+                android:background="#777" />
         </LinearLayout>
 
         <LinearLayout
@@ -84,28 +86,33 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.6"/>
+                android:layout_weight="1.6" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
+
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="캐릭터"/>
+                        android:text="캐릭터" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <RelativeLayout
@@ -114,13 +121,13 @@
                 android:layout_weight="1.6">
 
                 <TextView
+                    android:id="@+id/charName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:text="이승현"
-                    android:textSize="30sp"
-                    android:id="@+id/charName"/>
+                    android:textSize="30sp" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -128,27 +135,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.11"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#111">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="30초 운동"
-                    android:textSize="20sp"
-                    android:textColor="#fff"
                     android:layout_centerVertical="true"
-                    />
+                    android:text="30초 운동"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+
                 <Button
+                    android:id="@+id/thrSec"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#00000000"
-                    android:id="@+id/thrSec"/>
+                    android:background="#00000000" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -156,18 +163,20 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#555">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:text="게임"
-                    android:textSize="20sp"
                     android:textColor="#fff"
-                    android:layout_centerVertical="true"/>
+                    android:textSize="20sp" />
+
                 <Button
+                    android:id="@+id/Game"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#00000000"
-                    android:id="@+id/Game"/>
+                    android:background="#00000000" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -175,56 +184,62 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#999">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:text="상점"
-                    android:textSize="20sp"
                     android:textColor="#fff"
-                    android:layout_centerVertical="true"/>
+                    android:textSize="20sp" />
+
                 <Button
+                    android:id="@+id/Shop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#00000000"
-                    android:id="@+id/Shop"/>
+                    android:background="#00000000" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:text="인벤토리"
-                    android:textSize="20sp"
                     android:textColor="#000"
-                    android:layout_centerVertical="true"/>
+                    android:textSize="20sp" />
+
                 <Button
+                    android:id="@+id/Inventory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#00000000"
-                    android:id="@+id/Inventory"/>
+                    android:background="#00000000" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/settingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/settingView"
         android:visibility="gone">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.8"
             android:background="#111">
+
             <Button
+                android:id="@+id/Graph"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/Graph"
-                android:background="#00111111"
-                />
+                android:background="#00111111" />
         </RelativeLayout>
 
         <LinearLayout
@@ -242,47 +257,10 @@
                 android:layout_weight="1">
 
                 <Button
-                    android:id="@+id/accountManagement"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#00111111"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="계정관리" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="캐릭터 성별" />
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/spinner" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <Button
                     android:id="@+id/characterDetails"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#00111111"/>
+                    android:background="#00111111" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -296,11 +274,31 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="캐릭터 성별" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
                 <Button
                     android:id="@+id/Inventory_"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#00111111"/>
+                    android:background="#00111111" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -318,7 +316,7 @@
                     android:id="@+id/Cafe"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#00111111"/>
+                    android:background="#00111111" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -332,19 +330,37 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/Switch"/>
+                <Button
+                    android:id="@+id/accountManagement"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00111111" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="알람 설정"
-                    android:id="@+id/tw"/>
+                    android:text="계정관리" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Switch
+                    android:id="@+id/Switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/tw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="알람 설정" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -353,21 +369,21 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="버전정보"
-                    android:id="@+id/textView2" />
+                    android:text="버전정보" />
 
                 <TextView
+                    android:id="@+id/versionInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/versionInfo"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:textStyle="bold"
+                    android:layout_centerVertical="true"
                     android:layout_marginRight="30dp"
-                    android:text="0.5.0" />
+                    android:text="0.5.0"
+                    android:textStyle="bold" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
