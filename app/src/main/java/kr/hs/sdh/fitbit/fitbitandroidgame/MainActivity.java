@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -70,7 +73,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             SharedPreferences.Editor editor = pref.edit();
             editor.putBoolean("isFirst", true);
             editor.commit();
+        }else{
+            //코인 테스트 끝나면 지우면됩니다.
+            dbhelper.updateCoin(5);
         }
+
+        setCoin();
+
         mainView = findViewById(R.id.mainView);
         settingView = findViewById(R.id.settingView);
         Coin = findViewById(R.id.Coin);
@@ -173,4 +182,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+    public void setCoin(){
+        String a;
+        Coin = findViewById(R.id.Coin);
+
+        all_cursor.moveToFirst();
+        a = all_cursor.getString(all_cursor.getColumnIndex("COIN"));
+        Log.d("qawse",a+"");
+
+        Coin.setText(a+"코인");
+        Log.d("DB","텍스트뷰 설정완료함");
+
+
+    }
 }
+

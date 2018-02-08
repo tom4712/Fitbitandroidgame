@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class ShopActivity extends AppCompatActivity {
 
     int Clothresult;
-    int Coinresult;
+    int Coinresult = 0;
     private DBhelper db;
     private Cursor all_cursor;
     private ArrayList<String> list = new ArrayList();
@@ -44,14 +44,15 @@ public class ShopActivity extends AppCompatActivity {
 
         }
         Log.d("DB",list.get(0)+"");
+        Coinresult = Integer.parseInt(list.get(0));
         setCoinresult();
 
     }
     }
 
     public void setCoinresult(){
-        Coinresult = Integer.parseInt(list.get(0));
-        Log.d("DB",""+Coinresult);
+        //Coinresult = Integer.parseInt(list.get(0));
+        Log.d("DB2",""+Coinresult);
     }
 
 
@@ -64,62 +65,59 @@ public class ShopActivity extends AppCompatActivity {
         switch (view.getId()){
 
             case R.id.one:
-
-
-                show();
+                show(1);
                 Toast.makeText(this,"버튼 1",Toast.LENGTH_SHORT).show();
                 break;
-
             case R.id.two:
                 Toast.makeText(this,"버튼 2  ",Toast.LENGTH_SHORT).show();
-                show();
+                show(2);
                 break;
             case R.id.sre:
-                show();
+                show(3);
                 Toast.makeText(this,"버튼 3",Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.one_2:
                 Toast.makeText(this,"버튼 4",Toast.LENGTH_SHORT).show();
-                show();
+                show(1);
                 break;
             case R.id.two_2:
-                show();
+                show(2);
                 Toast.makeText(this,"버튼 5",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.sre_2:
-                show();
+                show(3);
                 Toast.makeText(this,"버튼 6",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.one_3:
                 Toast.makeText(this,"버튼 7",Toast.LENGTH_SHORT).show();
-                show();
+                show(1);
                 break;
             case R.id.two_3:
                 Toast.makeText(this,"버튼 8",Toast.LENGTH_SHORT).show();
-                show();
+                show(2);
                 break;
             case R.id.sre_3:
                 Toast.makeText(this,"버튼 9",Toast.LENGTH_SHORT).show();
-                show();
+                show(3);
                 break;
         }
     }
-    void show()
-    {
+    private void show(final int price) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("AlertDialog Title");
-        builder.setMessage("AlertDialog Content");
+        builder.setTitle("");
+        builder.setMessage("구매하실겁니까?");
         builder.setPositiveButton("예",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(),"예를 선택했습니다.",Toast.LENGTH_LONG).show();
+                        Coinresult = Coinresult - price;
+                        db.updateCoin(Coinresult);
                     }
                 });
         builder.setNegativeButton("아니오",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(),"아니오를 선택했습니다.",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"취소되었습니다.",Toast.LENGTH_LONG).show();
                     }
                 });
         builder.show();
