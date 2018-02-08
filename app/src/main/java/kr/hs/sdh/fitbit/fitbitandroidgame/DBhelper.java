@@ -84,13 +84,6 @@ public class DBhelper {
         insertStmt.execute();
     }
 
-    public void updateGarments(int garments) {
-        insertStmt = mDb.compileStatement("UPDATE first_table SET GARMENTS = ?");
-        insertStmt.clearBindings();
-        insertStmt.bindLong(1,garments);
-        insertStmt.execute();
-    }
-
     public void updateAlarm(int alarm){
         insertStmt = mDb.compileStatement("UPDATE first_table SET ALARM = ?");
         insertStmt.clearBindings();
