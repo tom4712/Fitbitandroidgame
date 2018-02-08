@@ -104,7 +104,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 android.R.layout.simple_spinner_dropdown_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
-        spinner.setSelection(all_cursor.getInt(all_cursor.getColumnIndex("SEX")));
+        try {
+            spinner.setSelection(all_cursor.getInt(all_cursor.getColumnIndex("SEX")));
+        }catch (Exception e){
+        }
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
