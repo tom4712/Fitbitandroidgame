@@ -155,6 +155,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.Inventory_:
                 break;
             case R.id.accountManagement:
+                i = new Intent(getApplicationContext(), profileManagement.class);
+                startActivity(i);
                 break;
             case R.id.Cafe:
                 i = new Intent(getApplicationContext(), CommunityActivity.class);
