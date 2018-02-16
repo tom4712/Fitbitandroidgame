@@ -159,11 +159,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.Share:
                 break;
             case R.id.thrSec:
+                Intent i = new Intent(getApplicationContext(), Move.class);
+                startActivity(i);
                 break;
             case R.id.Game:
                 break;
             case R.id.Shop:
-                Intent i = new Intent(getApplicationContext(), ShopActivity.class);
+                i = new Intent(getApplicationContext(), ShopActivity.class);
                 startActivity(i);
                 break;
             case R.id.Inventory:
