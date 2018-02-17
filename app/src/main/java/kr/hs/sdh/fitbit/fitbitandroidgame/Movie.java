@@ -2,10 +2,12 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -31,7 +33,7 @@ public class Movie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
 
-        String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.mo;
+        String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.mtwo;
 
         vv = (VideoView) findViewById(R.id.vv);
 
@@ -71,5 +73,17 @@ public class Movie extends AppCompatActivity {
             button2.setVisibility(View.INVISIBLE);
         }
     }
+    @Override
+
+    protected void onUserLeaveHint() {
+
+//여기서 감지
+            vv.pause();
+        Toast.makeText(getApplicationContext(), "홈버튼",
+                Toast.LENGTH_LONG).show();
+        super.onUserLeaveHint();
+
+    }
+
 
 }
