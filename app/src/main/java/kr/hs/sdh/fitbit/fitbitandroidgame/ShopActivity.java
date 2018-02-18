@@ -1,6 +1,7 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Point;
 import android.support.v7.app.AlertDialog;
@@ -28,6 +29,7 @@ public class ShopActivity extends AppCompatActivity {
     private LinearLayout item_scroll,itempadding1,itempadding2,itempadding3,itempadding4,itempadding5,itempadding6,itempadding7,itempadding8,itempadding9;
     private TextView coindTxv;
 
+    boolean man;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,39 +137,51 @@ public class ShopActivity extends AppCompatActivity {
 
             case R.id.one:
                 price = 1;
+                Intent i = new Intent(getApplicationContext(), Gumai.class);
+                startActivity(i);
                 show(price,sex,1,1);
                 break;
             case R.id.two:
                 price = 2;
+          i = new Intent(getApplicationContext(), Gumai.class);
+                startActivity(i);
                 show(price,sex,1,2);
                 break;
             case R.id.sre:
+
                 price = 3;
+                i = new Intent(getApplicationContext(), Gumai.class);
                 show(price,sex,1,3);
                 break;
 
             case R.id.one_2:
                 price = 1;
+                i = new Intent(getApplicationContext(), Gumai.class);
                 show(price,sex,2,1);
                 break;
             case R.id.two_2:
                 price = 2;
+                i = new Intent(getApplicationContext(), Gumai.class);
                 show(price,sex,2,2);
                 break;
             case R.id.sre_2:
                 price = 3;
+                i = new Intent(getApplicationContext(), Gumai.class);
                 show(price,sex,2,3);
                 break;
             case R.id.one_3:
                 price = 1;
+                i = new Intent(getApplicationContext(), Gumai.class);
                 show(price,sex,3,1);
                 break;
             case R.id.two_3:
                 price = 2;
+                i = new Intent(getApplicationContext(), Gumai.class);
                 show(price,sex,3,2);
                 break;
             case R.id.sre_3:
                 price = 3;
+                i = new Intent(getApplicationContext(), Gumai.class);
                 show(price,sex,3,3);
                 break;
         }
