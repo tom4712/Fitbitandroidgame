@@ -90,6 +90,13 @@ public class DBhelper {
         insertStmt.bindLong(1,alarm);
         insertStmt.execute();
     }
+    public void updateGarments(String garments){
+        insertStmt = mDb.compileStatement("UPDATE first_table SET GARMENTS = ?");
+        insertStmt.clearBindings();
+        insertStmt.bindString(1,garments);
+        Log.d("DB", "여기는 디비헬퍼다"+garments);
+        insertStmt.execute();
+    }
 
     public Cursor AllRows() {
         return mDb.query(DATABASE_TABLE, null, null, null, null, null, null);
