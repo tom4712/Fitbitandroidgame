@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class ShopActivity extends AppCompatActivity {
+
+
+    ImageView imageView1,imageView2,imageView3,imageView4,imageView5,imageView6,imageView7,imageView8,imageView9;
 
     int width;
     int height;
@@ -29,7 +33,7 @@ public class ShopActivity extends AppCompatActivity {
     private LinearLayout item_scroll,itempadding1,itempadding2,itempadding3,itempadding4,itempadding5,itempadding6,itempadding7,itempadding8,itempadding9;
     private TextView coindTxv;
 
-    boolean man;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,15 @@ public class ShopActivity extends AppCompatActivity {
         height = size.y;
         item_scroll.setLayoutParams(new LinearLayout.LayoutParams(width,height));
 
+        imageView1 = (ImageView) findViewById(R.id.im1);
+        imageView2 = (ImageView) findViewById(R.id.im2);
+        imageView3 = (ImageView) findViewById(R.id.im3);
+        imageView4 = (ImageView) findViewById(R.id.im4);
+        imageView5 = (ImageView) findViewById(R.id.im5);
+        imageView6 = (ImageView) findViewById(R.id.im6);
+        imageView7 = (ImageView) findViewById(R.id.im7);
+        imageView8 = (ImageView) findViewById(R.id.im8);
+        imageView9 = (ImageView) findViewById(R.id.im9);
         setpadding(width,height);
         Log.d("DB", "asdasdaddsadassadsdasdasdasd");
 
@@ -52,6 +65,13 @@ public class ShopActivity extends AppCompatActivity {
 
         Cursul();
 
+
+        if(sex==0){
+
+            imageView2.setImageResource(R.drawable.eeeee);
+
+
+        }
 
 
         Log.d("DB", "아시발 좀 길게 나와라"+list.get(1));
