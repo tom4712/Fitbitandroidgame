@@ -2,28 +2,46 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.graphics.Point;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ShopActivity extends AppCompatActivity {
 
+    int width;
+    int height;
     char[] clothchar;
     int sex = 1;
     int Coinresult = 0;
     private DBhelper db;
     private Cursor all_cursor;
     private ArrayList<String> list = new ArrayList();
+    private LinearLayout item_scroll,itempadding1,itempadding2,itempadding3,itempadding4,itempadding5,itempadding6,itempadding7,itempadding8,itempadding9;
+    private TextView coindTxv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
+        item_scroll = findViewById(R.id.item_scroll);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        width = size.x;
+        height = size.y;
+        item_scroll.setLayoutParams(new LinearLayout.LayoutParams(width,height));
+
+        setpadding(width,height);
         Log.d("DB", "asdasdaddsadassadsdasdasdasd");
 
         db = new DBhelper(this);
@@ -54,6 +72,7 @@ public class ShopActivity extends AppCompatActivity {
         Log.d("DB", "아시발 좀 길게 나와라   "+list.get(0));
         Log.d("DB", "아시발 좀 길게 나asd와라   "+list.get(3));
 
+        setCoindTxv();
 
     }
 
@@ -104,6 +123,9 @@ public class ShopActivity extends AppCompatActivity {
             db.updateGarments(input);
             Log.d("DB",""+input);
             Toast.makeText(this, "구입을 성공하였습니다!!", Toast.LENGTH_SHORT).show();
+            list.clear();
+            Cursul();
+            setCoindTxv();
         }
     }
 
@@ -249,6 +271,49 @@ public class ShopActivity extends AppCompatActivity {
                     }
                 });
         builder.show();
+    }
+
+    public  void setpadding (int width,int height){
+        coindTxv = findViewById(R.id.cointext);
+        itempadding1 = findViewById(R.id.item_padding1);
+        itempadding2 = findViewById(R.id.item_padding2);
+        itempadding3 = findViewById(R.id.item_padding3);
+        itempadding4 = findViewById(R.id.item_padding4);
+        itempadding5 = findViewById(R.id.item_padding5);
+        itempadding6 = findViewById(R.id.item_padding6);
+        itempadding7 = findViewById(R.id.item_padding7);
+        itempadding8 = findViewById(R.id.item_padding8);
+        itempadding9 = findViewById(R.id.item_padding9);
+
+        LinearLayout.LayoutParams parm = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams parmcoin = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+
+        parmcoin.leftMargin = width / 10;
+        parmcoin.bottomMargin = height / 55;
+
+        parm.rightMargin = width / 6;
+        parm.leftMargin = width / 6;
+
+        coindTxv.setLayoutParams(parmcoin);
+        itempadding1.setLayoutParams(parm);
+        itempadding2.setLayoutParams(parm);
+        itempadding3.setLayoutParams(parm);
+        itempadding4.setLayoutParams(parm);
+        itempadding5.setLayoutParams(parm);
+        itempadding6.setLayoutParams(parm);
+        itempadding7.setLayoutParams(parm);
+        itempadding8.setLayoutParams(parm);
+        itempadding9.setLayoutParams(parm);
+
+    }
+
+    public void setCoindTxv(){
+        coindTxv = findViewById(R.id.cointext);
+        coindTxv.setText(list.get(0));
     }
 
 
