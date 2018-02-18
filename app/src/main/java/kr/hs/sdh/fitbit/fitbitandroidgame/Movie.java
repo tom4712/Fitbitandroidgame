@@ -78,7 +78,7 @@ public class Movie extends AppCompatActivity {
     protected void onUserLeaveHint() {
 
 //여기서 감지
-            vv.pause();
+        super.onBackPressed();
         Toast.makeText(getApplicationContext(), "홈버튼",
                 Toast.LENGTH_LONG).show();
         super.onUserLeaveHint();
