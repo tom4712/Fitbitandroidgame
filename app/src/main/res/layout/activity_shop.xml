@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.ShopActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/shopbg">
 
     <LinearLayout
-        android:background="#ed7d7d"
+        android:background="#00ed7d7d"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -143,7 +144,7 @@
 
 
     <LinearLayout
-        android:background="#d2abab"
+        android:background="#00ffffff"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -273,7 +274,7 @@
 
 
     <LinearLayout
-        android:background="#9c7272"
+        android:background="#009c7272"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
