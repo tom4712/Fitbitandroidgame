@@ -156,16 +156,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mainView.setVisibility(View.GONE);
                 settingView.setVisibility(View.VISIBLE);
                 break;
-            case R.id.Share:
-                break;
+
             case R.id.thrSec:
                 Intent i = new Intent(getApplicationContext(), Move.class);
                 startActivity(i);
+                break;
+            case R.id.Share:
+                Intent intent = new Intent(this, Share.class);
+                startActivity(intent);
                 break;
             case R.id.Game:
                 break;
             case R.id.Shop:
                 i = new Intent(getApplicationContext(), ShopActivity.class);
+
                 startActivity(i);
                 break;
             case R.id.Inventory:

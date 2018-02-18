@@ -35,8 +35,14 @@
         <activity android:name=".CommunityActivity" />
         <activity android:name=".ShopActivity" />
         <activity android:name=".profileManagement" />
-        <activity android:name=".Move"></activity>
-        <activity android:name=".Movie"></activity>
+        <activity android:name=".Move" />
+        <activity android:name=".Movie" />
+        <activity
+            android:name=".Share"
+            android:theme="@android:style/Theme.Dialog"
+            >
+
+        </activity>
     </application>
 
 </manifest>
