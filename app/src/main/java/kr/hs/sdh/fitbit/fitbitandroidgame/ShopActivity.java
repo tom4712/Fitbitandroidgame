@@ -21,6 +21,7 @@ public class ShopActivity extends AppCompatActivity {
     private Cursor all_cursor;
     private ArrayList<String> list = new ArrayList();
 
+    boolean man;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

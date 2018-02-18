@@ -28,14 +28,19 @@
             android:layout_marginLeft="150dp"
             android:layout_width="70dp"
             android:layout_height="30dp"
+            android:id="@+id/btn1"
+            android:onClick="onClick"
             android:background="@drawable/x"
-   />
+            tools:ignore="OnClick" />
 
         <Button
             android:layout_marginTop="135dp"
             android:layout_marginLeft="30dp"
             android:layout_width="70dp"
+            android:onClick="onClick"
+            android:id="@+id/btn2"
             android:layout_height="30dp"
-            android:background="@drawable/c"/>
+            android:background="@drawable/c"
+            tools:ignore="OnClick" />
     </RelativeLayout>
 </LinearLayout>
