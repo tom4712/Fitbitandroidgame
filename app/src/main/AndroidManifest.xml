@@ -39,8 +39,11 @@
         <activity android:name=".Movie" />
         <activity
             android:name=".Share"
-            android:theme="@android:style/Theme.Dialog"
-            >
+            android:theme="@android:style/Theme.Dialog">
+
+        </activity>
+
+        <activity android:name=".Gumai" android:theme="@android:style/Theme.Dialog">
 
         </activity>
     </application>
