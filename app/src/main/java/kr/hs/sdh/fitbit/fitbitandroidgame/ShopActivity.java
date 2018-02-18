@@ -307,7 +307,7 @@ public class ShopActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT);
 
         parmcoin.leftMargin = width / 10;
-        parmcoin.bottomMargin = height / 55;
+        parmcoin.bottomMargin = height / 130;
 
         parm.rightMargin = width / 6;
         parm.leftMargin = width / 6;
