@@ -20,7 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.159">
+            android:layout_weight="1.06">
 
             <TextView
                 android:id="@+id/cointext"
@@ -33,151 +33,150 @@
 
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.93"
+            android:background="#00ed7d7d">
+
+            <HorizontalScrollView
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/item_padding1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/im1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentLeft="true"
+
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_weight="1"
+                                android:onClick="onClick"
+                                android:padding="50dp"
+                                android:src="@drawable/gongo" />
+
+
+                            <Button
+                                android:id="@+id/one"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="1원"
+                                android:textSize="25dp" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/item_padding2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/im2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:onClick="onClick"
+                                android:src="@drawable/gongt" />
+
+                            <Button
+                                android:id="@+id/two"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="1원"
+                                android:textSize="25dp" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/item_padding3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/im3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:onClick="onClick"
+                                android:src="@drawable/test" />
+
+                            <Button
+                                android:id="@+id/sre"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="3원"
+                                android:textSize="25dp" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
     <LinearLayout
-        android:background="#7fed7d7d"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-       <HorizontalScrollView
-
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
-
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="match_parent"
-               android:orientation="horizontal">
-
-               <LinearLayout
-                   android:id="@+id/item_padding1"
-                   android:layout_width="wrap_content"
-                   android:layout_height="match_parent"
-                   android:layout_weight="1">
-
-                   <RelativeLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent">
-
-                       <ImageView
-                           android:layout_width="match_parent"
-                           android:layout_height="match_parent"
-                           android:id="@+id/im1"
-
-                           android:onClick="onClick"
-                           android:layout_alignParentLeft="true"
-                           android:layout_alignParentStart="true"
-                           android:layout_alignParentTop="true"
-                           android:layout_weight="1"
-                           android:src="@drawable/gongo" />
-
-
-                       <Button
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_alignParentBottom="true"
-                           android:layout_alignParentEnd="true"
-                           android:layout_weight="3"
-                           android:onClick="onClick"
-                           android:text="1원"
-                           android:id="@+id/one"
-                           android:textSize="25dp"
-                           android:layout_alignParentRight="true" />
-
-                   </RelativeLayout>
-
-               </LinearLayout>
-
-
-
-               <LinearLayout
-                   android:id="@+id/item_padding2"
-                   android:layout_width="wrap_content"
-                   android:layout_height="match_parent"
-                   android:layout_weight="1">
-
-                   <RelativeLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent">
-
-                       <ImageView
-                           android:src="@drawable/gongt"
-                           android:id="@+id/im2"
-                           android:onClick="onClick"
-                           android:layout_width="match_parent"
-                           android:layout_height="match_parent"
-                           android:layout_weight="1"/>
-
-                       <Button
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_alignParentBottom="true"
-                           android:layout_alignParentEnd="true"
-                           android:layout_weight="3"
-                           android:onClick="onClick"
-                           android:text="1원"
-                           android:id="@+id/two"
-                           android:textSize="25dp"
-                           android:layout_alignParentRight="true" />
-
-                   </RelativeLayout>
-
-               </LinearLayout>
-
-               <LinearLayout
-                   android:id="@+id/item_padding3"
-                   android:layout_width="wrap_content"
-                   android:layout_height="match_parent"
-                   android:layout_weight="1">
-
-                   <RelativeLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent">
-
-                       <ImageView
-                           android:src="@drawable/test"
-                           android:id="@+id/im3"
-                           android:onClick="onClick"
-                           android:layout_width="match_parent"
-                           android:layout_height="match_parent"
-                           android:layout_weight="1"/>
-
-                       <Button
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_alignParentBottom="true"
-                           android:layout_alignParentEnd="true"
-                           android:layout_weight="3"
-                           android:text="3원"
-                           android:onClick="onClick"
-                           android:id="@+id/sre"
-                           android:textSize="25dp"
-                           android:layout_alignParentRight="true" />
-
-                   </RelativeLayout>
-
-               </LinearLayout>
-
-           </LinearLayout>
-
-
-
-       </HorizontalScrollView>
-
-
-
-    </LinearLayout>
-
-
-
-
-
-
-
-
-    <LinearLayout
-        android:background="#79ffffff"
-        android:layout_weight="1"
+        android:background="#00ffffff"
+        android:layout_weight="1.002"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -187,58 +186,46 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/item_padding4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:src="@drawable/test"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/im4"
+                        android:onClick="onClick"
+                        android:layout_weight="1"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_weight="3"
+                        android:onClick="onClick"
+                        android:text="1원"
+                        android:id="@+id/two_1"
+                        android:textSize="25dp"
+                        android:layout_alignParentRight="true" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_marginRight="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/item_padding4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginLeft="50dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:src="@drawable/test"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/im4"
-                            android:onClick="onClick"
-                            android:layout_weight="1"/>
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_weight="3"
-                            android:onClick="onClick"
-                            android:text="1원"
-                            android:id="@+id/one_2"
-                            android:textSize="25dp"
-                            android:layout_alignParentRight="true" />
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentLeft="true"
-                            android:id="@+id/im5"
-                            android:onClick="onClick"
-                            android:layout_alignParentStart="true"
-                            android:layout_weight="1"
-                            android:src="@drawable/test" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
 
 
                 <LinearLayout
@@ -324,8 +311,9 @@
 
 
     <LinearLayout
-        android:background="#9d9c7272"
-        android:layout_weight="1"
+
+        android:background="#009c7272"
+        android:layout_weight="0.95"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -371,6 +359,53 @@
                             android:id="@+id/one_3"
                             android:textSize="25dp"
                             android:layout_alignParentRight="true" />
+
+                        <LinearLayout
+                            android:id="@+id/item_padding4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_weight="1">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/im4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:onClick="onClick"
+                                    android:src="@drawable/test" />
+
+                                <Button
+                                    android:id="@+id/one_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:onClick="onClick"
+                                    android:text="1원"
+                                    android:textSize="25dp" />
+
+                                <ImageView
+                                    android:id="@+id/im5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_weight="1"
+                                    android:onClick="onClick"
+                                    android:src="@drawable/test" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
 
                     </RelativeLayout>
 
@@ -456,7 +491,15 @@
 
         </HorizontalScrollView>
 
+
     </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.23">
+
+        </LinearLayout>
 
 
     </LinearLayout>

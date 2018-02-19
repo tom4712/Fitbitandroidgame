@@ -94,7 +94,7 @@ public class ShopActivity extends AppCompatActivity {
         }
         Log.d("DB", list.get(0) + "");
         Coinresult = Integer.parseInt(list.get(0));
-        setCoinresult();
+        //setCoinresult();
 
         Cursul();
 
