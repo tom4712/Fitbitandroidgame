@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView Coin, charName, versionInfo;
     private Button Settings, Share, thrSec, Game, Shop, Inventory, Inventory_, Cafe, characterDetails, accountManagement;
 
-    private Spinner spinner;
-    private ArrayAdapter spinnerAdapter;
     private Switch mSwitch;
 
     private final long FINISH_INTERVAL_TIME = 2000;
@@ -81,12 +79,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Game = findViewById(R.id.Game);
         Shop = findViewById(R.id.Shop);
         Inventory = findViewById(R.id.Inventory);
-        Inventory_ = findViewById(R.id.Inventory_);
         Cafe = findViewById(R.id.Cafe);
         characterDetails = findViewById(R.id.characterDetails);
         accountManagement = findViewById(R.id.accountManagement);
         versionInfo = findViewById(R.id.versionInfo);
-        spinner = findViewById(R.id.spinner);
         mSwitch = findViewById(R.id.Switch);
 
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -100,33 +96,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.characterSex,
-                android.R.layout.simple_spinner_dropdown_item);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinnerAdapter);
-        try {
-            spinner.setSelection(all_cursor.getInt(all_cursor.getColumnIndex("SEX")));
-        }catch (Exception e){
-        }
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                dbhelper.updateSex(i);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
         Settings.setOnClickListener(this);
         Share.setOnClickListener(this);
         thrSec.setOnClickListener(this);
         Game.setOnClickListener(this);
         Shop.setOnClickListener(this);
         Inventory.setOnClickListener(this);
-        Inventory_.setOnClickListener(this);
         Cafe.setOnClickListener(this);
         characterDetails.setOnClickListener(this);
         accountManagement.setOnClickListener(this);
@@ -158,8 +133,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.Inventory:
-
-            case R.id.Inventory_:
                 break;
             case R.id.accountManagement:
                 i = new Intent(getApplicationContext(), profileManagement.class);

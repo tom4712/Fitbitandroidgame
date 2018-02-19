@@ -52,7 +52,6 @@ public class DBhelper {
 
     public void insertGarbage(){
         mDb.execSQL("INSERT INTO first_table VALUES(0,0,0,0,0);");
-        mDb.close();
     }
 
     public void open() throws SQLException {
