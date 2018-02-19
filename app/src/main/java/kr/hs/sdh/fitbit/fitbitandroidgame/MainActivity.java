@@ -94,6 +94,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         versionInfo = findViewById(R.id.versionInfo);
         mSwitch = findViewById(R.id.Switch);
 
+        // 인텐트 값 가져옴 - 이름 설정
+        Intent get_value = getIntent();
+        String json = get_value.getStringExtra("json_value");
+        int idx = json.indexOf("|");
+        String name = json.substring(0,idx);
+        charName.setText(name);
+        //-------------
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
