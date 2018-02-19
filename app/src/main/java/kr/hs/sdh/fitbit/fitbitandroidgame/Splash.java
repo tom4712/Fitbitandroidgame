@@ -52,8 +52,6 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
         ImageView iv = (ImageView)findViewById(R.id.load_img);
         final AnimationDrawable drawable =
                 (AnimationDrawable) iv.getBackground();
