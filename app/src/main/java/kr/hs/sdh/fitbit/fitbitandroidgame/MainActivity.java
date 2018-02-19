@@ -60,6 +60,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // 인텐트 값 가져옴
+        Intent get_intent = new Intent();
+        String json = get_intent.getExtras().getString("json_value");
+        Log.d("jsh",json);
+        //-------------
         dbhelper = new DBhelper(getApplication());
         dbhelper.open();
         all_cursor = dbhelper.AllRows();
