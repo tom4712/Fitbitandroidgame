@@ -133,33 +133,12 @@ public class ShopActivity extends AppCompatActivity {
         }
     }
 
-
-    public void buyitem(int indexnum, int price){
-
-        list.clear();
-        Cursul();
-
-        Log.d("DB",clothchar[indexnum]+"  ////   ");
-        if(clothchar[indexnum] == '1'){
-            Log.d("DB","이미구입함");
-            Toast.makeText(this, "이미 구입한 상품입니다.", Toast.LENGTH_SHORT).show();
-        }else{
-            Log.d("DB","이미구입한 상품이 아님");
-            String input = "";
-            Coinresult = Coinresult - price;
-            clothchar[indexnum] = 49;
-            db.updateCoin(Coinresult);
-            for (int i = 0; i < clothchar.length; i++) {
-                input += Character.toString(clothchar[i]);
-            }
-            db.updateGarments(input);
-            Log.d("DB",""+input);
-            Toast.makeText(this, "구입을 성공하였습니다!!", Toast.LENGTH_SHORT).show();
+    public void buyitem(){
             list.clear();
             Cursul();
             setCoindTxv();
         }
-    }
+
 
     public void onClick(View view){
         int price;
@@ -168,51 +147,85 @@ public class ShopActivity extends AppCompatActivity {
             case R.id.one:
                 price = 1;
                 Intent i = new Intent(getApplicationContext(), Gumai.class);
+                i.putExtra("price",""+price);
+                i.putExtra("sex",""+sex);
+                i.putExtra("location",""+1);
+                i.putExtra("descript",""+1);
                 startActivity(i);
-                show(price,sex,1,1);
                 break;
             case R.id.two:
                 price = 2;
-          i = new Intent(getApplicationContext(), Gumai.class);
+                i = new Intent(getApplicationContext(), Gumai.class);
+                i.putExtra("price",""+price);
+                i.putExtra("sex",""+sex);
+                i.putExtra("location",""+1);
+                i.putExtra("descript",""+1);
                 startActivity(i);
-                show(price,sex,1,2);
                 break;
             case R.id.sre:
 
                 price = 3;
                 i = new Intent(getApplicationContext(), Gumai.class);
-                show(price,sex,1,3);
+                i.putExtra("price",""+price);
+                i.putExtra("sex",""+sex);
+                i.putExtra("location",""+1);
+                i.putExtra("descript",""+1);
+                startActivity(i);
                 break;
 
             case R.id.one_2:
                 price = 1;
                 i = new Intent(getApplicationContext(), Gumai.class);
-                show(price,sex,2,1);
+                i.putExtra("price",""+price);
+                i.putExtra("sex",""+sex);
+                i.putExtra("location",""+1);
+                i.putExtra("descript",""+1);
+                startActivity(i);
                 break;
             case R.id.two_2:
                 price = 2;
                 i = new Intent(getApplicationContext(), Gumai.class);
-                show(price,sex,2,2);
+                i.putExtra("price",""+price);
+                i.putExtra("sex",""+sex);
+                i.putExtra("location",""+1);
+                i.putExtra("descript",""+1);
+                startActivity(i);
                 break;
             case R.id.sre_2:
                 price = 3;
                 i = new Intent(getApplicationContext(), Gumai.class);
-                show(price,sex,2,3);
+                i.putExtra("price",""+price);
+                i.putExtra("sex",""+sex);
+                i.putExtra("location",""+1);
+                i.putExtra("descript",""+1);
+                startActivity(i);
                 break;
             case R.id.one_3:
                 price = 1;
                 i = new Intent(getApplicationContext(), Gumai.class);
-                show(price,sex,3,1);
+                i.putExtra("price",""+price);
+                i.putExtra("sex",""+sex);
+                i.putExtra("location",""+1);
+                i.putExtra("descript",""+1);
+                startActivity(i);
                 break;
             case R.id.two_3:
                 price = 2;
                 i = new Intent(getApplicationContext(), Gumai.class);
-                show(price,sex,3,2);
+                i.putExtra("price",""+price);
+                i.putExtra("sex",""+sex);
+                i.putExtra("location",""+1);
+                i.putExtra("descript",""+1);
+                startActivity(i);
                 break;
             case R.id.sre_3:
                 price = 3;
                 i = new Intent(getApplicationContext(), Gumai.class);
-                show(price,sex,3,3);
+                i.putExtra("price",""+price);
+                i.putExtra("sex",""+sex);
+                i.putExtra("location",""+1);
+                i.putExtra("descript",""+1);
+                startActivity(i);
                 break;
         }
     }
@@ -233,35 +246,35 @@ public class ShopActivity extends AppCompatActivity {
                                 if(location == 1){
                                     if(descript == 1){
                                         indexnum = 1;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 2){
                                         indexnum = 2;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 3){
                                         indexnum = 3;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }
                                 }else if(location == 2){
                                     if(descript == 1){
                                         indexnum = 4;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 2){
                                         indexnum = 5;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 3){
                                         indexnum = 6;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }
                                 }else if(location == 3){
                                     if(descript == 1){
                                         indexnum = 7;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 2){
                                         indexnum = 8;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 3){
                                         indexnum = 9;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }
                                 }
                             }
@@ -272,35 +285,35 @@ public class ShopActivity extends AppCompatActivity {
                                 if(location == 1){
                                     if(descript == 1){
                                         indexnum = 1;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 2){
                                         indexnum = 2;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 3){
                                         indexnum = 3;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }
                                 }else if(location == 2){
                                     if(descript == 1){
                                         indexnum = 10;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 2){
                                         indexnum = 11;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 3){
                                         indexnum = 12;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }
                                 }else if(location == 3){
                                     if(descript == 1){
                                         indexnum = 13;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 2){
                                         indexnum = 14;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }else if(descript == 3){
                                         indexnum = 15;
-                                        buyitem(indexnum,price);
+                                        buyitem();
                                     }
                                 }
                             }
