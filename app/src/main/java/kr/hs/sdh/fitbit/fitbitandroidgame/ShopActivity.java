@@ -152,6 +152,7 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+1);
                 i.putExtra("descript",""+1);
                 startActivity(i);
+                buyitem();
                 break;
             case R.id.two:
                 price = 2;
@@ -161,6 +162,7 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+1);
                 i.putExtra("descript",""+1);
                 startActivity(i);
+                buyitem();
                 break;
             case R.id.sre:
 
@@ -171,6 +173,7 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+1);
                 i.putExtra("descript",""+1);
                 startActivity(i);
+                buyitem();
                 break;
 
             case R.id.one_2:
@@ -181,6 +184,7 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+1);
                 i.putExtra("descript",""+1);
                 startActivity(i);
+                buyitem();
                 break;
             case R.id.two_2:
                 price = 2;
@@ -190,6 +194,7 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+1);
                 i.putExtra("descript",""+1);
                 startActivity(i);
+                buyitem();
                 break;
             case R.id.sre_2:
                 price = 3;
@@ -199,6 +204,7 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+1);
                 i.putExtra("descript",""+1);
                 startActivity(i);
+                buyitem();
                 break;
             case R.id.one_3:
                 price = 1;
@@ -208,6 +214,7 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+1);
                 i.putExtra("descript",""+1);
                 startActivity(i);
+                buyitem();
                 break;
             case R.id.two_3:
                 price = 2;
@@ -217,6 +224,7 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+1);
                 i.putExtra("descript",""+1);
                 startActivity(i);
+                buyitem();
                 break;
             case R.id.sre_3:
                 price = 3;
@@ -226,108 +234,9 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+1);
                 i.putExtra("descript",""+1);
                 startActivity(i);
+                buyitem();
                 break;
         }
-    }
-    private void show(final int price, final int sex, final int location, final int descript) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("");
-        builder.setMessage("구매하실겁니까?");
-        builder.setPositiveButton("예",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        int indexnum;
-                        if(sex == 0){//남자
-                            if(Coinresult < price) {
-                                Toast.makeText(ShopActivity.this, "코인이 " + (price - Coinresult) + " 개 부족합니다!", Toast.LENGTH_SHORT).show();
-                            }else {
-                                Coinresult = Coinresult - price;
-                                db.updateCoin(Coinresult);
-                                if(location == 1){
-                                    if(descript == 1){
-                                        indexnum = 1;
-                                        buyitem();
-                                    }else if(descript == 2){
-                                        indexnum = 2;
-                                        buyitem();
-                                    }else if(descript == 3){
-                                        indexnum = 3;
-                                        buyitem();
-                                    }
-                                }else if(location == 2){
-                                    if(descript == 1){
-                                        indexnum = 4;
-                                        buyitem();
-                                    }else if(descript == 2){
-                                        indexnum = 5;
-                                        buyitem();
-                                    }else if(descript == 3){
-                                        indexnum = 6;
-                                        buyitem();
-                                    }
-                                }else if(location == 3){
-                                    if(descript == 1){
-                                        indexnum = 7;
-                                        buyitem();
-                                    }else if(descript == 2){
-                                        indexnum = 8;
-                                        buyitem();
-                                    }else if(descript == 3){
-                                        indexnum = 9;
-                                        buyitem();
-                                    }
-                                }
-                            }
-                        }else if(sex == 1){//여자
-                            if(Coinresult < price) {
-                                Toast.makeText(ShopActivity.this, "코인이 " + (price - Coinresult) + " 개 부족합니다!", Toast.LENGTH_SHORT).show();
-                            }else {
-                                if(location == 1){
-                                    if(descript == 1){
-                                        indexnum = 1;
-                                        buyitem();
-                                    }else if(descript == 2){
-                                        indexnum = 2;
-                                        buyitem();
-                                    }else if(descript == 3){
-                                        indexnum = 3;
-                                        buyitem();
-                                    }
-                                }else if(location == 2){
-                                    if(descript == 1){
-                                        indexnum = 10;
-                                        buyitem();
-                                    }else if(descript == 2){
-                                        indexnum = 11;
-                                        buyitem();
-                                    }else if(descript == 3){
-                                        indexnum = 12;
-                                        buyitem();
-                                    }
-                                }else if(location == 3){
-                                    if(descript == 1){
-                                        indexnum = 13;
-                                        buyitem();
-                                    }else if(descript == 2){
-                                        indexnum = 14;
-                                        buyitem();
-                                    }else if(descript == 3){
-                                        indexnum = 15;
-                                        buyitem();
-                                    }
-                                }
-                            }
-                        }
-
-                    }
-                });
-        builder.setNegativeButton("아니오",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(),"취소되었습니다.",Toast.LENGTH_LONG).show();
-                    }
-                });
-        builder.show();
     }
 
     public  void setpadding (int width,int height){
