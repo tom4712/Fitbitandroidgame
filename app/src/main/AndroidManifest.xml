@@ -26,6 +26,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_path" />
         </provider>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,7 +36,18 @@
         </activity>
         <activity android:name=".CommunityActivity" />
         <activity android:name=".ShopActivity" />
-        <activity android:name=".profileManagement"></activity>
+        <activity android:name=".profileManagement" />
+        <activity android:name=".Move" />
+        <activity android:name=".Movie" />
+        <activity
+            android:name=".Share"
+            android:theme="@android:style/Theme.Dialog">
+
+        </activity>
+
+        <activity android:name=".Gumai" android:theme="@android:style/Theme.Dialog">
+
+        </activity>
     </application>
 
 </manifest>
