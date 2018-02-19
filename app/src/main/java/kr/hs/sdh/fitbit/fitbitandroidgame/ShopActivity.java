@@ -34,6 +34,8 @@ public class ShopActivity extends AppCompatActivity {
     private TextView coindTxv;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,11 +68,19 @@ public class ShopActivity extends AppCompatActivity {
         Cursul();
 
 
-        if(sex==0){
-
-            imageView2.setImageResource(R.drawable.eeeee);
-
-
+        if(sex==1){
+            imageView4.setImageResource(R.drawable.go);
+            imageView5.setImageResource(R.drawable.gt);
+            imageView6.setImageResource(R.drawable.gr);
+            imageView7.setImageResource(R.drawable.gao);
+            imageView8.setImageResource(R.drawable.gat);
+        }
+        else {
+            imageView4.setImageResource(R.drawable.mo);
+            imageView5.setImageResource(R.drawable.mt);
+            imageView6.setImageResource(R.drawable.mr);
+            imageView7.setImageResource(R.drawable.mao);
+            imageView8.setImageResource(R.drawable.mat);
         }
 
 
