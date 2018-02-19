@@ -3,10 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Fitbitandroidgame.iml" filepath="$PROJECT_DIR$/Fitbitandroidgame.iml" />
-      <module fileurl="file://C:\Users\tom47\AndroidStudioProjects\Fitbitandroidgame\Fitbitandroidgame.iml" filepath="C:\Users\tom47\AndroidStudioProjects\Fitbitandroidgame\Fitbitandroidgame.iml" />
       <module fileurl="file://C:\Users\tom47\Desktop\Fitbitandroidgame\.idea\Fitbitandroidgame.iml" filepath="C:\Users\tom47\Desktop\Fitbitandroidgame\.idea\Fitbitandroidgame.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\tom47\AndroidStudioProjects\Fitbitandroidgame\app\app.iml" filepath="C:\Users\tom47\AndroidStudioProjects\Fitbitandroidgame\app\app.iml" />
     </modules>
   </component>
 </project>

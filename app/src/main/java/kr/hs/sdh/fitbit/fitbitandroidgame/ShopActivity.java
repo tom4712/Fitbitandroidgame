@@ -52,7 +52,7 @@ public class ShopActivity extends AppCompatActivity {
         imageView1 = (ImageView) findViewById(R.id.im1);
         imageView2 = (ImageView) findViewById(R.id.im2);
         imageView3 = (ImageView) findViewById(R.id.im3);
-        imageView4 = (ImageView) findViewById(R.id.im_4);
+        imageView4 = (ImageView) findViewById(R.id.im4);
         imageView5 = (ImageView) findViewById(R.id.im5);
         imageView6 = (ImageView) findViewById(R.id.im6);
         imageView7 = (ImageView) findViewById(R.id.im7);
@@ -244,7 +244,7 @@ public class ShopActivity extends AppCompatActivity {
         itempadding1 = findViewById(R.id.item_padding1);
         itempadding2 = findViewById(R.id.item_padding2);
         itempadding3 = findViewById(R.id.item_padding3);
-        itempadding4 = findViewById(R.id.item_padding_4);
+        itempadding4 = findViewById(R.id.item_padding4);
         itempadding5 = findViewById(R.id.item_padding5);
         itempadding6 = findViewById(R.id.item_padding6);
         itempadding7 = findViewById(R.id.item_padding7);
