@@ -27,6 +27,8 @@ public class Gumai extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gumai);
 
+        Log.d("POPUP","내가 떳따!");
+
         Intent intent = getIntent();
 
         String price = intent.getStringExtra("price");
@@ -167,6 +169,7 @@ public class Gumai extends Activity {
         if(clothchar[indexnum] == '1'){
             Log.d("DB","이미구입함");
             Toast.makeText(this, "이미 구입한 상품입니다.", Toast.LENGTH_SHORT).show();
+            finish();
         }else{
             Log.d("DB","이미구입한 상품이 아님");
             String input = "";

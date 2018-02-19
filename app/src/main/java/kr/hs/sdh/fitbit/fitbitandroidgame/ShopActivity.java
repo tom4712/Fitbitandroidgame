@@ -156,23 +156,23 @@ public class ShopActivity extends AppCompatActivity {
                 break;
             case R.id.two:
                 price = 2;
-                i = new Intent(getApplicationContext(), Gumai.class);
-                i.putExtra("price",""+price);
-                i.putExtra("sex",""+sex);
-                i.putExtra("location",""+1);
-                i.putExtra("descript",""+1);
-                startActivity(i);
+                Intent i2 = new Intent(getApplicationContext(), Gumai.class);
+                i2.putExtra("price",""+price);
+                i2.putExtra("sex",""+sex);
+                i2.putExtra("location",""+1);
+                i2.putExtra("descript",""+1);
+                startActivity(i2);
                 buyitem();
                 break;
             case R.id.sre:
 
                 price = 3;
-                i = new Intent(getApplicationContext(), Gumai.class);
-                i.putExtra("price",""+price);
-                i.putExtra("sex",""+sex);
-                i.putExtra("location",""+1);
-                i.putExtra("descript",""+1);
-                startActivity(i);
+                Intent i3 = new Intent(getApplicationContext(), Gumai.class);
+                i3.putExtra("price",""+price);
+                i3.putExtra("sex",""+sex);
+                i3.putExtra("location",""+1);
+                i3.putExtra("descript",""+1);
+                startActivity(i3);
                 buyitem();
                 break;
 
