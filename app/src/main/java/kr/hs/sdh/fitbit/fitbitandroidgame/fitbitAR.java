@@ -61,7 +61,6 @@ public class fitbitAR extends AppCompatActivity
 
     private boolean check = false;
 
-
     private RelativeLayout.LayoutParams LayoutParams;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
