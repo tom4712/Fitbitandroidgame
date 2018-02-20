@@ -137,11 +137,11 @@ public class profileManagement extends AppCompatActivity {
 
                 case CROP_FROM_CAMERA:
                     try {
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoUri);
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoUri);/*
                         Bitmap thumbImage = ThumbnailUtils.extractThumbnail(rotate(bitmap, exifDegree), 128, 128);
                         ByteArrayOutputStream bs = new ByteArrayOutputStream();
-                        thumbImage.compress(Bitmap.CompressFormat.JPEG, 100, bs);
-                        Result.setImageBitmap(thumbImage);
+                        thumbImage.compress(Bitmap.CompressFormat.JPEG, 100, bs);*/
+                        Result.setImageBitmap(bitmap);
                     }catch (Exception e){
 
                     }

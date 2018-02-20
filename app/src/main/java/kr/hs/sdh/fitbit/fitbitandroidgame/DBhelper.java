@@ -7,10 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import static java.lang.String.valueOf;
 
 /**
  * Created by tom47 on 2018-01-18.

@@ -2,12 +2,10 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -48,13 +46,14 @@ public class Splash extends AppCompatActivity {
     final Context context = this;
     TextView text;
     private LinearLayout layout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        ImageView iv = (ImageView)findViewById(R.id.load_img);
+        ImageView iv = (ImageView) findViewById(R.id.load_img);
         final AnimationDrawable drawable =
                 (AnimationDrawable) iv.getBackground();
 
@@ -67,9 +66,9 @@ public class Splash extends AppCompatActivity {
             drawable.start(); // 애니메이션 동작 개시
 
         }
-        layout = (LinearLayout)findViewById(R.id.show_lay);
+        layout = (LinearLayout) findViewById(R.id.show_lay);
         mWebView = (WebView) findViewById(R.id.activity_main_webview);
-        text = (TextView)findViewById(R.id.text);
+        text = (TextView) findViewById(R.id.text);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new WebViewClient() {
@@ -89,8 +88,8 @@ public class Splash extends AppCompatActivity {
             public void onPageStarted(WebView view, String url, Bitmap b) {
 
 
-                if(mWebView.getVisibility() == View.INVISIBLE){
-                    if(url.contains("www.fitbit.com/login")){
+                if (mWebView.getVisibility() == View.INVISIBLE) {
+                    if (url.contains("www.fitbit.com/login")) {
                         show();
                         layout.setVisibility(View.INVISIBLE);
                         mWebView.setVisibility(View.VISIBLE);
@@ -98,7 +97,7 @@ public class Splash extends AppCompatActivity {
 
                     }
                 }
-                if(url.contains("?code")&&url.contains("&state")){
+                if (url.contains("?code") && url.contains("&state")) {
                     mWebView.setVisibility(View.INVISIBLE);
                     layout.setVisibility(View.VISIBLE);
                     urlPath = url;
@@ -106,27 +105,15 @@ public class Splash extends AppCompatActivity {
                     try {
                         res = new HttpTask().execute().get();
                         int idx = res.indexOf("|");
-                        if(idx != -1 ){
-                            String name = res.substring(0,idx);
-                            text.setText(name+"님 환영합니다");
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    intent.putExtra("json_value",res);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                            }, 2000);
+                        if (idx != -1) {
+                            String name = res.substring(0, idx);
+                            text.setText(name + "님 환영합니다");
 
-                        }
-                        else {
+
+                        } else {
                             mWebView.loadUrl("http://tlgj255.cafe24.com/fitbit/index.php");
 
                         }
-
-
 
 
                     } catch (InterruptedException e) {
@@ -141,7 +128,7 @@ public class Splash extends AppCompatActivity {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                Log.d("jsh1",url);
+                Log.d("jsh1", url);
 
             }
 
@@ -150,23 +137,19 @@ public class Splash extends AppCompatActivity {
     }
 
 
-
-    void show()
-    {
+    void show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Fitbit 로그인");
         builder.setMessage("앱의 사용을 위해서는 Fitbit 게정 로그인이 필요합니다.");
         builder.setPositiveButton("확인",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Log.d("asdf","asdf");
+                        Log.d("asdf", "asdf");
                     }
                 });
 
         builder.show();
     }
-
-
 
 
     public class HttpTask extends AsyncTask<Void, Void, String> {
@@ -225,8 +208,7 @@ public class Splash extends AppCompatActivity {
             super.onPostExecute(value);
 
 
-
-            Log.d("sdddf",value);
+            Log.d("sdddf", value);
 //            int idx = value.indexOf("@");
 //           if(idx == -1) {result.setText(value);
 ////                step = value.substring(0, idx);
@@ -235,11 +217,7 @@ public class Splash extends AppCompatActivity {
 //            }
 
 
-
-
         }
-
-
 
 
     }

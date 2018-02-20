@@ -8,17 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -95,10 +90,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSwitch = findViewById(R.id.Switch);
 
         // 인텐트 값 가져옴 - 이름 설정
-        Intent get_value = getIntent();
-        String json = get_value.getStringExtra("json_value");
-        int idx = json.indexOf("|");
-        String name = json.substring(0,idx);
+        //Intent get_value = getIntent();
+        //String json = get_value.getStringExtra("json_value");
+        //int idx = json.indexOf("|");
+        String name = "닉네임";
         charName.setText(name);
         //-------------
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

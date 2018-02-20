@@ -18,15 +18,13 @@ public class CommunityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
 
-        webView = (WebView)findViewById(R.id.webView);
+        webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("http://cafe.naver.com/fitbituser");
         webView.setWebViewClient(new WebViewClient());
         // 다운 로드 할 수 있도록 해주는 함수 ==================================
-        webView.setDownloadListener(new DownloadListener()
-        {
-            public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength)
-            {
+        webView.setDownloadListener(new DownloadListener() {
+            public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
                 // 다운로드 파일 웹 브라우저 사용
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setType(mimetype);
@@ -38,7 +36,7 @@ public class CommunityActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()){
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
             webView.goBack();
             return true;
         }
@@ -53,9 +51,7 @@ public class CommunityActivity extends AppCompatActivity {
             if (url.contains("mailto:")) {
                 startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse(url)));
                 return true;
-            }
-
-            else {
+            } else {
                 view.loadUrl(url);
                 return true;
             }
