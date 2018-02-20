@@ -253,17 +253,16 @@
         android:id="@+id/settingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.4"
-            android:background="#111">
+            android:background="#9a111111">
 
             <Button
-                android:id="@+id/Graph"
+                android:id="@+id/goMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#00111111" />
@@ -275,8 +274,9 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_weight="0.25"
-            android:orientation="vertical">
+            android:layout_weight="0.43"
+            android:orientation="vertical"
+            android:background="#fff">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -362,17 +362,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="버전정보" />
+                    android:text="도움말" />
 
-                <TextView
-                    android:id="@+id/versionInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="30dp"
-                    android:text="0.5.0"
-                    android:textStyle="bold" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/help"
+                    android:background="#00111111"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

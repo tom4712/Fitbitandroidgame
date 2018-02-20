@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.renderscript.Short4;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout mainView, settingView;
 
     private TextView Coin, charName, versionInfo;
-    private Button Settings, Share, thrSec, Game, Shop, Inventory, Inventory_, Cafe, characterDetails, accountManagement;
+    private Button Settings, Share, thrSec, Game, Shop, Inventory, Cafe, characterDetails, accountManagement, goMain;
 
     private Switch mSwitch;
 
@@ -40,8 +41,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onBackPressed() {
         long tempTime = System.currentTimeMillis();
         long intervalTime = tempTime - backPressedTime;
-        if (mainView.getVisibility() == View.GONE) {
-            mainView.setVisibility(View.VISIBLE);
+        if (settingView.getVisibility() == View.VISIBLE) {
+            thrSec.setClickable(true);
+            Game.setClickable(true);
+            Inventory.setClickable(true);
+            Shop.setClickable(true);
             settingView.setVisibility(View.GONE);
         } else if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
             super.onBackPressed();
@@ -73,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setCoin();
 
+        goMain = findViewById(R.id.goMain);
         mainView = findViewById(R.id.mainView);
         settingView = findViewById(R.id.settingView);
         Coin = findViewById(R.id.Coin);
@@ -86,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Cafe = findViewById(R.id.Cafe);
         characterDetails = findViewById(R.id.characterDetails);
         accountManagement = findViewById(R.id.accountManagement);
-        versionInfo = findViewById(R.id.versionInfo);
         mSwitch = findViewById(R.id.Switch);
 
         // 인텐트 값 가져옴 - 이름 설정
@@ -107,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        goMain.setOnClickListener(this);
         Settings.setOnClickListener(this);
         Share.setOnClickListener(this);
         thrSec.setOnClickListener(this);
@@ -116,7 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Cafe.setOnClickListener(this);
         characterDetails.setOnClickListener(this);
         accountManagement.setOnClickListener(this);
-        versionInfo.setOnClickListener(this);
 
     }
 
@@ -130,7 +134,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.Settings:
-                mainView.setVisibility(View.GONE);
+                thrSec.setClickable(false);
+                Game.setClickable(false);
+                Inventory.setClickable(false);
+                Shop.setClickable(false);
                 settingView.setVisibility(View.VISIBLE);
                 break;
 
@@ -162,6 +169,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.characterDetails:
+                break;
+            case R.id.goMain:
+                thrSec.setClickable(true);
+                Game.setClickable(true);
+                Inventory.setClickable(true);
+                Shop.setClickable(true);
+                settingView.setVisibility(View.GONE);
                 break;
         }
     }
