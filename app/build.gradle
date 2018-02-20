@@ -31,4 +31,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.android.support:design:27.0.2'
     compile 'de.hdodenhof:circleimageview:2.2.0'
+    implementation project(':openCVLibrary340')
 }

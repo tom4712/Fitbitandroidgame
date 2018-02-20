@@ -7,9 +7,28 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-feature android:name="android.hardware.camera2"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front.autofocus"
+        android:required="false" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
 
     <application
         android:allowBackup="true"
@@ -27,8 +46,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_path" />
         </provider>
-        <activity android:name=".Splash">
-        </activity>
+
+        <activity android:name=".Splash"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,6 +55,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".fitbitAR"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="landscape" />
         <activity android:name=".CommunityActivity" />
         <activity android:name=".ShopActivity" />
         <activity android:name=".profileManagement" />
@@ -43,13 +66,11 @@
         <activity android:name=".Movie" />
         <activity
             android:name=".Share"
-            android:theme="@android:style/Theme.Dialog">
-
-        </activity>
-
-        <activity android:name=".Gumai" android:theme="@android:style/Theme.Dialog">
-
-        </activity>
+            android:theme="@android:style/Theme.Dialog"></activity>
+        <activity
+            android:name=".Gumai"
+            android:theme="@android:style/Theme.Dialog"></activity>
+        <activity android:name=".clear"></activity>
     </application>
 
 </manifest>

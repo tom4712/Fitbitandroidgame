@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.fitbitAR">
+    <org.opencv.android.JavaCameraView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/surface"/>
+
+    <Button
+        android:id="@+id/test"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <Button
+        android:id="@+id/test2"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <SurfaceView
+        android:id="@+id/surface_edge"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#ffdd00"/>
+
+    <SurfaceView
+        android:id="@+id/surface_border"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#34000000"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/check"
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

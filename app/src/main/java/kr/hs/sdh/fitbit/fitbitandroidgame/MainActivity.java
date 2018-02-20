@@ -143,6 +143,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.Game:
+                Intent intent1 = new Intent(getApplicationContext(), fitbitAR.class);
+                startActivity(intent1);
                 break;
             case R.id.Shop:
                 i = new Intent(getApplicationContext(), ShopActivity.class);
