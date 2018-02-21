@@ -1,11 +1,13 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -14,6 +16,11 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 public class Movie extends AppCompatActivity {
+
+    private DBhelper db;
+    private Cursor all_cursor;
+    private int coinresult;
+
     VideoView vv;
     ProgressBar progressBar;
     int progress=0;
@@ -31,6 +38,8 @@ public class Movie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
 
+        resultDB();
+
         String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.mtwo;
 
         vv = (VideoView) findViewById(R.id.vv);
@@ -39,8 +48,10 @@ public class Movie extends AppCompatActivity {
 
             // 동영상 재생이 완료된후 호출되는 메서드
             public void onCompletion(MediaPlayer player) {
-                Toast.makeText(getApplicationContext(), "동영상 재생이 완료되었습니다.",
+
+                Toast.makeText(getApplicationContext(), "완료보상으로 1코인이 지급되었습니다!",
                         Toast.LENGTH_LONG).show();
+                db.updateCoin(coinresult + 1);
             }
         });
         Uri uri = Uri.parse(uriPath);
@@ -80,6 +91,25 @@ public class Movie extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "홈버튼",
                 Toast.LENGTH_LONG).show();
         super.onUserLeaveHint();
+
+    }
+
+    public void resultDB(){
+        db = new DBhelper(this);
+        db.open();
+        all_cursor = db.AllRows();
+        all_cursor.moveToFirst();
+        while (true) {
+            try {
+                coinresult = Integer.parseInt(all_cursor.getString(all_cursor.getColumnIndex("COIN")));
+                Log.d("DB", "코인값받아옴");
+                if (!all_cursor.moveToNext())
+                    break;
+            } catch (Exception e) {
+
+            }
+
+        }
 
     }
 
