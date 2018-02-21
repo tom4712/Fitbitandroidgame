@@ -5,17 +5,21 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class Gumai extends Activity {
 
+    Button check,cancle;
     char[] clothchar;
     int Coinresult = 0;
     private DBhelper db;
     private Cursor all_cursor;
     private ArrayList<String> list = new ArrayList();
+    private String price,sex,location,descript;
 
 
     @Override
@@ -27,22 +31,24 @@ public class Gumai extends Activity {
 
         Intent intent = getIntent();
 
-        String price = intent.getStringExtra("price");
-        String sex = intent.getStringExtra("sex");
-        String location = intent.getStringExtra("location");
-        String descript = intent.getStringExtra("descript");
+        price = intent.getStringExtra("price");
+        sex = intent.getStringExtra("sex");
+        location = intent.getStringExtra("location");
+        descript = intent.getStringExtra("descript");
+        Log.d("Gumai","price "+price+"  sex"+sex+"  location "+location+"  descript "+descript);
 
         resultDB();
 
+
+    }
+
+    public void nocheck(View view){
+        Toast.makeText(Gumai.this, "취소되었습니다!!", Toast.LENGTH_SHORT).show();
+        this.finish();
+    }
+
+    public void check(View view){
         checkSex(Integer.parseInt(price),Integer.parseInt(sex),Integer.parseInt(location),Integer.parseInt(descript));
-    }
-
-    public void cancle(){
-        finish();
-    }
-
-    public void check(){
-
     }
 
     public void resultDB(){
@@ -75,6 +81,7 @@ public class Gumai extends Activity {
         if(sex == 0){//남자
             if(Coinresult < price) {
                 Toast.makeText(Gumai.this, "코인이 " + (price - Coinresult) + " 개 부족합니다!", Toast.LENGTH_SHORT).show();
+                this.finish();
             }else {
                 Coinresult = Coinresult - price;
                 db.updateCoin(Coinresult);
@@ -116,6 +123,7 @@ public class Gumai extends Activity {
         }else if(sex == 1){//여자
             if(Coinresult < price) {
                 Toast.makeText(Gumai.this, "코인이 " + (price - Coinresult) + " 개 부족합니다!", Toast.LENGTH_SHORT).show();
+                this.finish();
             }else {
                 if(location == 1){
                     if(descript == 1){
@@ -161,11 +169,11 @@ public class Gumai extends Activity {
         list.clear();
         resultDB();
 
-        Log.d("DB",clothchar[indexnum]+"  ////   ");
+        Log.d("DB",clothchar[indexnum]+"  ////   "+indexnum);
         if(clothchar[indexnum] == '1'){
             Log.d("DB","이미구입함");
             Toast.makeText(this, "이미 구입한 상품입니다.", Toast.LENGTH_SHORT).show();
-            finish();
+            this.finish();
         }else{
             Log.d("DB","이미구입한 상품이 아님");
             String input = "";
@@ -179,6 +187,8 @@ public class Gumai extends Activity {
             Log.d("DB",""+input);
             Toast.makeText(this, "구입을 성공하였습니다!!", Toast.LENGTH_SHORT).show();
             list.clear();
+            resultDB();
+            Log.d("DB", "좀 길게 나와라   "+list.get(1));
             finish();
         }
     }
