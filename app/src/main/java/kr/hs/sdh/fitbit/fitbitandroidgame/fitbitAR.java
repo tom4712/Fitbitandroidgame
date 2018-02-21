@@ -3,6 +3,7 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -16,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -58,10 +60,14 @@ public class fitbitAR extends AppCompatActivity
     private int centerX;
     private int centerY;
     private int level = 0;
+    private int temp;
 
     private boolean check = false;
 
     private RelativeLayout.LayoutParams LayoutParams;
+
+    private SharedPreferences SPF;
+    private SharedPreferences.Editor editor;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -123,6 +129,15 @@ public class fitbitAR extends AppCompatActivity
         LayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
         LayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
         SurfaceBorder.setLayoutParams(LayoutParams);
+
+        SPF = getSharedPreferences("clear", MODE_PRIVATE);
+        try {
+            temp = SPF.getInt("round", 0);
+        } catch (Exception e) {
+            editor = SPF.edit();
+            editor.putInt("round", 0);
+            editor.commit();
+        }
     }
 
     @Override
@@ -177,25 +192,26 @@ public class fitbitAR extends AppCompatActivity
 
     }
 
-    private void clear(){
-        switch (level){
-            case 0:
-                centerX = 0;
-                centerY = 600;
-                break;
-            case 1:
-                centerX = -300;
-                centerY = 2000;
-                break;
-            case 2:
-                centerX = -500;
-                centerY = -100;
-                break;
-            case 4:
-                Intent i = new Intent(this, clear.class);
-                startActivity(i);
-                finish();
-                break;
+    private void clear() {
+        if (centerX < 500)
+            centerX = (int) (Math.random() * 300) + 500;
+        else
+            centerX = (int) (Math.random() * 300) - 800;
+        if (centerY < 500)
+            centerY = (int) (Math.random() * 300) + 500;
+        else
+            centerY = (int) (Math.random() * 300) - 800;
+        Log.i("center", centerX+"    "+centerY);
+        Log.i("round",(int) ((float) temp * 1.5f) + 2+"    "+level);
+        if (level == (int) ((float) temp * 1.5f) + 2) {
+            temp++;
+            editor = SPF.edit();
+            editor.remove("round");
+            editor.putInt("round", temp);
+            Log.i("round",temp+"");
+            editor.commit();
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
         }
         level++;
     }
@@ -226,23 +242,17 @@ public class fitbitAR extends AppCompatActivity
                             LayoutParams.setMargins((int) matInput.size().width - 150, (int) (centerY - roll * RAD2DGR * 2), 0, 0);
                             bt2.setLayoutParams(LayoutParams);
                             onVisible();
-                        }
-
-                        else if (-150 >= (int) (centerX + pitch * RAD2DGR * 2)) {
+                        } else if (-150 >= (int) (centerX + pitch * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins(0, (int) (centerY - roll * RAD2DGR * 2), 0, 0);
                             bt2.setLayoutParams(LayoutParams);
                             onVisible();
-                        }
-
-                        else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2)) {
+                        } else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins((int) (centerX + pitch * RAD2DGR * 2), (int) matInput.size().height - 150, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
                             onVisible();
-                        }
-
-                        else if (-150 >= (int) (centerY - roll * RAD2DGR * 2)) {
+                        } else if (-150 >= (int) (centerY - roll * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins((int) (centerX + pitch * RAD2DGR * 2), 0, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
@@ -259,24 +269,18 @@ public class fitbitAR extends AppCompatActivity
                             LayoutParams.setMargins(0, 0, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
                             onVisible();
-                        }
-
-                        else if (-150 >= (int) (centerY - roll * RAD2DGR * 2) && matInput.size().width <= (int) (centerX + pitch * RAD2DGR * 2)) {
+                        } else if (-150 >= (int) (centerY - roll * RAD2DGR * 2) && matInput.size().width <= (int) (centerX + pitch * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins((int) matInput.size().width - 150, 0, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
                             onVisible();
 
-                        }
-
-                        else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2) && -150 >= (int) (centerX + pitch * RAD2DGR * 2)) {
+                        } else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2) && -150 >= (int) (centerX + pitch * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins(0, (int) matInput.size().height - 150, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
                             onVisible();
-                        }
-
-                        else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2) && matInput.size().width <= (int) (centerX + pitch * RAD2DGR * 2)) {
+                        } else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2) && matInput.size().width <= (int) (centerX + pitch * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins((int) matInput.size().width - 150, (int) matInput.size().height - 150, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
