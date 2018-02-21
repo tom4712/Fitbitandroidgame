@@ -47,7 +47,7 @@
                 android:resource="@xml/file_path" />
         </provider>
 
-        <activity android:name=".Splash"></activity>
+        <activity android:name=".Splash" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -66,11 +66,20 @@
         <activity android:name=".Movie" />
         <activity
             android:name=".Share"
-            android:theme="@android:style/Theme.Dialog"></activity>
+            android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".Gumai"
-            android:theme="@android:style/Theme.Dialog"></activity>
-        <activity android:name=".clear"></activity>
+            android:theme="@android:style/Theme.Dialog" />
+        <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyCLjNrwzMM78U3AksD3ysieUjHpsDclqWI" />
+        <activity android:name=".clear" />
+        <activity android:name=".MapGame" />
+
+        <service
+            android:name=".gps"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
