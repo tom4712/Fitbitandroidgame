@@ -25,7 +25,7 @@ public class ShopActivity extends AppCompatActivity {
     int width;
     int height;
     char[] clothchar;
-    int sex = 1;
+    int sex = 0;
     int Coinresult = 0;
     private DBhelper db;
     private Cursor all_cursor;
@@ -112,10 +112,12 @@ public class ShopActivity extends AppCompatActivity {
         String cloth = list.get(3);
         clothchar = cloth.toCharArray();
 
+        list.clear();
+        Cursul();
         Log.d("DB", "아시발 좀 길게 나와라   "+list.get(0));
-        Log.d("DB", "아시발 좀 길게 나asd와라   "+list.get(3));
+        Log.d("DB", "아시발 좀 길게 나asd와라   "+list.get(1));
 
-        setCoindTxv();
+        setCoinTxv();
 
     }
 
@@ -145,9 +147,8 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     public void buyitem(){
-            list.clear();
-            Cursul();
-            setCoindTxv();
+
+        //setCoinTxv();
         }
 
 
@@ -163,7 +164,8 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+1);
                 i.putExtra("descript",""+1);
                 startActivity(i);
-                buyitem();
+                onPause();
+                setCoinTxv();
                 break;
             case R.id.two:
                 price = 2;
@@ -173,7 +175,8 @@ public class ShopActivity extends AppCompatActivity {
                 i2.putExtra("location",""+1);
                 i2.putExtra("descript",""+2);
                 startActivity(i2);
-                buyitem();
+                onPause();
+                setCoinTxv();
                 break;
             case R.id.sre:
 
@@ -184,7 +187,8 @@ public class ShopActivity extends AppCompatActivity {
                 i3.putExtra("location",""+1);
                 i3.putExtra("descript",""+3);
                 startActivity(i3);
-                buyitem();
+                onPause();
+                setCoinTxv();
                 break;
 
             case R.id.one_2:
@@ -194,8 +198,10 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("sex",""+sex);
                 i.putExtra("location",""+2);
                 i.putExtra("descript",""+1);
+
                 startActivity(i);
-                buyitem();
+                onPause();
+                setCoinTxv();
                 break;
             case R.id.two_2:
                 price = 2;
@@ -205,7 +211,8 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+2);
                 i.putExtra("descript",""+2);
                 startActivity(i);
-                buyitem();
+                onPause();
+                setCoinTxv();
                 break;
             case R.id.sre_2:
                 price = 3;
@@ -215,7 +222,8 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+2);
                 i.putExtra("descript",""+3);
                 startActivity(i);
-                buyitem();
+                onPause();
+                setCoinTxv();
                 break;
             case R.id.one_3:
                 price = 1;
@@ -225,7 +233,8 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+3);
                 i.putExtra("descript",""+1);
                 startActivity(i);
-                buyitem();
+                onPause();
+                setCoinTxv();
                 break;
             case R.id.two_3:
                 price = 2;
@@ -235,7 +244,8 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+3);
                 i.putExtra("descript",""+2);
                 startActivity(i);
-                buyitem();
+                onPause();
+                setCoinTxv();
                 break;
             case R.id.sre_3:
                 price = 3;
@@ -245,7 +255,8 @@ public class ShopActivity extends AppCompatActivity {
                 i.putExtra("location",""+3);
                 i.putExtra("descript",""+3);
                 startActivity(i);
-                buyitem();
+                onPause();
+                setCoinTxv();
                 break;
         }
     }
@@ -288,9 +299,17 @@ public class ShopActivity extends AppCompatActivity {
 
     }
 
-    public void setCoindTxv(){
+    public void setCoinTxv(){
+        list.clear();
+        Cursul();
+
         coindTxv = findViewById(R.id.cointext);
         coindTxv.setText(list.get(0));
+    }
+
+    public void setCoinTxv2(){
+        coindTxv = findViewById(R.id.cointext);
+        coindTxv.setText(Coinresult);
     }
 
 
