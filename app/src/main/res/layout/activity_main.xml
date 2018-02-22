@@ -61,7 +61,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:gravity="center_horizontal|center_vertical" />
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="0코인"/>
             </LinearLayout>
 
             <LinearLayout
@@ -73,8 +74,11 @@
                     android:id="@+id/Share"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="공유"
-                    android:textSize="10sp" />
+                    android:onClick="mOnCaptureClick"
+                    android:text="공22222유"
+                    android:textSize="10sp"
+                    tools:ignore="OnClick" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -253,7 +257,8 @@
         android:id="@+id/settingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
