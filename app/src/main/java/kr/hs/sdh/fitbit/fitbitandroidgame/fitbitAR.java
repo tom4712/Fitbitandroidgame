@@ -57,8 +57,8 @@ public class fitbitAR extends AppCompatActivity
 
     private float displayX;
     private float displayY;
-    private float locationX;
-    private float locationY;
+    private float locationX = 0;
+    private float locationY = 0;
 
     private int centerX;
     private int centerY;
@@ -145,8 +145,9 @@ public class fitbitAR extends AppCompatActivity
             editor.putInt("time", nowDate());
             editor.commit();
         }
-
+        nowTime = nowDate();
         if (lastTime != nowTime) {
+            editor = SPF.edit();
             editor.remove("round");
             editor.remove("time");
 
@@ -218,14 +219,6 @@ public class fitbitAR extends AppCompatActivity
     }
 
     private void clear() {
-        if (Math.random()*1 == 0)
-            centerX = (int) (Math.random() * 300) + 500;
-        else
-            centerX = (int) (Math.random() * 300) - 800;
-        if (Math.random()*1 == 0)
-            centerY = (int) (Math.random() * 300) + 500;
-        else
-            centerY = (int) (Math.random() * 300) - 800;
         if (level == (int) ((float) temp * 1.5f) + 2) {
             temp++;
             editor = SPF.edit();
@@ -236,6 +229,14 @@ public class fitbitAR extends AppCompatActivity
             startActivity(i);
         }
         level++;
+        if ((int)(Math.random()*2) == 0)
+            centerX += (int) (Math.random() * 300) + 500;
+        else
+            centerX -= (int) (Math.random() * 300) + 500;
+        if ((int)(Math.random()*2) == 0)
+            centerY += (int) (Math.random() * 300) + 500;
+        else
+            centerY -= (int) (Math.random() * 300) + 500;
     }
 
     private class GyroscopeListener implements SensorEventListener {

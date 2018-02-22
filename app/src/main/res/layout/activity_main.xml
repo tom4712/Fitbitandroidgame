@@ -61,7 +61,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:gravity="center_horizontal|center_vertical" />
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="0코인"/>
             </LinearLayout>
 
             <LinearLayout
@@ -253,7 +254,8 @@
         android:id="@+id/settingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
