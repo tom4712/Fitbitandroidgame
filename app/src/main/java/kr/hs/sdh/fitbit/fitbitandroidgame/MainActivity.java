@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
 import android.renderscript.Short4;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +19,17 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    View container;
+    FileOutputStream fos;
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+    String adrss = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + formatter+"capture.jpeg";
 
     private String sql;
     private String dbName = "coin.db";
@@ -70,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             SharedPreferences.Editor editor = pref.edit();
             editor.putBoolean("isFirst", true);
             editor.commit();
-        }else{
+        } else {
             //코인 테스트 끝나면 지우면됩니다.
             dbhelper.updateCoin(5);
         }
@@ -134,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onResume();
         try {
             setCoin();
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
@@ -155,8 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.Share:
-                Intent intent = new Intent(this, Share.class);
-                startActivity(intent);
+            oo(view);
                 break;
             case R.id.Game:
                 Intent intent1 = new Intent(getApplicationContext(), fitbitAR.class);
@@ -188,18 +200,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-    public void setCoin(){
+
+    public void setCoin() {
         String a;
         Coin = findViewById(R.id.Coin);
 
         all_cursor.moveToFirst();
         a = all_cursor.getString(all_cursor.getColumnIndex("COIN"));
-        Log.d("qawse",a+"");
+        Log.d("qawse", a + "");
 
-        Coin.setText(a+"코인");
-        Log.d("DB","텍스트뷰 설정완료함");
+        Coin.setText(a + "코인");
+        Log.d("DB", "텍스트뷰 설정완료함");
 
 
     }
+
+    public void oo(View view){
+        container = getWindow().getDecorView();
+        container.buildDrawingCache();
+        Bitmap captureView = container.getDrawingCache();
+
+        try{
+            fos = new FileOutputStream(adrss);
+            captureView.compress(Bitmap.CompressFormat.JPEG,100,fos);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Uri uri = Uri.fromFile(new File(adrss));
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_STREAM,uri);
+        intent.setType("image/*");
+        startActivity(Intent.createChooser(intent,"공유"));
+    }
+
 }
+
 
