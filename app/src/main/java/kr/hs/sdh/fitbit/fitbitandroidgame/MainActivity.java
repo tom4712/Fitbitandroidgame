@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Switch mSwitch;
 
     private final long FINISH_INTERVAL_TIME = 2000;
+
     private long backPressedTime = 0;
 
     @Override
@@ -205,24 +206,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String a;
         Coin = findViewById(R.id.Coin);
 
+
         all_cursor.moveToFirst();
+
         a = all_cursor.getString(all_cursor.getColumnIndex("COIN"));
+
         Log.d("qawse", a + "");
 
+
         Coin.setText(a + "코인");
+
         Log.d("DB", "텍스트뷰 설정완료함");
 
 
     }
 
     public void oo(View view){
+
         container = getWindow().getDecorView();
+
         container.buildDrawingCache();
+
         Bitmap captureView = container.getDrawingCache();
 
         try{
+
             fos = new FileOutputStream(adrss);
+
             captureView.compress(Bitmap.CompressFormat.JPEG,100,fos);
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

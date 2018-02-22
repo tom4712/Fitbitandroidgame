@@ -1,5 +1,6 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -40,7 +41,11 @@ public class Movie extends AppCompatActivity {
 
         resultDB();
 
-        String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.mtwo;
+
+        Intent intent = getIntent();
+        String num = intent.getStringExtra("num");
+
+        String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m1;
 
         vv = (VideoView) findViewById(R.id.vv);
 

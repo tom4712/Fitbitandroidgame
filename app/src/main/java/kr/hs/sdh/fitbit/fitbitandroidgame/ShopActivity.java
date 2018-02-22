@@ -52,9 +52,11 @@ public class ShopActivity extends AppCompatActivity {
         imageView1 = (ImageView) findViewById(R.id.im1);
         imageView2 = (ImageView) findViewById(R.id.im2);
         imageView3 = (ImageView) findViewById(R.id.im3);
+
         imageView4 = (ImageView) findViewById(R.id.im4);
         imageView5 = (ImageView) findViewById(R.id.im5);
         imageView6 = (ImageView) findViewById(R.id.im6);
+
         imageView7 = (ImageView) findViewById(R.id.im7);
         imageView8 = (ImageView) findViewById(R.id.im8);
         imageView9 = (ImageView) findViewById(R.id.im9);
@@ -82,6 +84,7 @@ public class ShopActivity extends AppCompatActivity {
             imageView6.setImageResource(R.drawable.gr);
             imageView7.setImageResource(R.drawable.gao);
             imageView8.setImageResource(R.drawable.gat);
+
         }
         else {
             imageView4.setImageResource(R.drawable.mo);
