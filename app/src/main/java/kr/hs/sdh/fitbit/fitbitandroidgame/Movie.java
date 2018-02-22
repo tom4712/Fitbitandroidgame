@@ -52,6 +52,7 @@ public class Movie extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "완료보상으로 1코인이 지급되었습니다!",
                         Toast.LENGTH_LONG).show();
                 db.updateCoin(coinresult + 1);
+                finish();
             }
         });
         Uri uri = Uri.parse(uriPath);
