@@ -25,6 +25,9 @@ import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class fitbitAR extends AppCompatActivity
         implements CameraBridgeViewBase.CvCameraViewListener2 {
 
@@ -61,6 +64,8 @@ public class fitbitAR extends AppCompatActivity
     private int centerY;
     private int level = 0;
     private int temp;
+    private int nowTime;
+    private int lastTime;
 
     private boolean check = false;
 
@@ -133,11 +138,31 @@ public class fitbitAR extends AppCompatActivity
         SPF = getSharedPreferences("clear", MODE_PRIVATE);
         try {
             temp = SPF.getInt("round", 0);
+            lastTime = SPF.getInt("time", 0);
         } catch (Exception e) {
             editor = SPF.edit();
             editor.putInt("round", 0);
+            editor.putInt("time", nowDate());
             editor.commit();
         }
+
+        if (lastTime != nowTime) {
+            editor.remove("round");
+            editor.remove("time");
+
+            editor.putInt("round", 0);
+            editor.putInt("time", nowDate());
+            editor.commit();
+            temp = 0;
+        }
+    }
+
+    private int nowDate() {
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd");
+
+        return Integer.parseInt(sdf.format(date));
     }
 
     @Override
@@ -193,22 +218,19 @@ public class fitbitAR extends AppCompatActivity
     }
 
     private void clear() {
-        if (centerX < 500)
+        if (Math.random()*1 == 0)
             centerX = (int) (Math.random() * 300) + 500;
         else
             centerX = (int) (Math.random() * 300) - 800;
-        if (centerY < 500)
+        if (Math.random()*1 == 0)
             centerY = (int) (Math.random() * 300) + 500;
         else
             centerY = (int) (Math.random() * 300) - 800;
-        Log.i("center", centerX+"    "+centerY);
-        Log.i("round",(int) ((float) temp * 1.5f) + 2+"    "+level);
         if (level == (int) ((float) temp * 1.5f) + 2) {
             temp++;
             editor = SPF.edit();
             editor.remove("round");
             editor.putInt("round", temp);
-            Log.i("round",temp+"");
             editor.commit();
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);

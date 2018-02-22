@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Public\\build-tools\\27.0.1\\Fitbitandroidgame2\\Fitbitandroidgame\\openCVLibrary340\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\tlqkf\\AndroidStudioProjects\\Fitbitandroidgame\\openCVLibrary340\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
             "map": []
         },
         {
@@ -9,11 +9,11 @@
             "map": []
         },
         {
-            "outputFile": "C:\\Users\\tom47\\AndroidStudioProjects\\Fitbitandroidgame\\openCVLibrary340\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+            "outputFile": "C:\\Users\\tlqkf\\AndroidStudioProjects\\Fitbitandroidgame\\openCVLibrary340\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
             "map": []
         },
         {
-            "outputFile": "C:\\Users\\Public\\build-tools\\27.0.1\\Fitbitandroidgame2\\Fitbitandroidgame\\openCVLibrary340\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+            "outputFile": "C:\\Users\\tom47\\AndroidStudioProjects\\Fitbitandroidgame\\openCVLibrary340\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
             "map": []
         }
     ]

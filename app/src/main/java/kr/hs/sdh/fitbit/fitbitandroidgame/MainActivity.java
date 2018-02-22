@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             dbhelper.updateCoin(5);
         }
 
-        setCoin();
 
         goMain = findViewById(R.id.goMain);
         mainView = findViewById(R.id.mainView);
@@ -128,6 +127,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStop() {
         super.onStop();
         dbhelper.close();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            setCoin();
+        }catch (Exception e){
+
+        }
     }
 
     @Override
