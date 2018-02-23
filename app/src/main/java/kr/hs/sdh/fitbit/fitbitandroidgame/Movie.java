@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -22,6 +23,7 @@ public class Movie extends AppCompatActivity {
     private Cursor all_cursor;
     private int coinresult;
 
+    RelativeLayout relativeLayout;
     VideoView vv;
     ProgressBar progressBar;
     int progress=0;
@@ -41,6 +43,7 @@ public class Movie extends AppCompatActivity {
 
         resultDB();
 
+relativeLayout = (RelativeLayout) findViewById(R.id.Reeee);
 
         Intent intent = getIntent();
         String num = intent.getStringExtra("num");
@@ -74,6 +77,13 @@ public class Movie extends AppCompatActivity {
         if (view.getId() == R.id.im2) {
             super.onBackPressed();
 
+        }
+        if(view.getId() == R.id.btn2){
+
+            relativeLayout.setVisibility(View.VISIBLE);
+        }
+        if(view.getId()==R.id.gone){
+            relativeLayout.setVisibility(View.GONE);
         }
         if (view.getId() == R.id.stop) {
             vv.pause();

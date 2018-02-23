@@ -5,37 +5,160 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.Movie2">
+    tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.Movie">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_weight="6"
-        android:background="#f2fa00"
+android:id="@+id/Reeee"
+        android:visibility="gone"
+        android:background="#00f"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
 
         android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+        android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
+            android:text="와이드스쿼트"
+                android:gravity="center_horizontal"
+
+                android:textSize="25dp"
+
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:textSize="15dp"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:text="두 다리는 어깨너비보다 훨썬 더 넓게 서 주세요. 다리가 직각이 될 정도로 내려갔다가 올라옵니다. 내려갈 때 상체가 너무 앞으로 쏠리지 않도록 주의해 주세요!"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:text="런지"
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:textSize="20dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+
+android:text="차렷 자세에서 한 쪽 다리를 한 보 정도 뒤로 뻗어주세요 상체는 곧게 세우고, 복근과 허리에 힘을 집중하며 무릎을 굽혔다가 일어나 주세요! 호흡은 내려갈 때 들이마시고, 올라올 때 후- 뱉어주세요"
+            >
+
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="힙브릿지"
+                android:textSize="20dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+                    android:text="제자리에 누운 상태에서 양 발은 11자로 골반과 일직선이 되도록 놓고 골반과 엉덩이에 힘을 주면서 동시에 위로 올립니다. 뒷꿈치 쪽에 힘을 주면 엉덩이에 더 자극이 집중돼요!">
+
+
+
+
+            </TextView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <Button
+                android:layout_centerInParent="true"
+                android:onClick="onClick"
+                android:id="@+id/gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#ffffff"
+        android:layout_height="70dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="화요일 운동"
-            android:id="@+id/percent"
-            android:layout_margin="10dp"
-            android:gravity="center_horizontal"
-            android:textSize="40dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/move"
+                android:layout_height="39dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="23dp"/>
 
-            <Button
-                android:layout_marginLeft="330dp"
-                android:layout_width="60dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+
+            android:layout_marginLeft="65dp"
+            android:text="화요일 운동 시청"
+            android:id="@+id/percent"
+
+
+            android:textSize="30dp"/>
+
+            <ImageButton
                 android:id="@+id/im2"
-                  android:onClick="onClick"
-                android:layout_height="50dp" />
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="10dp"
+                android:onClick="onClick"
+                android:src="@drawable/back" />
         </RelativeLayout>
     </LinearLayout>
+
+<!--//=============================-->
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#00ffd9"
+        android:layout_height="match_parent">
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:background="#ffffff"
+            android:layout_height="match_parent">
+
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,49 +167,78 @@
         android:orientation="vertical">
 
 
-        <LinearLayout
+
+
+
+
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5">
+            android:layout_height="wrap_content"
+
+            >
 
             <TextView
                 android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:background="#d1ce83"
                 android:layout_margin="10dp"
-                android:layout_height="match_parent"
-                android:text="운동효과2"
-                android:textSize="99dp"/>
+                android:layout_height="50dp" />
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_margin="20dp"
+                android:text="화요일 운동"
+                android:textColor="#00ffd9"
+                android:textSize="30dp"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
+
+
+
+<!--======================================================-->
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/move"
+                    android:layout_height="39dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="2원"
+                android:layout_marginLeft="60dp"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content" />
+                </RelativeLayout>
             <VideoView
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
                 android:id="@+id/vv"
-                android:layout_height="match_parent" />
+                android:layout_height="200dp" />
+
 
         </LinearLayout>
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="2"
-            android:layout_height="match_parent">
-            <ProgressBar
-                android:layout_marginTop="10dp"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:id="@+id/progress"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_weight="2"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -108,7 +260,37 @@
                 android:id="@+id/stop"
                 android:visibility="gone"
                 />
+
+
             </RelativeLayout>
+
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_width="wrap_content"
+                android:text="TIP"
+                android:layout_centerInParent="true"
+                android:onClick="onClick"
+                android:id="@+id/btn2"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+
     </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+<!--===========================================================================-->
 </LinearLayout>
