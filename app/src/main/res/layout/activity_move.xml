@@ -10,13 +10,25 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:background="#cfcfd2"
+        android:background="#27e08b"
         android:layout_height="60dp">
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="10dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@+id/imageButton"
+            android:layout_toRightOf="@+id/imageButton"
             android:text="30초 운동"
-                android:textSize="30dp"
-            android:layout_height="match_parent" />
+            android:textSize="30dp" />
+        <ImageButton
+            android:layout_width="60dp"
+
+            android:layout_height="match_parent"
+            android:id="@+id/imageButton" />
         <Button
            android:layout_marginLeft="300dp"
             android:background="#00f"
@@ -58,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:src="@drawable/test"
+        android:src="@drawable/move1"
         android:onClick="onClick"
         android:id="@+id/im1"
         android:layout_height="200dp" />
@@ -82,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/test"
+            android:src="@drawable/move2"
             android:onClick="onClick"
             android:id="@+id/im2"
             android:layout_height="200dp" />
@@ -108,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/test"
+            android:src="@drawable/move3"
             android:onClick="onClick"
             android:id="@+id/im3"
             android:layout_height="200dp" />
@@ -132,7 +144,7 @@
             android:layout_width="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/test"
+            android:src="@drawable/move4"
             android:onClick="onClick"
             android:id="@+id/im4"
             android:layout_height="200dp" />
@@ -156,7 +168,7 @@
             android:layout_width="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/test"
+            android:src="@drawable/move5"
             android:onClick="onClick"
             android:id="@+id/im5"
             android:layout_height="200dp" />
@@ -180,7 +192,7 @@
             android:layout_width="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/test"
+            android:src="@drawable/move6"
             android:onClick="onClick"
             android:id="@+id/im6"
             android:layout_height="200dp" />
@@ -204,7 +216,7 @@
             android:layout_width="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/test"
+            android:src="@drawable/move7"
             android:onClick="onClick"
             android:id="@+id/im7"
             android:layout_height="200dp" />

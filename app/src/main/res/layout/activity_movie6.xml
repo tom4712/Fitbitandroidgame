@@ -5,37 +5,159 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.Movie6">
+    tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.Movie">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_weight="6"
-        android:background="#f2fa00"
+android:id="@+id/Reeee"
+        android:visibility="gone"
+        android:background="#00f"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
 
         android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+        android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
+            android:text="버피"
+                android:gravity="center_horizontal"
+
+                android:textSize="25dp"
+
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:textSize="15dp"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+android:text="차렷자세에서 양손은 바닥을 짚어주며 두 다리를 뒤로 점프하며 푸쉬업 자세를 만들어 주세요. 푸쉬업 자세에서 빠르게 두 다리를 다시 가슴쪽으로 당겨온 뒤 차렷 자세로 돌아갑니다.">
+
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="사이드 크로스 니킥"
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:textSize="20dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+
+android:text="차렷 자세에서 양 손은 옆구리에 두어 중심을 잡아 주세요. 그 상태에서 오른쪽 다리를 굽혀 오른쪽 팔꿈치와 맞닿도록 올려주세요. 오른쪽-왼쪽, 크로스-크로스 반복! 오른쪽-왼쪽, 크로스-크로스를 하나로 10번씩 3세트 해주세요.">
+
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="레그레이즈"
+                android:textSize="20dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+
+android:text="요가매트에 누운 상태에서 양손은 엉덩이 아래 살짝 놓은 후, 배에 힘을 주며 두 다리를 천천히 바닥으로 내렸다가 배에 힘을 집중하며 다시 위로 올려주세요.허리가 뜨지 않도록 천천히 내리고 다시 올리기를 반복합니다.
+">
+
+            </TextView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <Button
+                android:layout_centerInParent="true"
+                android:onClick="onClick"
+                android:id="@+id/gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#ffffff"
+        android:layout_height="70dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="토요일 운동"
-            android:id="@+id/percent"
-            android:layout_margin="10dp"
-            android:gravity="center_horizontal"
-            android:textSize="40dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/move"
+                android:layout_height="39dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="23dp"/>
 
-            <Button
-                android:layout_marginLeft="330dp"
-                android:layout_width="60dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+
+            android:layout_marginLeft="65dp"
+            android:text="토요일 운동 시청"
+            android:id="@+id/percent"
+
+
+            android:textSize="30dp"/>
+
+            <ImageButton
                 android:id="@+id/im2"
-                  android:onClick="onClick"
-                android:layout_height="50dp" />
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="10dp"
+                android:onClick="onClick"
+                android:src="@drawable/back" />
         </RelativeLayout>
     </LinearLayout>
+
+<!--//=============================-->
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#00ffd9"
+        android:layout_height="match_parent">
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:background="#ffffff"
+            android:layout_height="match_parent">
+
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,49 +166,78 @@
         android:orientation="vertical">
 
 
-        <LinearLayout
+
+
+
+
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5">
+            android:layout_height="wrap_content"
+
+            >
 
             <TextView
                 android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:background="#d1ce83"
                 android:layout_margin="10dp"
-                android:layout_height="match_parent"
-                android:text="운동효과"
-                android:textSize="99dp"/>
+                android:layout_height="50dp" />
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_margin="20dp"
+                android:text="토요일 운동"
+                android:textColor="#00ffd9"
+                android:textSize="30dp"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
+
+
+
+<!--======================================================-->
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/move"
+                    android:layout_height="39dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="6원"
+                android:layout_marginLeft="60dp"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content" />
+                </RelativeLayout>
             <VideoView
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
                 android:id="@+id/vv"
-                android:layout_height="match_parent" />
+                android:layout_height="200dp" />
+
 
         </LinearLayout>
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="2"
-            android:layout_height="match_parent">
-            <ProgressBar
-                android:layout_marginTop="10dp"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:id="@+id/progress"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_weight="2"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -108,7 +259,37 @@
                 android:id="@+id/stop"
                 android:visibility="gone"
                 />
+
+
             </RelativeLayout>
+
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_width="wrap_content"
+                android:text="TIP"
+                android:layout_centerInParent="true"
+                android:onClick="onClick"
+                android:id="@+id/btn2"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+
     </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+<!--===========================================================================-->
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -22,6 +23,7 @@ public class Movie6 extends AppCompatActivity {
     private Cursor all_cursor;
     private int coinresult;
 
+    RelativeLayout relativeLayout;
     VideoView vv;
     ProgressBar progressBar;
     int progress=0;
@@ -41,10 +43,11 @@ public class Movie6 extends AppCompatActivity {
 
         resultDB();
 
+relativeLayout = (RelativeLayout) findViewById(R.id.Reeee);
 
         Intent intent = getIntent();
         String num = intent.getStringExtra("num");
-        
+
         String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m6;
 
         vv = (VideoView) findViewById(R.id.vv);
@@ -57,6 +60,7 @@ public class Movie6 extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "완료보상으로 1코인이 지급되었습니다!",
                         Toast.LENGTH_LONG).show();
                 db.updateCoin(coinresult + 6);
+                finish();
             }
         });
         Uri uri = Uri.parse(uriPath);
@@ -73,6 +77,13 @@ public class Movie6 extends AppCompatActivity {
         if (view.getId() == R.id.im2) {
             super.onBackPressed();
 
+        }
+        if(view.getId() == R.id.btn2){
+
+            relativeLayout.setVisibility(View.VISIBLE);
+        }
+        if(view.getId()==R.id.gone){
+            relativeLayout.setVisibility(View.GONE);
         }
         if (view.getId() == R.id.stop) {
             vv.pause();
