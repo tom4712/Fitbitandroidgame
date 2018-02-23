@@ -20,7 +20,9 @@ import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,8 +48,8 @@ public class fitbitAR extends AppCompatActivity
 
     private CameraBridgeViewBase mOpenCvCameraView;
 
-    private SurfaceView SurfaceEdge, SurfaceBorder;
-    private ImageButton bt, bt2;
+    private SurfaceView SurfaceBorder;
+    private ImageView bt, bt2;
 
     private SensorManager mSensorManager = null;
 
@@ -67,7 +69,6 @@ public class fitbitAR extends AppCompatActivity
     private float displayY;
     private float locationX = 0;
     private float locationY = 0;
-    private float timeRemaining;
 
     private int centerX;
     private int centerY;
@@ -84,8 +85,6 @@ public class fitbitAR extends AppCompatActivity
 
     static final int PERMISSION_REQUEST_CODE = 1;
     String[] PERMISSIONS = {"android.permission.CAMERA"};
-
-    private Handler mHandler;
 
     private boolean hasPermissions(String[] permissions) {
         // 퍼미션 확인
@@ -144,6 +143,7 @@ public class fitbitAR extends AppCompatActivity
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
         if (!hasPermissions(PERMISSIONS))
             requestNecessaryPermissions(PERMISSIONS);
 
@@ -165,24 +165,25 @@ public class fitbitAR extends AppCompatActivity
         mOpenCvCameraView.setCameraIndex(0);
         mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         SurfaceBorder = findViewById(R.id.surface_border);
-        SurfaceEdge = findViewById(R.id.surface_edge);
-
 
         bt = findViewById(R.id.test);
         bt2 = findViewById(R.id.test2);
         bt2.setVisibility(View.GONE);
 
-        LayoutParams = new android.widget.RelativeLayout.LayoutParams(300 + 5, 300 + 5);
-        LayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
-        LayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        SurfaceEdge.setLayoutParams(LayoutParams);
-        SurfaceEdge.setRotation(270);
-
         LayoutParams = new android.widget.RelativeLayout.LayoutParams(300 - 5, 300 - 5);
         LayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
         LayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
         SurfaceBorder.setLayoutParams(LayoutParams);
-        SurfaceBorder.setRotation(270);
+
+        if (temp < 2) bt.setBackgroundResource(R.drawable.gaji);
+        else if (temp < 4) bt.setBackgroundResource(R.drawable.sigumchi);
+        else if (temp < 6) {
+            GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(bt);
+            Glide.with(this).load(R.drawable.chamchi).into(gif);
+        } else {
+            GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(bt);
+            Glide.with(this).load(R.drawable.seau).into(gif);
+        }
 
         SPF = getSharedPreferences("clear", MODE_PRIVATE);
         try {
@@ -207,18 +208,6 @@ public class fitbitAR extends AppCompatActivity
             temp = 0;
         }
 
-        timeRemaining = 30;
-
-        if (temp <= 2) bt.setBackgroundResource(R.drawable.gaji);
-        else if (temp <= 4) bt.setBackgroundResource(R.drawable.sigumchi);
-        else if (temp <= 6) {
-            GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(bt);
-            Glide.with(this).load(R.drawable.chamchi).into(gif);
-        } else {
-            GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(bt);
-            Glide.with(this).load(R.drawable.seau).into(gif);
-        }
-        bt.setRotation(270);
     }
     private int nowDate() {
         long now = System.currentTimeMillis();
@@ -227,7 +216,6 @@ public class fitbitAR extends AppCompatActivity
 
         return Integer.parseInt(sdf.format(date));
     }
-
     @Override
     public void onPause() {
         super.onPause();

@@ -11,23 +11,17 @@
         android:id="@+id/surface"/>
 
     <SurfaceView
-        android:id="@+id/surface_edge"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#00ffdd00"/>
-
-    <SurfaceView
         android:id="@+id/surface_border"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/grut"/>
-    <ImageButton
+    <ImageView
         android:id="@+id/test"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="#00000000"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/test2"
         android:layout_width="100dp"
         android:layout_height="100dp"
