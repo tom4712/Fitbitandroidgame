@@ -258,8 +258,9 @@
         //---------------------------------------------------------
 
         <LinearLayout
+            android:layout_marginBottom="25dp"
             android:background="#00ffffff"
-            android:layout_weight="1"
+            android:layout_weight="0.99"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -287,7 +288,8 @@
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:src="@drawable/test"
+
+                                android:src="@drawable/ms"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:id="@+id/im4"

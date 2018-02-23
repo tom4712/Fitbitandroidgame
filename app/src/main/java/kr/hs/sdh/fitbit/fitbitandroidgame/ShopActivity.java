@@ -95,7 +95,6 @@ public class ShopActivity extends AppCompatActivity {
         }
 
 
-        Log.d("DB", "아시발 좀 길게 나와라" + list.get(1));
         try {
             if (Integer.parseInt(list.get(1)) == 0) {
                 db.updateGarments("1000000000000000");
@@ -113,8 +112,6 @@ public class ShopActivity extends AppCompatActivity {
 
         list.clear();
         Cursul();
-        Log.d("DB", "아시발 좀 길게 나와라   " + list.get(0));
-        Log.d("DB", "아시발 좀 길게 나asd와라   " + list.get(1));
         Cehcksetwaer();
         setCoinTxv();
 
