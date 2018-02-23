@@ -74,8 +74,11 @@
                     android:id="@+id/Share"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="공유"
-                    android:textSize="10sp" />
+                    android:onClick="mOnCaptureClick"
+                    android:text="공22222유"
+                    android:textSize="10sp"
+                    tools:ignore="OnClick" />
+
             </LinearLayout>
 
             <LinearLayout

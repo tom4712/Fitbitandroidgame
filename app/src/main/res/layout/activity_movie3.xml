@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.Movie3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="6"
+        android:background="#f2fa00"
+
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="수요일 운동"
+            android:id="@+id/percent"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal"
+            android:textSize="40dp"/>
+
+            <Button
+                android:layout_marginLeft="330dp"
+                android:layout_width="60dp"
+                android:id="@+id/im2"
+                  android:onClick="onClick"
+                android:layout_height="50dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_height="match_parent"
+                android:text="운동효과"
+                android:textSize="99dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <VideoView
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:id="@+id/vv"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="2"
+            android:layout_height="match_parent">
+            <ProgressBar
+                android:layout_marginTop="10dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:id="@+id/progress"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="2"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="재생"
+                android:onClick="onClick"
+                android:id="@+id/play"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="멈춤"
+                android:onClick="onClick"
+                android:id="@+id/stop"
+                android:visibility="gone"
+                />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

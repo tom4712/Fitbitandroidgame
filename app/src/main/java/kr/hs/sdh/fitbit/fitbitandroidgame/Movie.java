@@ -1,5 +1,6 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -40,7 +41,11 @@ public class Movie extends AppCompatActivity {
 
         resultDB();
 
-        String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.mtwo;
+
+        Intent intent = getIntent();
+        String num = intent.getStringExtra("num");
+
+        String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m1;
 
         vv = (VideoView) findViewById(R.id.vv);
 
@@ -52,6 +57,7 @@ public class Movie extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "완료보상으로 1코인이 지급되었습니다!",
                         Toast.LENGTH_LONG).show();
                 db.updateCoin(coinresult + 1);
+                finish();
             }
         });
         Uri uri = Uri.parse(uriPath);
