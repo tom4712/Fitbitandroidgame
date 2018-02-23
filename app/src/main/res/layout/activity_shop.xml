@@ -78,6 +78,7 @@
                                 android:src="@drawable/gongo" />
 
                             <LinearLayout
+                                android:paddingLeft="130dp"
                                 android:gravity="bottom"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -138,6 +139,7 @@
                                 android:src="@drawable/gongt" />
 
                             <LinearLayout
+                                android:paddingLeft="130dp"
                                 android:gravity="bottom"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -193,6 +195,7 @@
                                 android:layout_weight="1"/>
 
                             <LinearLayout
+                                android:paddingLeft="130dp"
                                 android:gravity="bottom"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -286,6 +289,7 @@
                                     android:src="@drawable/test" />
 
                                 <LinearLayout
+                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_alignParentLeft="true"
@@ -348,6 +352,7 @@
                                     android:src="@drawable/test" />
 
                                 <LinearLayout
+                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
@@ -406,6 +411,7 @@
                                     android:src="@drawable/test" />
 
                                 <LinearLayout
+                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
@@ -494,7 +500,7 @@
                                     android:src="@drawable/ms" />
 
                                 <LinearLayout
-                                    android:paddingLeft="150dp"
+                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_alignParentLeft="true"
@@ -581,6 +587,7 @@
                                     android:src="@drawable/test" />
 
                                 <LinearLayout
+                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
@@ -640,6 +647,7 @@
                                     android:src="@drawable/test" />
 
                                 <LinearLayout
+                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
