@@ -26,12 +26,12 @@ public class ShopActivity extends AppCompatActivity {
     int width;
     int height;
     char[] clothchar;
-    int sex = 0;
+    int sex = 1;
     int Coinresult = 0;
     private DBhelper db;
     private Cursor all_cursor;
     private ArrayList<String> list = new ArrayList();
-    private LinearLayout item_scroll, itempadding1, itempadding2, itempadding3, itempadding4, itempadding5, itempadding6, itempadding7, itempadding8, itempadding9;
+    private LinearLayout item_scroll, itempadding1, itempadding2, itempadding3, itempadding4, itempadding5, itempadding6, itempadding7, itempadding8, itempadding9,shopallback;
     private TextView coindTxv;
     private Button[] buyvibutton = new Button[9];
     private Button[] Setvibutton = new Button[9];
@@ -42,6 +42,14 @@ public class ShopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
         item_scroll = findViewById(R.id.item_scroll);
+
+        shopallback = findViewById(R.id.shopallback);
+
+        if(sex == 0){
+            shopallback.setBackgroundResource(R.drawable.shopbackgroundman);
+        }else if(sex == 1){
+            shopallback.setBackgroundResource(R.drawable.shopbagroundgirl);
+        }
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -61,7 +69,7 @@ public class ShopActivity extends AppCompatActivity {
         imageView7 = findViewById(R.id.im7);
         imageView8 = findViewById(R.id.im8);
         imageView9 = findViewById(R.id.im9);
-        setpadding(width, height);
+//        setpadding(width, height);
         Log.d("DB", "asdasdaddsadassadsdasdasdasd");
 
         db = new DBhelper(this);
