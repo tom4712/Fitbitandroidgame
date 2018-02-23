@@ -155,7 +155,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+
         switch (view.getId()) {
+
             case R.id.Settings:
                 thrSec.setClickable(false);
                 Game.setClickable(false);
@@ -169,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.Share:
-            oo(view);
+          oo(view);
                 break;
             case R.id.Game:
                 Intent intent1 = new Intent(getApplicationContext(), fitbitAR.class);
@@ -220,7 +222,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-
     public void oo(View view){
 
         container = getWindow().getDecorView();
@@ -246,6 +247,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.setType("image/*");
         startActivity(Intent.createChooser(intent,"공유"));
     }
+
 
 }
 

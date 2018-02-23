@@ -4,20 +4,31 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -37,9 +48,8 @@ public class fitbitAR extends AppCompatActivity
 
     private CameraBridgeViewBase mOpenCvCameraView;
 
-    private SurfaceView SurfaceEdge, SurfaceBorder;
-    private TextView tv;
-    private Button bt, bt2;
+    private SurfaceView SurfaceBorder;
+    private ImageView bt, bt2;
 
     private SensorManager mSensorManager = null;
 
@@ -68,18 +78,53 @@ public class fitbitAR extends AppCompatActivity
     private int lastTime;
 
     private boolean check = false;
-
     private RelativeLayout.LayoutParams LayoutParams;
 
     private SharedPreferences SPF;
     private SharedPreferences.Editor editor;
+
+    static final int PERMISSION_REQUEST_CODE = 1;
+    String[] PERMISSIONS = {"android.permission.CAMERA"};
+
+    private boolean hasPermissions(String[] permissions) {
+        // 퍼미션 확인
+        int result = -1;
+        for (int i = 0; i < permissions.length; i++) {
+            result = ContextCompat.checkSelfPermission(getApplicationContext(), permissions[i]);
+        }
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
+    private void requestNecessaryPermissions(String[] permissions) {
+        ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE: {
+                //퍼미션을 거절했을 때 메시지 출력 후 종료
+                if (!hasPermissions(PERMISSIONS)) {
+                    Toast.makeText(getApplicationContext(), "CAMERA PERMISSION FAIL", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                return;
+            }
+        }
+    }
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
             switch (status) {
                 case LoaderCallbackInterface.SUCCESS: {
-                    mOpenCvCameraView.enableView();
+                    if (hasPermissions(PERMISSIONS))
+                        mOpenCvCameraView.enableView();
                 }
                 break;
                 default: {
@@ -99,6 +144,9 @@ public class fitbitAR extends AppCompatActivity
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
+        if (!hasPermissions(PERMISSIONS))
+            requestNecessaryPermissions(PERMISSIONS);
+
         displayX = getWindowManager().getDefaultDisplay().getWidth();
         displayY = getWindowManager().getDefaultDisplay().getHeight();
         locationX = displayX / 2;
@@ -117,18 +165,10 @@ public class fitbitAR extends AppCompatActivity
         mOpenCvCameraView.setCameraIndex(0);
         mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         SurfaceBorder = findViewById(R.id.surface_border);
-        SurfaceEdge = findViewById(R.id.surface_edge);
 
-
-        tv = findViewById(R.id.check);
         bt = findViewById(R.id.test);
         bt2 = findViewById(R.id.test2);
         bt2.setVisibility(View.GONE);
-
-        LayoutParams = new android.widget.RelativeLayout.LayoutParams(300 + 5, 300 + 5);
-        LayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
-        LayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        SurfaceEdge.setLayoutParams(LayoutParams);
 
         LayoutParams = new android.widget.RelativeLayout.LayoutParams(300 - 5, 300 - 5);
         LayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
@@ -146,6 +186,7 @@ public class fitbitAR extends AppCompatActivity
             editor.commit();
         }
         nowTime = nowDate();
+
         if (lastTime != nowTime) {
             editor = SPF.edit();
             editor.remove("round");
@@ -156,8 +197,18 @@ public class fitbitAR extends AppCompatActivity
             editor.commit();
             temp = 0;
         }
-    }
 
+        if (temp < 2) bt.setBackgroundResource(R.drawable.gaji);
+        else if (temp < 4) bt.setBackgroundResource(R.drawable.sigumchi);
+        else if (temp < 6) {
+            GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(bt);
+            Glide.with(this).load(R.drawable.chamchi).into(gif);
+        } else {
+            GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(bt);
+            Glide.with(this).load(R.drawable.seau).into(gif);
+        }
+
+    }
     private int nowDate() {
         long now = System.currentTimeMillis();
         Date date = new Date(now);
@@ -165,7 +216,6 @@ public class fitbitAR extends AppCompatActivity
 
         return Integer.parseInt(sdf.format(date));
     }
-
     @Override
     public void onPause() {
         super.onPause();
@@ -220,24 +270,28 @@ public class fitbitAR extends AppCompatActivity
 
     private void clear() {
         if (level == (int) ((float) temp * 1.5f) + 2) {
-            temp++;
-            editor = SPF.edit();
-            editor.remove("round");
-            editor.putInt("round", temp);
-            editor.commit();
+            if (temp != 8) {
+                temp++;
+                editor = SPF.edit();
+                editor.remove("round");
+                editor.putInt("round", temp);
+                editor.commit();
+            }
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);
+            finish();
         }
         level++;
-        if ((int)(Math.random()*2) == 0)
+        if ((int) (Math.random() * 2) == 0)
             centerX += (int) (Math.random() * 300) + 500;
         else
             centerX -= (int) (Math.random() * 300) + 500;
-        if ((int)(Math.random()*2) == 0)
+        if ((int) (Math.random() * 2) == 0)
             centerY += (int) (Math.random() * 300) + 500;
         else
             centerY -= (int) (Math.random() * 300) + 500;
     }
+
 
     private class GyroscopeListener implements SensorEventListener {
 
@@ -264,21 +318,31 @@ public class fitbitAR extends AppCompatActivity
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins((int) matInput.size().width - 150, (int) (centerY - roll * RAD2DGR * 2), 0, 0);
                             bt2.setLayoutParams(LayoutParams);
+                            bt2.setBackgroundResource(R.drawable.right);
                             onVisible();
-                        } else if (-150 >= (int) (centerX + pitch * RAD2DGR * 2)) {
+                        }
+
+                        else if (-150 >= (int) (centerX + pitch * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins(0, (int) (centerY - roll * RAD2DGR * 2), 0, 0);
                             bt2.setLayoutParams(LayoutParams);
+                            bt2.setBackgroundResource(R.drawable.left);
                             onVisible();
-                        } else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2)) {
+                        }
+
+                        else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins((int) (centerX + pitch * RAD2DGR * 2), (int) matInput.size().height - 150, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
+                            bt2.setBackgroundResource(R.drawable.down);
                             onVisible();
-                        } else if (-150 >= (int) (centerY - roll * RAD2DGR * 2)) {
+                        }
+
+                        else if (-150 >= (int) (centerY - roll * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins((int) (centerX + pitch * RAD2DGR * 2), 0, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
+                            bt2.setBackgroundResource(R.drawable.up);
                             onVisible();
                         } else {
                             bt.setVisibility(View.VISIBLE);
@@ -291,22 +355,32 @@ public class fitbitAR extends AppCompatActivity
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins(0, 0, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
+                            bt2.setBackgroundResource(R.drawable.leftup);
                             onVisible();
-                        } else if (-150 >= (int) (centerY - roll * RAD2DGR * 2) && matInput.size().width <= (int) (centerX + pitch * RAD2DGR * 2)) {
+                        }
+
+                        else if (-150 >= (int) (centerY - roll * RAD2DGR * 2) && matInput.size().width <= (int) (centerX + pitch * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins((int) matInput.size().width - 150, 0, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
+                            bt2.setBackgroundResource(R.drawable.rightup);
                             onVisible();
 
-                        } else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2) && -150 >= (int) (centerX + pitch * RAD2DGR * 2)) {
+                        }
+
+                        else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2) && -150 >= (int) (centerX + pitch * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins(0, (int) matInput.size().height - 150, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
+                            bt2.setBackgroundResource(R.drawable.leftdown);
                             onVisible();
-                        } else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2) && matInput.size().width <= (int) (centerX + pitch * RAD2DGR * 2)) {
+                        }
+
+                        else if (matInput.size().height <= (int) (centerY - roll * RAD2DGR * 2) && matInput.size().width <= (int) (centerX + pitch * RAD2DGR * 2)) {
                             LayoutParams = new RelativeLayout.LayoutParams(150, 150);
                             LayoutParams.setMargins((int) matInput.size().width - 150, (int) matInput.size().height - 150, 0, 0);
                             bt2.setLayoutParams(LayoutParams);
+                            bt2.setBackgroundResource(R.drawable.rightdown);
                             onVisible();
                         }
 
