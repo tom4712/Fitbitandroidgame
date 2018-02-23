@@ -64,6 +64,8 @@
         <activity android:name=".profileManagement" />
         <activity android:name=".Move" />
         <activity android:name=".Movie" />
+        <activity android:name=".qusetionActivity" />
+        <activity android:name=".result_activity" />
         <activity
             android:name=".Share"
             android:theme="@android:style/Theme.Dialog" />
