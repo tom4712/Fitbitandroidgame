@@ -80,6 +80,25 @@
                                 android:layout_weight="1"
                                 android:src="@drawable/gongo" />
 
+                            <LinearLayout
+                                android:gravity="bottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                            <Button
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="장착"
+                                android:id="@+id/set1"
+                                android:textSize="25dp"
+                                android:layout_alignParentRight="true" />
+
 
                             <Button
                                 android:layout_width="wrap_content"
@@ -92,6 +111,7 @@
                                 android:id="@+id/one"
                                 android:textSize="25dp"
                                 android:layout_alignParentRight="true" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -120,7 +140,27 @@
                                 android:onClick="onClick"
                                 android:src="@drawable/gongt" />
 
+                            <LinearLayout
+                                android:gravity="bottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
                             <Button
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="장착"
+                                android:id="@+id/set12"
+                                android:textSize="25dp"
+                                android:layout_alignParentRight="true" />
+
+                            <Button
+                                android:visibility="visible"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -131,6 +171,7 @@
                                 android:id="@+id/two"
                                 android:textSize="25dp"
                                 android:layout_alignParentRight="true" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -154,7 +195,27 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"/>
 
+                            <LinearLayout
+                                android:gravity="bottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
                             <Button
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="장착"
+                                android:id="@+id/set13"
+                                android:textSize="25dp"
+                                android:layout_alignParentRight="true" />
+
+                            <Button
+                                android:visibility="visible"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -165,6 +226,8 @@
                                 android:id="@+id/sre"
                                 android:textSize="25dp"
                                 android:layout_alignParentRight="true" />
+
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -230,7 +293,27 @@
                                 android:onClick="onClick"
                                 android:layout_weight="1"/>
 
+                            <LinearLayout
+                                android:gravity="bottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
                             <Button
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="장착"
+                                android:id="@+id/set2"
+                                android:textSize="25dp"
+                                android:layout_alignParentRight="true" />
+
+                            <Button
+                                android:visibility="visible"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -242,7 +325,7 @@
                                 android:textSize="25dp"
                                 android:layout_alignParentRight="true" />
 
-
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -271,7 +354,27 @@
                                 android:onClick="onClick"
                                 android:layout_weight="1"/>
 
+                            <LinearLayout
+                                android:gravity="bottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
                             <Button
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="장착"
+                                android:id="@+id/set22"
+                                android:textSize="25dp"
+                                android:layout_alignParentRight="true" />
+
+                            <Button
+                                android:visibility="visible"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -282,6 +385,8 @@
                                 android:id="@+id/two_2"
                                 android:textSize="25dp"
                                 android:layout_alignParentRight="true" />
+
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -309,7 +414,27 @@
                                 android:onClick="onClick"
                                 android:layout_weight="1"/>
 
+                            <LinearLayout
+                                android:gravity="bottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
                             <Button
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="장착"
+                                android:id="@+id/set23"
+                                android:textSize="25dp"
+                                android:layout_alignParentRight="true" />
+
+                            <Button
+                                android:visibility="visible"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -320,6 +445,8 @@
                                 android:id="@+id/sre_2"
                                 android:textSize="25dp"
                                 android:layout_alignParentRight="true" />
+
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -380,7 +507,27 @@
                                 android:onClick="onClick"
                                 android:layout_weight="1"/>
 
+                            <LinearLayout
+                                android:gravity="bottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
                             <Button
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="장착"
+                                android:id="@+id/set3"
+                                android:textSize="25dp"
+                                android:layout_alignParentRight="true" />
+
+                            <Button
+                                android:visibility="visible"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -391,6 +538,7 @@
                                 android:id="@+id/one_3"
                                 android:textSize="25dp"
                                 android:layout_alignParentRight="true" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -418,7 +566,27 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"/>
 
+                            <LinearLayout
+                                android:gravity="bottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
                             <Button
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="장착"
+                                android:id="@+id/set32"
+                                android:textSize="25dp"
+                                android:layout_alignParentRight="true" />
+
+                            <Button
+                                android:visibility="visible"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -429,6 +597,8 @@
                                 android:id="@+id/two_3"
                                 android:textSize="25dp"
                                 android:layout_alignParentRight="true" />
+
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -454,7 +624,27 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"/>
 
+                            <LinearLayout
+                                android:gravity="bottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
                             <Button
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_weight="3"
+                                android:onClick="onClick"
+                                android:text="장착"
+                                android:id="@+id/set33"
+                                android:textSize="25dp"
+                                android:layout_alignParentRight="true" />
+
+                            <Button
+                                android:visibility="visible"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -465,6 +655,7 @@
                                 android:id="@+id/sre_3"
                                 android:textSize="25dp"
                                 android:layout_alignParentRight="true" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
