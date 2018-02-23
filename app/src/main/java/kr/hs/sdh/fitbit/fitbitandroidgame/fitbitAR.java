@@ -175,16 +175,6 @@ public class fitbitAR extends AppCompatActivity
         LayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
         SurfaceBorder.setLayoutParams(LayoutParams);
 
-        if (temp < 2) bt.setBackgroundResource(R.drawable.gaji);
-        else if (temp < 4) bt.setBackgroundResource(R.drawable.sigumchi);
-        else if (temp < 6) {
-            GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(bt);
-            Glide.with(this).load(R.drawable.chamchi).into(gif);
-        } else {
-            GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(bt);
-            Glide.with(this).load(R.drawable.seau).into(gif);
-        }
-
         SPF = getSharedPreferences("clear", MODE_PRIVATE);
         try {
             temp = SPF.getInt("round", 0);
@@ -206,6 +196,16 @@ public class fitbitAR extends AppCompatActivity
             editor.putInt("time", nowDate());
             editor.commit();
             temp = 0;
+        }
+
+        if (temp < 2) bt.setBackgroundResource(R.drawable.gaji);
+        else if (temp < 4) bt.setBackgroundResource(R.drawable.sigumchi);
+        else if (temp < 6) {
+            GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(bt);
+            Glide.with(this).load(R.drawable.chamchi).into(gif);
+        } else {
+            GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(bt);
+            Glide.with(this).load(R.drawable.seau).into(gif);
         }
 
     }
