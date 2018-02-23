@@ -56,7 +56,7 @@ android:id="@+id/Reeee"
                 android:textSize="15dp"
                 android:layout_height="wrap_content"
 
-android:text="발끝은 11자 혹은 살짝 바깥으로 벌려주세요. 상체는 코어에 힘을 집중하며 곧게 세운 상태에서 앉았다가 그대로 일어나 주세요. 일어날 때는 엉덩이를 쪼여준다는 느낌으로 힘을 집중해 주세요.">
+android:text="발끝은 11자 혹은 살짝 바깥으로 벌려주세요. 상체는 코어에 힘을 집중하며 곧게 세운 상태에서 앉았ㅣ다가 그대로 일어나 주세요. 일어날 때는 엉덩이를 쪼여준다는 느낌으로 힘을 집중해 주세요.">
 
             </TextView>
             <TextView
