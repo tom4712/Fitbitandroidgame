@@ -10,9 +10,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -23,32 +24,32 @@ public class Movie4 extends AppCompatActivity {
     private Cursor all_cursor;
     private int coinresult;
 
-    RelativeLayout relativeLayout;
+    ScrollView relativeLayout;
     VideoView vv;
     ProgressBar progressBar;
     int progress=0;
     int i;
     Thread thread;
-    Button button1 ;
+    ImageButton button1 ;
     int num=0;
     Handler handler;
-    Button button2 ;
+    ImageButton button2 ;
     TextView percent;
     AlertDialog.Builder dialog;
     boolean isPlaying = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie4);
+        setContentView(R.layout.activity_movie);
 
         resultDB();
 
-relativeLayout = (RelativeLayout) findViewById(R.id.Reeee);
+        relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
         Intent intent = getIntent();
         String num = intent.getStringExtra("num");
 
-        String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m4;
+        String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m3;
 
         vv = (VideoView) findViewById(R.id.vv);
 
@@ -57,9 +58,9 @@ relativeLayout = (RelativeLayout) findViewById(R.id.Reeee);
             // 동영상 재생이 완료된후 호출되는 메서드
             public void onCompletion(MediaPlayer player) {
 
-                Toast.makeText(getApplicationContext(), "완료보상으로 1코인이 지급되었습니다!",
+                Toast.makeText(getApplicationContext(), "완료보상으로 3코인이 지급되었습니다!",
                         Toast.LENGTH_LONG).show();
-                db.updateCoin(coinresult + 4);
+                db.updateCoin(coinresult + 3);
                 finish();
             }
         });
@@ -77,6 +78,9 @@ relativeLayout = (RelativeLayout) findViewById(R.id.Reeee);
         if (view.getId() == R.id.im2) {
             super.onBackPressed();
 
+        }
+        if(view.getId()==R.id.back_2){
+            relativeLayout.setVisibility(View.GONE);
         }
         if(view.getId() == R.id.btn2){
 
