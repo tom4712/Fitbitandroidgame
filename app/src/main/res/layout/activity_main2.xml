@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:orientation="vertical">
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:background="#afe5e9"-->
+        <!--/>-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+    android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="280dp">
+
+
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="1"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+        <FrameLayout android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/button_layout">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/thrSec"
+                android:background="#00ff0000"></Button>
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="60dp" android:src="@drawable/three_icon"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:text="30초 운동"
+                android:gravity="center"
+                android:textColor="#26bdc2"
+                />
+            </LinearLayout>
+
+    </FrameLayout>
+        <FrameLayout android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/button_layout">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/Game"
+                android:background="#00ff0000"></Button>
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="60dp" android:src="@drawable/game_icon"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="15dp"
+                    android:text="게임"
+                    android:gravity="center"
+                    android:textColor="#26bdc2"
+                    />
+            </LinearLayout>
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="0.5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <FrameLayout android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/button_layout">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/Shop"
+                android:background="#00ff0000"></Button>
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="60dp" android:src="@drawable/shop_icon"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="15dp"
+                    android:text="상점"
+                    android:gravity="center"
+                    android:textColor="#26bdc2"
+                    />
+            </LinearLayout>
+
+        </FrameLayout>
+        <FrameLayout android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/button_layout">
+            <Button
+                android:layout_width="match_parent"
+                android:id="@+id/Share"
+                android:layout_height="match_parent"
+                android:background="#00ff0000"></Button>
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="60dp" android:src="@drawable/share_icon"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="15dp"
+                    android:text="공유"
+                    android:gravity="center"
+                    android:textColor="#26bdc2"
+                    />
+            </LinearLayout>
+
+        </FrameLayout>
+    </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/settingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:background="#9a111111">
+
+            <Button
+                android:id="@+id/goMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00111111" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0.43"
+            android:orientation="vertical"
+            android:background="#fff"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/characterDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00111111" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="캐릭터 상세 설정" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/Cafe"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00111111" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="fitbit카페" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/accountManagement"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00111111" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="계정관리" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Switch
+                    android:id="@+id/Switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/tw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="알람 설정" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="도움말" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/help"
+                    android:background="#00111111"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

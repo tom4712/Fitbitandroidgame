@@ -6,12 +6,11 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
-import android.renderscript.Short4;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,10 +26,13 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+/**
+ * Created by Resten on 2018-02-26.
+ */
+
+public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
     View container;
     FileOutputStream fos;
     SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -264,5 +266,3 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(Intent.createChooser(intent,"공유"));
     }
 }
-
-
