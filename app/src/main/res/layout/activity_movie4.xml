@@ -5,99 +5,12 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.Movie">
+    tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.Movie4">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-android:id="@+id/Reeee"
-        android:visibility="gone"
-        android:background="#00f"
-        android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_margin="10dp"
-        android:background="#ffffff"
-
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-        android:orientation="vertical"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_marginTop="30dp"
-            android:text="우드찹 바운스"
-                android:gravity="center_horizontal"
-
-                android:textSize="25dp"
-
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:textSize="15dp"
-                android:gravity="center_horizontal"
-                android:layout_height="wrap_content"
-android:text="차렷 자세에서 두 손을 앞으로 가지런히 모으고, 다리는 어깨너비 만큼 벌리고 서 주세요. 그 자세에서 가볍게 제자리 점프하며 다리는 와이드스쿼트, 손은 위로 곧게 올려주세요. 3번의 바운스 후 점프를 하여 처음 차렷 자세로 돌아옵니다.">
-
-            </TextView>
-            <TextView
-                android:layout_width="match_parent"
-                android:text="스쿼트 트위스트"
-                android:layout_marginTop="30dp"
-                android:gravity="center_horizontal"
-                android:textSize="20dp"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_marginTop="20dp"
-                android:gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:textSize="15dp"
-                android:layout_height="wrap_content"
-
-                    android:text="차렷 자세에서 두 다리는 어깨너비보다 약간 더 넓게 선 뒤, 발끝은 11자, 흡 숨을 들이 마시며 엉덩이를 쭈욱 늘린다는 느낌으로 앉아주세요. 일어나서 왼쪽 무릎과 오른쪽 팔꿈치를 터치한 다음 다시 한 번 스쿼트를 해주세요.
-">
-
-            </TextView>
-            <TextView
-                android:layout_width="match_parent"
-                android:text="사이드 마운틴클라이머"
-                android:textSize="20dp"
-                android:layout_marginTop="30dp"
-                android:gravity="center_horizontal"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:gravity="center_horizontal"
-                android:textSize="15dp"
-                android:layout_height="wrap_content"
-
-android:text="푸쉬업 자세를 취한 뒤, 어깨부터 발꿈치까지 몸을 일직선으로 만들어 주세요. 그 자세에서 왼쪽 무릎을 왼쪽 팔꿈치쪽으로 당겨주세요. 제자리로 돌아간 뒤 오른쪽도 동일하게 반복해 주세요">
-
-            </TextView>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            <Button
-                android:layout_centerInParent="true"
-                android:onClick="onClick"
-                android:id="@+id/gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            </RelativeLayout>
-        </LinearLayout>
-    </RelativeLayout>
-
-    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="#ffffff"
-        android:layout_height="70dp">
+        android:background="#afe5e0"
+        android:layout_height="80dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -105,36 +18,42 @@ android:text="푸쉬업 자세를 취한 뒤, 어깨부터 발꿈치까지 몸�
 
 
             <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="30dp"
+                    android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="36dp"
+                android:background="#00ff0000"
+                android:src="@drawable/move" />
+
+            <TextView
+                android:id="@+id/percent"
                 android:layout_width="wrap_content"
-                android:src="@drawable/move"
-                android:layout_height="39dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="23dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-
-            android:layout_marginLeft="65dp"
-            android:text="목요일 운동 시청"
-            android:id="@+id/percent"
+                android:layout_height="wrap_content"
+                android:textColor="#53cacf"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="34dp"
+                android:text="목요일 운동 시청"
 
 
-            android:textSize="30dp"/>
+                android:textSize="24dp" />
 
             <ImageButton
                 android:id="@+id/im2"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="300dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="340dp"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="16dp"
+                android:background="#00ff0000"
                 android:onClick="onClick"
                 android:src="@drawable/back" />
+
+
         </RelativeLayout>
     </LinearLayout>
 
-<!--//=============================-->
+    <!--//=============================-->
 
 
 
@@ -143,7 +62,6 @@ android:text="푸쉬업 자세를 취한 뒤, 어깨부터 발꿈치까지 몸�
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="#00ffd9"
         android:layout_height="match_parent">
 
 
@@ -159,137 +77,220 @@ android:text="푸쉬업 자세를 취한 뒤, 어깨부터 발꿈치까지 몸�
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-
-
-
-
-
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            >
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-                android:background="#d1ce83"
-                android:layout_margin="10dp"
-                android:layout_height="50dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_margin="20dp"
-                android:text="목요일 운동"
-                android:textColor="#00ffd9"
-                android:textSize="30dp"
-                android:layout_height="wrap_content" />
-
-        </RelativeLayout>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
 
 
 
 
-<!--======================================================-->
 
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+
+
+
+
+
+
+
+                <!--======================================================-->
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginTop="30dp"
+                            android:text="목요일 운동"
+                            android:textColor="#000000"
+                            android:textSize="30dp" />
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="280dp"
+                            android:scaleType="fitCenter"
+                            android:layout_marginTop="40dp"
+                            android:src="@drawable/coin" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="310dp"
+                            android:layout_marginTop="40dp"
+                            android:text="4원"
+                            android:textSize="20dp" />
+                    </RelativeLayout>
+                    <VideoView
+                        android:layout_width="match_parent"
+                        android:layout_margin="10dp"
+                        android:id="@+id/vv"
+                        android:layout_height="200dp" />
+
+
+                </LinearLayout>
+
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:id="@+id/Reeee"
+                    android:onClick="onClick"
+                    android:visibility="gone"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#afe5e9"
+                        android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="우드찹 바운스"
+                            android:gravity="center_horizontal"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:textSize="17dp"
+                            android:gravity="center_horizontal"
+                            android:layout_height="wrap_content"
+                            android:text="차렷 자세에서 두 손을 앞으로 가지런히 모으고, 다리는 어깨너비 만큼 벌리고 서 주세요. 그 자세에서 가볍게 제자리 점프하며 다리는 와이드스쿼트, 손은 위로 곧게 올려주세요. 3번의 바운스 후 점프를 하여 처음 차렷 자세로 돌아옵니다."
+                            ></TextView>
+
+
+                    </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginTop="10dp"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="스쿼트 트위스트"
+                                android:gravity="center_horizontal"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:layout_marginTop="10dp"
+                                android:layout_width="wrap_content"
+                                android:textSize="17dp"
+                                android:gravity="center_horizontal"
+                                android:layout_height="wrap_content"
+android:text="차렷 자세에서 두 다리는 어깨너비보다 약간 더 넓게 선 뒤, 발끝은 11자, 흡 숨을 들이 마시며 엉덩이를 쭈욱 늘린다는 느낌으로 앉아주세요. 일어나서 왼쪽 무릎과 오른쪽 팔꿈치를 터치한 다음 다시 한 번 스쿼트를 해주세요."                                />
+
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginTop="10dp"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="사이드 마운틴클라이머"
+                                android:gravity="center_horizontal"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:layout_marginTop="10dp"
+                                android:layout_width="wrap_content"
+                                android:textSize="17dp"
+                                android:gravity="center_horizontal"
+                                android:layout_height="wrap_content"
+
+android:text="푸쉬업 자세를 취한 뒤, 어깨부터 발꿈치까지 몸을 일직선으로 만들어 주세요. 그 자세에서 왼쪽 무릎을 왼쪽 팔꿈치쪽으로 당겨주세요. 제자리로 돌아간 뒤 오른쪽도 동일하게 반복해 주세요"
+                                >
+
+                            </TextView>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </ScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageButton
+                            android:layout_width="90dp"
+                            android:layout_height="40dp"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitCenter"
+                            android:layout_marginTop="10dp"
+                            android:onClick="onClick"
+                            android:src="@drawable/play"
+                            android:background="#00ff0000"
+                            android:id="@+id/play"
+                            />
+                        <ImageButton
+                            android:layout_width="90dp"
+                            android:layout_height="40dp"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitCenter"
+                            android:onClick="onClick"
+                            android:id="@+id/stop"
+                            android:src="@drawable/play"
+                            android:visibility="gone"
+                            />
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:src="@drawable/move"
-                    android:layout_height="39dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="4원"
-                android:layout_marginLeft="60dp"
-                android:textSize="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_height="wrap_content" />
+                    android:layout_height="match_parent">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:text="TIP"
+                        android:layout_centerInParent="true"
+                        android:onClick="onClick"
+                        android:id="@+id/Tip"
+                        android:layout_height="wrap_content" />
                 </RelativeLayout>
-            <VideoView
-                android:layout_width="match_parent"
-                android:layout_margin="10dp"
-                android:id="@+id/vv"
-                android:layout_height="200dp" />
-
-
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="재생"
-                android:onClick="onClick"
-                android:id="@+id/play"
-                />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="멈춤"
-                android:onClick="onClick"
-                android:id="@+id/stop"
-                android:visibility="gone"
-                />
-
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:layout_width="wrap_content"
-                android:text="TIP"
-                android:layout_centerInParent="true"
-                android:onClick="onClick"
-                android:id="@+id/btn2"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
 
 
 
 
 
 
-
-
-
-    </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
 
     </LinearLayout>
-<!--===========================================================================-->
-</LinearLayout>
+
+
+
+    </LinearLayout>

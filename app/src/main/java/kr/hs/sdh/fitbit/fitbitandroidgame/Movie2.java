@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -23,7 +24,7 @@ public class Movie2 extends AppCompatActivity {
     private Cursor all_cursor;
     private int coinresult;
 
-    LinearLayout relativeLayout;
+    ScrollView relativeLayout;
     VideoView vv;
     ProgressBar progressBar;
     int progress=0;
@@ -39,11 +40,11 @@ public class Movie2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie);
+        setContentView(R.layout.activity_movie2);
 
         resultDB();
 
-        relativeLayout = (LinearLayout) findViewById(R.id.Reeee);
+        relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
         Intent intent = getIntent();
         String num = intent.getStringExtra("num");
@@ -66,7 +67,7 @@ public class Movie2 extends AppCompatActivity {
         Uri uri = Uri.parse(uriPath);
 
         vv.setVideoURI(uri);
-        button1 = findViewById(R.id.stop);
+        button1= findViewById(R.id.stop);
         button2 = findViewById(R.id.play);
         vv.requestFocus();
 
@@ -78,16 +79,12 @@ public class Movie2 extends AppCompatActivity {
             super.onBackPressed();
 
         }
-        if(view.getId()==R.id.back_2){
-            relativeLayout.setVisibility(View.GONE);
-        }
-        if(view.getId() == R.id.btn2){
 
+        if(view.getId()==R.id.Tip){
             relativeLayout.setVisibility(View.VISIBLE);
         }
-        if(view.getId()==R.id.gone){
-            relativeLayout.setVisibility(View.GONE);
-        }
+
+
         if (view.getId() == R.id.stop) {
             vv.pause();
 

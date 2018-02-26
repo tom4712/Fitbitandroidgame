@@ -24,7 +24,7 @@ public class Move extends AppCompatActivity {
                 startActivity(i);
                 break;
             case R.id.im2:
-                i = new Intent(getApplicationContext(), Movie2.class);
+                i = new Intent(getApplicationContext(),Movie2.class);
                 startActivity(i);
             break;
             case R.id.im3:

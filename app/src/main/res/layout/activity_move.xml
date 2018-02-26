@@ -7,42 +7,60 @@
     android:layout_height="match_parent">
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="#27e08b"
-        android:layout_height="60dp">
+        android:background="#afe5e0"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        android:layout_height="80dp">
 
-            android:layout_margin="10dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginStart="12dp"
-            android:layout_toEndOf="@+id/imageButton"
-            android:layout_toRightOf="@+id/imageButton"
-            android:text="30초 운동"
-            android:textSize="30dp" />
-        <ImageButton
-            android:layout_width="60dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
 
-            android:layout_height="match_parent"
-            android:id="@+id/imageButton" />
-        <Button
-           android:layout_marginLeft="300dp"
-            android:background="#00f"
-            android:layout_width="50dp"
-            android:id="@+id/back_1"
-            android:onClick="onClick"
-            android:layout_height="match_parent" />
-    </RelativeLayout>
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="36dp"
+                android:background="#00ff0000"
+                android:src="@drawable/move" />
+
+            <TextView
+                android:id="@+id/percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#53cacf"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="34dp"
+                android:text="일주일 운동 영상"
+
+
+                android:textSize="24dp" />
+
+            <ImageButton
+                android:id="@+id/back_1"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="340dp"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="16dp"
+                android:background="#00ff0000"
+                android:onClick="onClick"
+                android:src="@drawable/back" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
 
 
     <ScrollView
-        android:paddingTop="60dp"
+        android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:background="#ffffff"
+        android:layout_margin="10dp"
         android:layout_height="match_parent">
 
 <LinearLayout
@@ -53,42 +71,86 @@
 
 
 <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="230dp"
-    android:orientation="vertical">
-
-    <TextView
-
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="10dp"
-        android:textSize="20dp"
-        android:text="월요일 운동"/>
+        android:layout_height="230dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/move1"
-        android:onClick="onClick"
-        android:id="@+id/im1"
-        android:layout_height="200dp" />
-</LinearLayout>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:textSize="20dp"
+                android:text="월요일 운동"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/coin"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="1원"
+                android:textSize="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/move1"
+            android:onClick="onClick"
+            android:id="@+id/im1"
+            android:layout_height="200dp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:orientation="vertical">
-
-        <TextView
-
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:textSize="20dp"
-            android:text="화요일 운동"/>
+            android:layout_height="wrap_content">
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:textSize="20dp"
+                android:text="화요일 운동"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/coin"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="2원"
+                android:textSize="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
         <ImageButton
             android:layout_width="match_parent"
@@ -106,16 +168,37 @@
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:orientation="vertical">
-
-        <TextView
-
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:textSize="20dp"
-            android:text="수요일 운동"/>
+            android:layout_height="wrap_content">
 
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:textSize="20dp"
+                android:text="수요일 운동"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/coin"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="3원"
+                android:textSize="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
         <ImageButton
             android:layout_width="match_parent"
             android:layout_marginLeft="10dp"
@@ -130,16 +213,37 @@
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:orientation="vertical">
-
-        <TextView
-
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:textSize="20dp"
-            android:text="목요일 운동"/>
+            android:layout_height="wrap_content">
 
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:textSize="20dp"
+                android:text="목요일 운동"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/coin"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="4원"
+                android:textSize="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
         <ImageButton
             android:layout_width="match_parent"
             android:layout_marginLeft="10dp"
@@ -155,14 +259,37 @@
         android:layout_height="230dp"
         android:orientation="vertical">
 
-        <TextView
-
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:textSize="20dp"
-            android:text="금요일 운동"/>
+            android:layout_height="wrap_content">
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:textSize="20dp"
+                android:text="금요일 운동"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/coin"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="5원"
+                android:textSize="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
         <ImageButton
             android:layout_width="match_parent"
@@ -178,15 +305,37 @@
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:orientation="vertical">
-
-        <TextView
-
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:textSize="20dp"
-            android:text="토요일 운동"/>
+            android:layout_height="wrap_content">
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:textSize="20dp"
+                android:text="토요일 운동"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/coin"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="6원"
+                android:textSize="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
         <ImageButton
             android:layout_width="match_parent"
@@ -203,14 +352,37 @@
         android:layout_height="230dp"
         android:orientation="vertical">
 
-        <TextView
-
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:textSize="20dp"
-            android:text="일요일 운동"/>
+            android:layout_height="wrap_content">
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:textSize="20dp"
+                android:text="일요일 운동"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/coin"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="7원"
+                android:textSize="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
         <ImageButton
             android:layout_width="match_parent"

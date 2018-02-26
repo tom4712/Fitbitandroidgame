@@ -40,7 +40,7 @@ public class Movie3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie);
+        setContentView(R.layout.activity_movie3);
 
         resultDB();
 
@@ -79,16 +79,11 @@ public class Movie3 extends AppCompatActivity {
             super.onBackPressed();
 
         }
-        if(view.getId()==R.id.back_2){
-            relativeLayout.setVisibility(View.GONE);
-        }
-        if(view.getId() == R.id.btn2){
 
+        if(view.getId()==R.id.Tip){
             relativeLayout.setVisibility(View.VISIBLE);
         }
-        if(view.getId()==R.id.gone){
-            relativeLayout.setVisibility(View.GONE);
-        }
+
         if (view.getId() == R.id.stop) {
             vv.pause();
 

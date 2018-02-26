@@ -3,11 +3,14 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.renderscript.Short4;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +27,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+
+import static kr.hs.sdh.fitbit.fitbitandroidgame.fitbitAR.PERMISSION_REQUEST_CODE;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     View container;
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout mainView, settingView;
 
     private TextView Coin, charName, versionInfo;
+
     private Button Settings, Share, thrSec, Game, Shop, Inventory, Cafe, characterDetails, accountManagement, goMain;
 
     private Switch mSwitch;
@@ -50,22 +56,68 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final long FINISH_INTERVAL_TIME = 2000;
 
     private long backPressedTime = 0;
+    String[] PERMISSIONS = {"android.permission.WRITE_EXTERNAL_STORAGE"};
+
+    private boolean hasPermissions(String[] permissions) {
+        // 퍼미션 확인
+        int result = -1;
+        for (int i = 0; i < permissions.length; i++) {
+            result = ContextCompat.checkSelfPermission(getApplicationContext(), permissions[i]);
+        }
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
+    private void requestNecessaryPermissions(String[] permissions) {
+        ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE);
+    }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE: {
+                //퍼미션을 거절했을 때 메시지 출력 후 종료
+                if (!hasPermissions(PERMISSIONS)) {
+                    Toast.makeText(getApplicationContext(), "CAMERA PERMISSION FAIL", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                return;
+            }
+        }
+    }
+    @Override
     public void onBackPressed() {
+
         long tempTime = System.currentTimeMillis();
+
         long intervalTime = tempTime - backPressedTime;
+
         if (settingView.getVisibility() == View.VISIBLE) {
+
             thrSec.setClickable(true);
+
             Game.setClickable(true);
+
             Inventory.setClickable(true);
+
             Shop.setClickable(true);
+
             settingView.setVisibility(View.GONE);
+
         } else if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
+
             super.onBackPressed();
+
         } else {
+
             backPressedTime = tempTime;
+
             Toast.makeText(getApplicationContext(), "한번 더 누를 시 종료됩니다.", Toast.LENGTH_SHORT).show();
+
         }
     }
 
