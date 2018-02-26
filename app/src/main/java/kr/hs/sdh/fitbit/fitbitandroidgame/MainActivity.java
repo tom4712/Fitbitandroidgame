@@ -194,6 +194,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.characterDetails:
+                i = new Intent(getApplicationContext(), Cahrsetting.class);
+                startActivity(i);
                 break;
             case R.id.goMain:
                 thrSec.setClickable(true);

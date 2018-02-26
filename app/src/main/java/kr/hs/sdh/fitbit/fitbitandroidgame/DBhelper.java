@@ -92,6 +92,13 @@ public class DBhelper {
         Log.d("DB", "여기는 디비헬퍼다"+garments);
         insertStmt.execute();
     }
+    public void updateGarments(int sex){
+        insertStmt = mDb.compileStatement("UPDATE first_table SET SEX = ?");
+        insertStmt.clearBindings();
+        insertStmt.bindLong(1,sex);
+        Log.d("DB", "여기는 디비헬퍼다"+sex);
+        insertStmt.execute();
+    }
 
     public Cursor AllRows() {
         return mDb.query(DATABASE_TABLE, null, null, null, null, null, null);

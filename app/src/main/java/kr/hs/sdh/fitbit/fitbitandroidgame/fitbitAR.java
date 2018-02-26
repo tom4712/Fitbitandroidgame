@@ -83,47 +83,13 @@ public class fitbitAR extends AppCompatActivity
     private SharedPreferences SPF;
     private SharedPreferences.Editor editor;
 
-    static final int PERMISSION_REQUEST_CODE = 1;
-    String[] PERMISSIONS = {"android.permission.CAMERA"};
 
-    private boolean hasPermissions(String[] permissions) {
-        // 퍼미션 확인
-        int result = -1;
-        for (int i = 0; i < permissions.length; i++) {
-            result = ContextCompat.checkSelfPermission(getApplicationContext(), permissions[i]);
-        }
-        if (result == PackageManager.PERMISSION_GRANTED) {
-            return true;
-
-        } else {
-            return false;
-        }
-    }
-
-    private void requestNecessaryPermissions(String[] permissions) {
-        ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_REQUEST_CODE: {
-                //퍼미션을 거절했을 때 메시지 출력 후 종료
-                if (!hasPermissions(PERMISSIONS)) {
-                    Toast.makeText(getApplicationContext(), "CAMERA PERMISSION FAIL", Toast.LENGTH_LONG).show();
-                    finish();
-                }
-                return;
-            }
-        }
-    }
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
             switch (status) {
                 case LoaderCallbackInterface.SUCCESS: {
-                    if (hasPermissions(PERMISSIONS))
                         mOpenCvCameraView.enableView();
                 }
                 break;
@@ -142,10 +108,6 @@ public class fitbitAR extends AppCompatActivity
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
-        if (!hasPermissions(PERMISSIONS))
-            requestNecessaryPermissions(PERMISSIONS);
 
         displayX = getWindowManager().getDefaultDisplay().getWidth();
         displayY = getWindowManager().getDefaultDisplay().getHeight();

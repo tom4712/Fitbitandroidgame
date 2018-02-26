@@ -45,11 +45,7 @@ public class ShopActivity extends AppCompatActivity {
 
         shopallback = findViewById(R.id.shopallback);
 
-        if(sex == 0){
-            shopallback.setBackgroundResource(R.drawable.shopbackgroundman);
-        }else if(sex == 1){
-            shopallback.setBackgroundResource(R.drawable.shopbagroundgirl);
-        }
+
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -78,6 +74,9 @@ public class ShopActivity extends AppCompatActivity {
 
         Cursul();
 
+        sex = Integer.parseInt(list.get(2));
+        Log.d("DB", "sex "+list.get(2) + "");
+
         try {
             if (Integer.parseInt(list.get(0)) == 0) {
                 db.updateCoin(100);
@@ -104,6 +103,12 @@ public class ShopActivity extends AppCompatActivity {
             imageView9.setImageResource(R.drawable.mat);
         }
 
+        if(sex == 0){
+            shopallback.setBackgroundResource(R.drawable.shopbackgroundman);
+        }else if(sex == 1){
+            shopallback.setBackgroundResource(R.drawable.shopbagroundgirl);
+        }
+
 
         try {
             if (Integer.parseInt(list.get(1)) == 0) {
@@ -114,6 +119,8 @@ public class ShopActivity extends AppCompatActivity {
         }
         Log.d("DB", list.get(0) + "");
         Coinresult = Integer.parseInt(list.get(0));
+        sex = Integer.parseInt(list.get(2));
+        Log.d("DB", "sex "+list.get(2) + "");
         //setCoinresult();
 
         Cursul();
@@ -145,6 +152,7 @@ public class ShopActivity extends AppCompatActivity {
                 Log.d("DB", "코인값받아옴");
                 list.add(all_cursor.getString(all_cursor.getColumnIndex("GARMENTS")));
                 Log.d("DB", "옷값받아옴");
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("SEX")));
                 if (!all_cursor.moveToNext())
                     break;
             } catch (Exception e) {
@@ -664,6 +672,8 @@ public class ShopActivity extends AppCompatActivity {
     }
 
 
-
+    public void back(View view){
+        finish();
+    }
 
 }

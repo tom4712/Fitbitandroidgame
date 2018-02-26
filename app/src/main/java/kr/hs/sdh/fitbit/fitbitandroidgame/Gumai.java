@@ -46,6 +46,8 @@ public class Gumai extends Activity {
 
     public void nocheck(View view) {
         Toast.makeText(Gumai.this, "취소되었습니다!!", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(getApplicationContext(), ShopActivity.class);
+        startActivity(i);
         this.finish();
     }
 
@@ -83,6 +85,8 @@ public class Gumai extends Activity {
         if (sex == 0) {//남자
             if (Coinresult < price) {
                 Toast.makeText(Gumai.this, "코인이 " + (price - Coinresult) + " 개 부족합니다!", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), ShopActivity.class);
+                startActivity(i);
                 this.finish();
             } else {
                 if (location == 1) {
@@ -123,6 +127,8 @@ public class Gumai extends Activity {
         } else if (sex == 1) {//여자
             if (Coinresult < price) {
                 Toast.makeText(Gumai.this, "코인이 " + (price - Coinresult) + " 개 부족합니다!", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), ShopActivity.class);
+                startActivity(i);
                 this.finish();
             } else {
                 if (location == 1) {
@@ -173,6 +179,8 @@ public class Gumai extends Activity {
         if (clothchar[indexnum] == '1') {
             Log.d("DB", "이미구입함");
             Toast.makeText(this, "이미 구입한 상품입니다.", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getApplicationContext(), ShopActivity.class);
+            startActivity(i);
             this.finish();
         } else {
             Log.d("DB", "이미구입한 상품이 아님");
