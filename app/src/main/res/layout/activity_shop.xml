@@ -35,217 +35,225 @@
 
 
         <RelativeLayout
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.91">
 
 
-        <LinearLayout
-            android:layout_marginBottom="350dp"
-            android:background="#00ed7d7d"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <HorizontalScrollView
-                android:scrollbars="none"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="350dp"
+                android:layout_weight="0.5"
+                android:background="#00ed7d7d">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:scrollbars="none">
 
                     <LinearLayout
-                        android:id="@+id/item_padding1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:orientation="horizontal">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                        <LinearLayout
+                            android:id="@+id/item_padding1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
 
-                            <ImageView
-                                android:paddingBottom="60dp"
-                                android:paddingTop="90dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/im1"
-                                android:onClick="onClick"
-                                android:layout_weight="1"
-                                android:src="@drawable/gongo" />
-
-                            <LinearLayout
-                                android:paddingLeft="130dp"
-                                android:gravity="bottom"
+                            <RelativeLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
+                                android:layout_height="match_parent">
 
-                            <Button
-                                android:visibility="gone"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_weight="3"
-                                android:onClick="onClick"
-                                android:text="장착"
-                                android:id="@+id/set1"
-                                android:textSize="25dp"
-                                android:layout_alignParentRight="true" />
+                                <ImageView
+                                    android:layout_marginLeft="10dp"
+                                    android:id="@+id/im1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_weight="1"
+                                    android:onClick="onClick"
+                                    android:paddingBottom="60dp"
+                                    android:paddingTop="90dp"
+                                    android:src="@drawable/gongo" />
+
+                                <LinearLayout
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|left"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="110dp"
+                                    >
+
+                                    <Button
+                                        android:background="#a2afe5e9"
+                                        android:id="@+id/set1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_weight="3"
+                                        android:onClick="onClick"
+                                        android:text="장착"
+                                        android:textSize="25dp"
+                                        android:visibility="gone" />
 
 
-                            <Button
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_weight="3"
-                                android:onClick="onClick"
-                                android:text="1원"
-                                android:id="@+id/one"
-                                android:textSize="25dp"
-                                android:layout_alignParentRight="true" />
-                            </LinearLayout>
+                                    <Button
+                                        android:background="#9a26bdc2"
+                                        android:id="@+id/one"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_weight="3"
+                                        android:onClick="onClick"
+                                        android:text="1원"
+                                        android:textSize="25dp" />
+                                </LinearLayout>
 
-                        </RelativeLayout>
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/item_padding2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/im2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:onClick="onClick"
+                                    android:paddingBottom="90dp"
+                                    android:src="@drawable/gongt" />
+
+                                <LinearLayout
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="110dp">
+
+                                    <Button
+                                        android:background="#a2afe5e9"
+                                        android:id="@+id/set12"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_weight="3"
+                                        android:onClick="onClick"
+                                        android:text="장착"
+                                        android:textSize="25dp"
+                                        android:visibility="gone" />
+
+                                    <Button
+                                        android:background="#9a26bdc2"
+                                        android:id="@+id/two"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_weight="3"
+                                        android:onClick="onClick"
+                                        android:text="1원"
+                                        android:textSize="25dp"
+                                        android:visibility="visible" />
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/item_padding3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:visibility="gone"
+                                    android:id="@+id/im3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:onClick="onClick"
+                                    android:src="@drawable/test" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="110dp">
+
+                                    <Button
+                                        android:background="#a2afe5e9"
+                                        android:id="@+id/set13"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_weight="3"
+                                        android:onClick="onClick"
+                                        android:text="장착"
+                                        android:textSize="25dp"
+                                        android:visibility="gone" />
+
+                                    <Button
+                                        android:background="#9a26bdc2"
+                                        android:id="@+id/sre"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_weight="3"
+                                        android:onClick="onClick"
+                                        android:text="3원"
+                                        android:textSize="25dp"
+                                        android:visibility="gone" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
 
-
-                    <LinearLayout
-                        android:id="@+id/item_padding2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/im2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentLeft="true"
-                                android:layout_alignParentStart="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_weight="1"
-                                android:onClick="onClick"
-                                android:src="@drawable/gongt" />
-
-                            <LinearLayout
-                                android:paddingLeft="130dp"
-                                android:gravity="bottom"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
-
-                            <Button
-                                android:visibility="gone"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_weight="3"
-                                android:onClick="onClick"
-                                android:text="장착"
-                                android:id="@+id/set12"
-                                android:textSize="25dp"
-                                android:layout_alignParentRight="true" />
-
-                            <Button
-                                android:visibility="visible"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_weight="3"
-                                android:onClick="onClick"
-                                android:text="1원"
-                                android:id="@+id/two"
-                                android:textSize="25dp"
-                                android:layout_alignParentRight="true" />
-                            </LinearLayout>
-
-                        </RelativeLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/item_padding3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:src="@drawable/test"
-                                android:id="@+id/im3"
-                                android:onClick="onClick"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"/>
-
-                            <LinearLayout
-                                android:paddingLeft="130dp"
-                                android:gravity="bottom"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
-
-                            <Button
-                                android:visibility="gone"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_weight="3"
-                                android:onClick="onClick"
-                                android:text="장착"
-                                android:id="@+id/set13"
-                                android:textSize="25dp"
-                                android:layout_alignParentRight="true" />
-
-                            <Button
-                                android:visibility="visible"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_weight="3"
-                                android:text="3원"
-                                android:onClick="onClick"
-                                android:id="@+id/sre"
-                                android:textSize="25dp"
-                                android:layout_alignParentRight="true" />
-
-                            </LinearLayout>
-
-                        </RelativeLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
+                </HorizontalScrollView>
 
 
-
-            </HorizontalScrollView>
-
+            </LinearLayout>
 
 
-        </LinearLayout>
-
-
-
-        //=====================================================
+            //=====================================================
 
 
             <LinearLayout
@@ -289,16 +297,17 @@
                                     android:src="@drawable/test" />
 
                                 <LinearLayout
-                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true"
                                     android:layout_alignParentTop="true"
                                     android:gravity="bottom"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -312,6 +321,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/one_3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -352,13 +362,14 @@
                                     android:src="@drawable/test" />
 
                                 <LinearLayout
-                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set32"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -372,6 +383,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/two_3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -411,13 +423,14 @@
                                     android:src="@drawable/test" />
 
                                 <LinearLayout
-                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set33"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -431,6 +444,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/sre_3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -458,10 +472,10 @@
             //---------------------------------------------------------
 
             <LinearLayout
-                android:layout_marginTop="187dp"
-                android:layout_marginBottom="215dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="215dp"
+                android:layout_marginTop="195dp"
                 android:layout_weight="7.839035"
                 android:background="#00ffffff">
 
@@ -471,12 +485,12 @@
                     android:scrollbars="none">
 
                     <LinearLayout
-                        android:padding="5dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="170dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="1dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="5dp">
 
                         <LinearLayout
                             android:id="@+id/item_padding4"
@@ -500,16 +514,17 @@
                                     android:src="@drawable/ms" />
 
                                 <LinearLayout
-                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_alignParentLeft="true"
                                     android:layout_alignParentStart="true"
                                     android:layout_alignParentTop="true"
                                     android:gravity="bottom"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -523,6 +538,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/one_2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -537,29 +553,6 @@
 
                                 </LinearLayout>
 
-                                <LinearLayout
-                                    android:id="@+id/linearLayout"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_alignParentTop="true"
-                                    android:layout_marginEnd="200dp"
-                                    android:layout_marginRight="200dp"
-                                    android:layout_marginTop="151dp"
-                                    android:layout_weight="1.255"></LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/linearLayout2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_below="@+id/linearLayout"
-                                    android:layout_marginEnd="200dp"
-                                    android:layout_marginRight="200dp"
-                                    android:layout_marginTop="111dp"
-                                    android:layout_weight="1.22"></LinearLayout>
 
                             </RelativeLayout>
 
@@ -587,13 +580,14 @@
                                     android:src="@drawable/test" />
 
                                 <LinearLayout
-                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set22"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -607,6 +601,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/two_2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -647,13 +642,15 @@
                                     android:src="@drawable/test" />
 
                                 <LinearLayout
-                                    android:paddingLeft="130dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="110dp"
+                                    android:layout_margin="20dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set23"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -667,6 +664,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/sre_2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"

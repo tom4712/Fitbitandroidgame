@@ -93,6 +93,7 @@ public class ShopActivity extends AppCompatActivity {
             imageView6.setImageResource(R.drawable.gr);
             imageView7.setImageResource(R.drawable.gao);
             imageView8.setImageResource(R.drawable.gat);
+            imageView9.setImageResource(R.drawable.gar);
 
         } else {
             imageView4.setImageResource(R.drawable.mo);
@@ -100,6 +101,7 @@ public class ShopActivity extends AppCompatActivity {
             imageView6.setImageResource(R.drawable.mr);
             imageView7.setImageResource(R.drawable.mao);
             imageView8.setImageResource(R.drawable.mat);
+            imageView9.setImageResource(R.drawable.mat);
         }
 
 
@@ -273,30 +275,39 @@ public class ShopActivity extends AppCompatActivity {
                 break;
             case R.id.set1:
                 checkinner(1,1);
+                SetCehck();
                 break;
             case R.id.set12:
                 checkinner(1,2);
+                SetCehck();
                 break;
             case R.id.set13:
                 checkinner(1,3);
+                SetCehck();
                 break;
             case R.id.set2:
                 checkinner(2,1);
+                SetCehck();
                 break;
             case R.id.set22:
                 checkinner(2,2);
+                SetCehck();
                 break;
             case R.id.set23:
                 checkinner(2,3);
+                SetCehck();
                 break;
             case R.id.set3:
                 checkinner(3,1);
+                SetCehck();
                 break;
             case R.id.set32:
                 checkinner(3,2);
+                SetCehck();
                 break;
             case R.id.set33:
                 checkinner(3,3);
+                SetCehck();
                 break;
         }
     }
@@ -384,12 +395,31 @@ public class ShopActivity extends AppCompatActivity {
                         Log.d("DB", "비짖을비짖을 비짖을 비지증ㄹ");
                     }
                 }
-            } else {
-                if (i == 1 || i == 2 || i == 3 || i == 10 ||
-                        i == 11 || i == 12 || i == 13 || i == 14 || i == 15) {
+            }
+
+            if(sex == 1){
+                if (i >= 1 && i <= 9) {
                     if (clothchar[i] == '1' || clothchar[i] == '2') {
-                        buyvibutton[i - 1].setVisibility(View.GONE);
-                        Setvibutton[i - 1].setVisibility(View.VISIBLE);
+                        if(i == 10){
+                            buyvibutton[3].setVisibility(View.GONE);
+                            Setvibutton[3].setVisibility(View.VISIBLE);
+                        }else if(i == 11){
+                            buyvibutton[4].setVisibility(View.GONE);
+                            Setvibutton[4].setVisibility(View.VISIBLE);
+                        }else if(i == 12){
+                            buyvibutton[5].setVisibility(View.GONE);
+                            Setvibutton[5].setVisibility(View.VISIBLE);
+                        }else if(i == 13){
+                            buyvibutton[6].setVisibility(View.GONE);
+                            Setvibutton[6].setVisibility(View.VISIBLE);
+                        }else if(i == 14){
+                            buyvibutton[7].setVisibility(View.GONE);
+                            Setvibutton[7].setVisibility(View.VISIBLE);
+                        }else if(i == 15){
+                            buyvibutton[8].setVisibility(View.GONE);
+                            Setvibutton[8].setVisibility(View.VISIBLE);
+                        }
+
                     }
                 }
             }
@@ -582,6 +612,34 @@ public class ShopActivity extends AppCompatActivity {
         db.updateGarments(input);
         Toast.makeText(this, "창착이 완료 되었습니다!", Toast.LENGTH_SHORT).show();
         Log.d("DB",""+input);
+
+    }
+
+    public void SetCehck(){
+
+        Setvibutton[0] = findViewById(R.id.set1);
+        Setvibutton[1] = findViewById(R.id.set12);
+        Setvibutton[2] = findViewById(R.id.set13);
+        Setvibutton[3] = findViewById(R.id.set2);
+        Setvibutton[4] = findViewById(R.id.set22);
+        Setvibutton[5] = findViewById(R.id.set23);
+        Setvibutton[6] = findViewById(R.id.set3);
+        Setvibutton[7] = findViewById(R.id.set32);
+        Setvibutton[8] = findViewById(R.id.set33);
+
+        Cursul();
+        String cloth = list.get(1);
+        clothchar = cloth.toCharArray();
+
+        if(sex == 0){
+            for(int i = 0; i <= clothchar.length;i++){
+                if(i == 1|| i ==2 || i ==3 || i ==10 || i ==11||i==12||i == 13)
+                if (clothchar[i+1] == '2'){
+                    Setvibutton[i].setText("착용중");
+                }
+            }
+
+        }
 
     }
 
