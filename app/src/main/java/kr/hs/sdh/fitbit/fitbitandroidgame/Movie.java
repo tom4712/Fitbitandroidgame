@@ -15,40 +15,89 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class Movie extends AppCompatActivity {
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Movie extends AppCompatActivity implements View.OnClickListener{
+
+    long mNow;
+
+    Date mDate;
+
+    int num2;
+
+    SimpleDateFormat mFormat = new SimpleDateFormat("MM-dd");
+
+    TextView mTextView;
+
+    Button mRefreshBtn;
 
     private DBhelper db;
+
     private Cursor all_cursor;
+
     private int coinresult;
 
-    LinearLayout relativeLayout;
+
+    ScrollView relativeLayout;
+
     VideoView vv;
+
     ProgressBar progressBar;
+
     int progress=0;
+
     int i;
+
     Thread thread;
+
     ImageButton button1 ;
+
     int num=0;
+
     Handler handler;
+
     ImageButton button2 ;
+
     TextView percent;
+
     AlertDialog.Builder dialog;
+
     boolean isPlaying = false;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie);
-
-        resultDB();
-
-        relativeLayout = (LinearLayout) findViewById(R.id.Reeee);
 
         Intent intent = getIntent();
-        String num = intent.getStringExtra("num");
+         num2  = intent.getExtras().getInt("num");
+
+
+        setContentView(R.layout.activity_movie);
+        resultDB();
+        mTextView = (TextView) findViewById(R.id.textView);
+        mRefreshBtn = (Button) findViewById(R.id.refreshBtn);
+
+        //bind listener
+//        mRefreshBtn.setOnClickListener(this);
+//        mNow = System.currentTimeMillis();
+//        mDate = new Date(mNow);
+//        if (mDate.getDate()==mDate.getDate()+1){
+//
+//            num2=0;
+//
+//        }
+
+
+        relativeLayout = (ScrollView) findViewById(R.id.Reeee);
+
 
         String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m1;
 
@@ -59,10 +108,26 @@ public class Movie extends AppCompatActivity {
             // 동영상 재생이 완료된후 호출되는 메서드
             public void onCompletion(MediaPlayer player) {
 
-                Toast.makeText(getApplicationContext(), "완료보상으로 1코인이 지급되었습니다!",
-                        Toast.LENGTH_LONG).show();
-                db.updateCoin(coinresult + 1);
+
+                if(num2>=3){
+
+                    Toast.makeText(getApplicationContext(), "3번 이상 시청하셨습니다",
+                    Toast.LENGTH_LONG).show();
+
+                }
+                if(num2<3){
+
+
+                    Toast.makeText(getApplicationContext(), "완료보상으로 1코인이 지급되었습니다!",
+
+                            Toast.LENGTH_LONG).show();
+
+
+                    db.updateCoin(coinresult + 1);
+                }
+
                 finish();
+
             }
         });
         Uri uri = Uri.parse(uriPath);
@@ -80,16 +145,8 @@ public class Movie extends AppCompatActivity {
             super.onBackPressed();
 
         }
-        if(view.getId()==R.id.back_2){
-            relativeLayout.setVisibility(View.GONE);
-        }
-        if(view.getId() == R.id.btn2){
 
-            relativeLayout.setVisibility(View.VISIBLE);
-        }
-        if(view.getId()==R.id.gone){
-            relativeLayout.setVisibility(View.GONE);
-        }
+
         if (view.getId() == R.id.stop) {
             vv.pause();
 
@@ -101,6 +158,9 @@ public class Movie extends AppCompatActivity {
 
             button1.setVisibility(View.VISIBLE);
             button2.setVisibility(View.INVISIBLE);
+        }
+        if(view.getId()==R.id.Tip){
+            relativeLayout.setVisibility(View.VISIBLE);
         }
     }
     @Override
@@ -114,6 +174,9 @@ public class Movie extends AppCompatActivity {
         super.onUserLeaveHint();
 
     }
+
+
+
 
     public void resultDB(){
         db = new DBhelper(this);

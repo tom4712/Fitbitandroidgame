@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -22,8 +23,8 @@ public class Movie2 extends AppCompatActivity {
     private DBhelper db;
     private Cursor all_cursor;
     private int coinresult;
-
-    LinearLayout relativeLayout;
+    int num2;
+    ScrollView relativeLayout;
     VideoView vv;
     ProgressBar progressBar;
     int progress=0;
@@ -39,14 +40,15 @@ public class Movie2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie);
+        setContentView(R.layout.activity_movie2);
+        Intent intent = getIntent();
+        num2  = intent.getExtras().getInt("num");
 
         resultDB();
 
-        relativeLayout = (LinearLayout) findViewById(R.id.Reeee);
+        relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
-        Intent intent = getIntent();
-        String num = intent.getStringExtra("num");
+
 
         String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m2;
 
@@ -57,16 +59,32 @@ public class Movie2 extends AppCompatActivity {
             // 동영상 재생이 완료된후 호출되는 메서드
             public void onCompletion(MediaPlayer player) {
 
-                Toast.makeText(getApplicationContext(), "완료보상으로 2코인이 지급되었습니다!",
-                        Toast.LENGTH_LONG).show();
-                db.updateCoin(coinresult + 2);
+
+                if(num2>=3){
+
+                    Toast.makeText(getApplicationContext(), "3번 이상 시청하셨습니다",
+                            Toast.LENGTH_LONG).show();
+
+                }
+                if(num2<3){
+
+
+                    Toast.makeText(getApplicationContext(), "완료보상으로 2코인이 지급되었습니다!",
+
+                            Toast.LENGTH_LONG).show();
+
+
+                    db.updateCoin(coinresult + 2);
+                }
+
                 finish();
+
             }
         });
         Uri uri = Uri.parse(uriPath);
 
         vv.setVideoURI(uri);
-        button1 = findViewById(R.id.stop);
+        button1= findViewById(R.id.stop);
         button2 = findViewById(R.id.play);
         vv.requestFocus();
 
@@ -78,16 +96,12 @@ public class Movie2 extends AppCompatActivity {
             super.onBackPressed();
 
         }
-        if(view.getId()==R.id.back_2){
-            relativeLayout.setVisibility(View.GONE);
-        }
-        if(view.getId() == R.id.btn2){
 
+        if(view.getId()==R.id.Tip){
             relativeLayout.setVisibility(View.VISIBLE);
         }
-        if(view.getId()==R.id.gone){
-            relativeLayout.setVisibility(View.GONE);
-        }
+
+
         if (view.getId() == R.id.stop) {
             vv.pause();
 

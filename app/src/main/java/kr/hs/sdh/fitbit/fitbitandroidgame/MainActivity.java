@@ -3,22 +3,20 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.renderscript.Short4;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -29,6 +27,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+
+import static kr.hs.sdh.fitbit.fitbitandroidgame.fitbitAR.PERMISSION_REQUEST_CODE;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     View container;
@@ -41,46 +41,90 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int dbVersion = 1;
     private DBhelper dbhelper;
 
+    String a = "600";
 
     private Cursor all_cursor;
 
     private LinearLayout mainView, settingView;
 
     private TextView Coin, charName, versionInfo;
-    private Button Share, thrSec, Game, Shop, Inventory, Cafe, characterDetails, accountManagement, goMain;
-    private ImageButton Settings;
+
+    private Button Settings, Share, thrSec, Game, Shop, Inventory, Cafe, characterDetails, accountManagement, goMain;
+
     private Switch mSwitch;
 
-    Toolbar myToolbar;
-    ViewPager viewPager = null;
-    TextView a;
     private final long FINISH_INTERVAL_TIME = 2000;
 
     private long backPressedTime = 0;
+    String[] PERMISSIONS = {"android.permission.WRITE_EXTERNAL_STORAGE"};
 
-    @Override
-    public void onBackPressed() {
-        long tempTime = System.currentTimeMillis();
-        long intervalTime = tempTime - backPressedTime;
-        if (settingView.getVisibility() == View.VISIBLE) {
-            thrSec.setClickable(true);
-            Game.setClickable(true);
-            Inventory.setClickable(true);
-            Shop.setClickable(true);
-            settingView.setVisibility(View.GONE);
-        } else if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
-            super.onBackPressed();
+    private boolean hasPermissions(String[] permissions) {
+        // 퍼미션 확인
+        int result = -1;
+        for (int i = 0; i < permissions.length; i++) {
+            result = ContextCompat.checkSelfPermission(getApplicationContext(), permissions[i]);
+        }
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+
         } else {
-            backPressedTime = tempTime;
-            Toast.makeText(getApplicationContext(), "한번 더 누를 시 종료됩니다.", Toast.LENGTH_SHORT).show();
+            return false;
         }
     }
 
+    private void requestNecessaryPermissions(String[] permissions) {
+        ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE: {
+                //퍼미션을 거절했을 때 메시지 출력 후 종료
+                if (!hasPermissions(PERMISSIONS)) {
+                    Toast.makeText(getApplicationContext(), "CAMERA PERMISSION FAIL", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                return;
+            }
+        }
+    }
+    @Override
+    public void onBackPressed() {
+
+        long tempTime = System.currentTimeMillis();
+
+        long intervalTime = tempTime - backPressedTime;
+
+        if (settingView.getVisibility() == View.VISIBLE) {
+
+            thrSec.setClickable(true);
+
+            Game.setClickable(true);
+
+            Inventory.setClickable(true);
+
+            Shop.setClickable(true);
+
+            settingView.setVisibility(View.GONE);
+
+        } else if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
+
+            super.onBackPressed();
+
+        } else {
+
+            backPressedTime = tempTime;
+
+            Toast.makeText(getApplicationContext(), "한번 더 누를 시 종료됩니다.", Toast.LENGTH_SHORT).show();
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main);
         dbhelper = new DBhelper(getApplication());
         dbhelper.open();
         all_cursor = dbhelper.AllRows();
@@ -96,28 +140,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //코인 테스트 끝나면 지우면됩니다.
             dbhelper.updateCoin(5);
         }
-        setCustomActionBar();
-        viewPager = (ViewPager)findViewById(R.id.viewpager);
-        a = (TextView)findViewById(R.id.text_back);
-        a.setText("133");
-        MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
-        viewPager.setCurrentItem(0);
 
-        // 찾기
+
         goMain = findViewById(R.id.goMain);
+        mainView = findViewById(R.id.mainView);
         settingView = findViewById(R.id.settingView);
+        Coin = findViewById(R.id.Coin);
+        charName = findViewById(R.id.charName);
         Settings = findViewById(R.id.Settings);
         Share = findViewById(R.id.Share);
         thrSec = findViewById(R.id.thrSec);
         Game = findViewById(R.id.Game);
         Shop = findViewById(R.id.Shop);
-
+        Inventory = findViewById(R.id.Inventory);
         Cafe = findViewById(R.id.Cafe);
         characterDetails = findViewById(R.id.characterDetails);
         accountManagement = findViewById(R.id.accountManagement);
         mSwitch = findViewById(R.id.Switch);
 
+        // 인텐트 값 가져옴 - 이름 설정
+        //Intent get_value = getIntent();
+        //String json = get_value.getStringExtra("json_value");
+        //int idx = json.indexOf("|");
+        String name = "닉네임";
+        charName.setText(name);
+        //-------------
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -135,11 +182,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         thrSec.setOnClickListener(this);
         Game.setOnClickListener(this);
         Shop.setOnClickListener(this);
+        Inventory.setOnClickListener(this);
         Cafe.setOnClickListener(this);
         characterDetails.setOnClickListener(this);
         accountManagement.setOnClickListener(this);
 
     }
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -164,7 +213,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.Settings:
                 thrSec.setClickable(false);
                 Game.setClickable(false);
-
+                Inventory.setClickable(false);
                 Shop.setClickable(false);
                 settingView.setVisibility(View.VISIBLE);
                 break;
@@ -174,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.Share:
-                oo(view);
+          oo(view);
                 break;
             case R.id.Game:
                 Intent intent1 = new Intent(getApplicationContext(), fitbitAR.class);
@@ -184,6 +233,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i = new Intent(getApplicationContext(), ShopActivity.class);
 
                 startActivity(i);
+                break;
+            case R.id.Inventory:
                 break;
             case R.id.accountManagement:
                 i = new Intent(getApplicationContext(), profileManagement.class);
@@ -200,7 +251,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.goMain:
                 thrSec.setClickable(true);
                 Game.setClickable(true);
-
+                Inventory.setClickable(true);
                 Shop.setClickable(true);
                 settingView.setVisibility(View.GONE);
                 break;
@@ -224,21 +275,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d("DB", "텍스트뷰 설정완료함");
 
 
-    }
-    public void setCustomActionBar(){
-        ActionBar actionBar = getSupportActionBar();
-
-        actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setDisplayShowTitleEnabled(true);
-
-        View mCustomView = LayoutInflater.from(this).inflate(R.layout.main_top_layout,null);
-        actionBar.setCustomView(mCustomView);
-        Toolbar parent = (Toolbar) mCustomView.getParent();
-        parent.setContentInsetsAbsolute(0,0);
-
-        ActionBar.LayoutParams params = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT,ActionBar.LayoutParams.MATCH_PARENT);
-        actionBar.setCustomView(mCustomView,params);
     }
     public void oo(View view){
 
@@ -265,6 +301,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.setType("image/*");
         startActivity(Intent.createChooser(intent,"공유"));
     }
+
+
 }
 
 

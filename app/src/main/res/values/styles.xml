@@ -10,6 +10,7 @@
         <item name="windowActionBar">false</item>
     </style>
 
+
     <style name="AppTheme2" parent="Theme.AppCompat.Dialog">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>

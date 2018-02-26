@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.Movie">
+    tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.Movie2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -148,7 +148,7 @@
                     android:layout_width="match_parent"
                     android:id="@+id/Reeee"
                     android:onClick="onClick"
-
+                    android:visibility="gone"
                     android:layout_height="match_parent">
 
                     <LinearLayout
@@ -163,7 +163,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="우드찹"
+                            android:text="와이드스쿼트"
                             android:gravity="center_horizontal"
                             android:textSize="20dp" />
 
@@ -173,8 +173,8 @@
                             android:textSize="17dp"
                             android:gravity="center_horizontal"
                             android:layout_height="wrap_content"
-                            android:text="차렷 자세에서 가볍게 제자리 점프하며 다리는 와이드스쿼트손은 위로 곧게 올려주세요. 다시 제자리 점프! 처음 차렷 자세로 돌아옵니다. (호흡은 점프 할 때 들이마시고, 차렷 자세로 돌아올 때 후- 뱉어주세요)"/>
-
+                                android:text="두 다리는 어깨너비보다 훨썬 더 넓게 서 주세요. 다리가 직각이 될 정도로 내려갔다가 올라옵니다. 내려갈 때 상체가 너무 앞으로 쏠리지 않도록 주의해 주세요!"
+                            ></TextView>
 
 
                     </LinearLayout>
@@ -186,7 +186,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="스쿼드"
+                                android:text="런지"
                                 android:gravity="center_horizontal"
                                 android:textSize="20dp" />
 
@@ -196,8 +196,8 @@
                                 android:textSize="17dp"
                                 android:gravity="center_horizontal"
                                 android:layout_height="wrap_content"
-                                android:text="발끝은 11자 혹은 살짝 바깥으로 벌려주세요. 상체는 코어에 힘을 집중하며 곧게 세운 상태에서 앉았다가 그대로 일어나 주세요. 일어날 때는 엉덩이를 쪼여준다는 느낌으로 힘을 집중해 주세요."
-                                />
+android:text="차렷 자세에서 한 쪽 다리를 한 보 정도 뒤로 뻗어주세요 상체는 곧게 세우고, 복근과 허리에 힘을 집중하며 무릎을 굽혔다가 일어나 주세요! 호흡은 내려갈 때 들이마시고, 올라올 때 후- 뱉어주세요
+"                                />
 
 
 
@@ -210,7 +210,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="마운틴 클라이머"
+                                android:text="힙브릿지"
                                 android:gravity="center_horizontal"
                                 android:textSize="20dp" />
 
@@ -221,8 +221,7 @@
                                 android:gravity="center_horizontal"
                                 android:layout_height="wrap_content"
 
-                                android:text="푸쉬업 자세에서 시작해서 한쪽 무릎씩 접어 가슴쪽으로 빠르게 당겨주세요. 이때 엉덩이가 너무 올라가지 않도록 코어에 힘 집중해주세요. 호흡은 달리기 하듯 자연스럽게 해주세요."
-
+android:text="제자리에 누운 상태에서 양 발은 11자로 골반과 일직선이 되도록 놓고 골반과 엉덩이에 힘을 주면서 동시에 위로 올립니다. 뒷꿈치 쪽에 힘을 주면 엉덩이에 더 자극이 집중돼요!"
                                 >
 
                             </TextView>
@@ -245,7 +244,6 @@
                             android:layout_width="90dp"
                             android:layout_height="40dp"
                             android:layout_centerInParent="true"
-
                             android:scaleType="fitCenter"
                             android:layout_marginTop="10dp"
                             android:onClick="onClick"
@@ -278,7 +276,7 @@
                         android:text="TIP"
                         android:layout_centerInParent="true"
                         android:onClick="onClick"
-                        android:id="@+id/btn2"
+                        android:id="@+id/Tip"
                         android:layout_height="wrap_content" />
                 </RelativeLayout>
 
