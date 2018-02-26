@@ -105,6 +105,8 @@
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:layout_marginTop="20dp"
+                    android:id="@+id/RRr"
+                    android:onClick="onClick"
                     android:layout_height="wrap_content">
 
                     <RelativeLayout
@@ -232,7 +234,12 @@ android:text="제자리에 누운 상태에서 양 발은 11자로 골반과 일
 
 
                 </ScrollView>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/gon"
+                    android:onClick="onClick"
+                    android:layout_height="match_parent">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -287,6 +294,7 @@ android:text="제자리에 누운 상태에서 양 발은 11자로 골반과 일
 
 
 
+                </LinearLayout>
 
             </LinearLayout>
 

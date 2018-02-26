@@ -44,7 +44,6 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
 
     private int coinresult;
 
-
     ScrollView relativeLayout;
 
     VideoView vv;
@@ -60,7 +59,8 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
     ImageButton button1 ;
 
     int num=0;
-
+    LinearLayout linearLayout;
+    LinearLayout linearLayout2;
     Handler handler;
 
     ImageButton button2 ;
@@ -82,7 +82,6 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_movie);
         resultDB();
 
-
         //bind listener
 //        mRefreshBtn.setOnClickListener(this);
 //        mNow = System.currentTimeMillis();
@@ -92,8 +91,8 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
 //            num2=0;
 //
 //        }
-
-
+        linearLayout = (LinearLayout)findViewById(R.id.RRr);
+        linearLayout2=(LinearLayout)findViewById(R.id.gon);
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
 
@@ -145,6 +144,19 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
         }
 
 
+
+        if(view.getId()==R.id.Tip){
+            relativeLayout.setVisibility(View.VISIBLE);
+            linearLayout2.setVisibility(View.INVISIBLE);
+        }
+        if (view.getId()==R.id.RRr){
+            linearLayout2.setVisibility(View.VISIBLE);
+            relativeLayout.setVisibility(View.GONE);
+        }
+
+
+
+
         if (view.getId() == R.id.stop) {
             vv.pause();
 
@@ -157,9 +169,7 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
             button1.setVisibility(View.VISIBLE);
             button2.setVisibility(View.INVISIBLE);
         }
-        if(view.getId()==R.id.Tip){
-            relativeLayout.setVisibility(View.VISIBLE);
-        }
+
     }
     @Override
 

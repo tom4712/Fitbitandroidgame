@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Fitbitandroidgame.iml" filepath="$PROJECT_DIR$/Fitbitandroidgame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Fitbitandroidgame.iml" filepath="$PROJECT_DIR$/.idea/Fitbitandroidgame.iml" />
       <module fileurl="file://D:\newapp3\Fitbitandroidgame\Fitbitandroidgame.iml" filepath="D:\newapp3\Fitbitandroidgame\Fitbitandroidgame.iml" />
+      <module fileurl="file://C:\Users\Public\Fitbitgmaeeeeeee\Fitbitgmaemememe\Fitbitandroidgame\Fitbitandroidgame.iml" filepath="C:\Users\Public\Fitbitgmaeeeeeee\Fitbitgmaemememe\Fitbitandroidgame\Fitbitandroidgame.iml" />
       <module fileurl="file://C:\Users\tom47\AndroidStudioProjects\Fitbitandroidgame\.idea\Fitbitandroidgame.iml" filepath="C:\Users\tom47\AndroidStudioProjects\Fitbitandroidgame\.idea\Fitbitandroidgame.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/openCVLibrary340/openCVLibrary340.iml" filepath="$PROJECT_DIR$/openCVLibrary340/openCVLibrary340.iml" />

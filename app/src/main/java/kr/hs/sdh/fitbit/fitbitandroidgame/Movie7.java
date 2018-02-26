@@ -19,7 +19,8 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 public class Movie7 extends AppCompatActivity {
-
+    LinearLayout linearLayout;
+    LinearLayout linearLayout2;
     private DBhelper db;
     private Cursor all_cursor;
     private int coinresult;
@@ -44,6 +45,9 @@ public class Movie7 extends AppCompatActivity {
 
         resultDB();
 
+        relativeLayout = (ScrollView) findViewById(R.id.Reeee);
+        linearLayout = (LinearLayout)findViewById(R.id.RRr);
+        linearLayout2=(LinearLayout)findViewById(R.id.gon);
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
         Intent intent = getIntent();
@@ -98,7 +102,14 @@ public class Movie7 extends AppCompatActivity {
 
         if(view.getId()==R.id.Tip){
             relativeLayout.setVisibility(View.VISIBLE);
+            linearLayout2.setVisibility(View.INVISIBLE);
         }
+        if (view.getId()==R.id.RRr){
+            linearLayout2.setVisibility(View.VISIBLE);
+            relativeLayout.setVisibility(View.GONE);
+        }
+
+
         if (view.getId() == R.id.stop) {
             vv.pause();
 
