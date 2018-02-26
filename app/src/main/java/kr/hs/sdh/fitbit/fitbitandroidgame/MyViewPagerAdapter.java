@@ -3,6 +3,7 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
 
 /**
  * Created by Resten on 2018-02-25.
@@ -27,6 +28,7 @@ public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         return fragments[position];
     }
+
 
     @Override
     public int getCount() {
