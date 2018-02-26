@@ -248,7 +248,7 @@ android:text="양 다리는 다이아몬드(◇) 모양으로 만들어서 싯�
                             android:scaleType="fitCenter"
                             android:layout_marginTop="10dp"
                             android:onClick="onClick"
-                            android:src="@drawable/play"
+                            android:src="@drawable/playpaly"
                             android:background="#00ff0000"
                             android:id="@+id/play"
                             />
@@ -258,8 +258,9 @@ android:text="양 다리는 다이아몬드(◇) 모양으로 만들어서 싯�
                             android:layout_centerInParent="true"
                             android:scaleType="fitCenter"
                             android:onClick="onClick"
+                            android:background="#00ff0000"
                             android:id="@+id/stop"
-                            android:src="@drawable/play"
+                            android:src="@drawable/stst"
                             android:visibility="gone"
                             />
 
@@ -272,14 +273,19 @@ android:text="양 다리는 다이아몬드(◇) 모양으로 만들어서 싯�
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <Button
+                    <ImageButton
                         android:layout_width="wrap_content"
                         android:text="TIP"
+                        android:src="@drawable/tip"
                         android:layout_centerInParent="true"
                         android:onClick="onClick"
+                        android:background="#00ff0000"
                         android:id="@+id/Tip"
+
                         android:layout_height="wrap_content" />
                 </RelativeLayout>
+
+
 
 
 

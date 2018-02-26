@@ -13,11 +13,9 @@ import java.util.Date;
 
 public class Move extends AppCompatActivity implements View.OnClickListener{
     long mNow;
-    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
-    Date mDate;
-    TextView mTextView;
-    Button mRefreshBtn;
+
+
 
 
     int num=0;
@@ -26,9 +24,8 @@ public class Move extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_move);
-        mTextView = (TextView) findViewById(R.id.textView);
-        mRefreshBtn = (Button) findViewById(R.id.refreshBtn);
-        mRefreshBtn.setOnClickListener(this);
+
+
 
     }
 
@@ -37,10 +34,6 @@ public class Move extends AppCompatActivity implements View.OnClickListener{
         switch (view.getId()){
             case R.id.back_1:
                 super.onBackPressed();
-                break;
-            case R.id.refreshBtn:
-                mTextView.setText(getTime());
-
                 break;
             case R.id.im1:
                 Intent  i = new Intent(getApplicationContext(), Movie.class);
@@ -92,16 +85,7 @@ public class Move extends AppCompatActivity implements View.OnClickListener{
 
         }
     }
-    private String getTime(){
 
-        mNow = System.currentTimeMillis();
-
-        mDate = new Date(mNow);
-
-        mDate.setDate(mDate.getDate()+1);
-
-        return mFormat.format(mDate);
-    }
 
 
 }

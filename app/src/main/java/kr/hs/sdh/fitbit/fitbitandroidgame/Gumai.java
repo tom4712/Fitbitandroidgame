@@ -28,7 +28,7 @@ public class Gumai extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gumai);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
 
         Log.d("POPUP", "내가 떳따!");
 

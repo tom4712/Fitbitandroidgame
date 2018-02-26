@@ -19,7 +19,12 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
+    <style name="AppTheme3" parent="Theme.AppCompat.Dialog">
+        <!-- Customize your theme here. -->
 
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
     <style name="FullscreenTheme" parent="AppTheme">
         <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
     <item name="android:windowActionBarOverlay">true</item>

@@ -33,7 +33,6 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
 
     int num2;
 
-    SimpleDateFormat mFormat = new SimpleDateFormat("MM-dd");
 
     TextView mTextView;
 
@@ -82,8 +81,7 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
 
         setContentView(R.layout.activity_movie);
         resultDB();
-        mTextView = (TextView) findViewById(R.id.textView);
-        mRefreshBtn = (Button) findViewById(R.id.refreshBtn);
+
 
         //bind listener
 //        mRefreshBtn.setOnClickListener(this);

@@ -27,13 +27,21 @@ public class Movie6 extends AppCompatActivity {
     ScrollView relativeLayout;
     VideoView vv;
     ProgressBar progressBar;
+
+
     int progress=0;
+
     int i;
+
     Thread thread;
+
     ImageButton button1;
+
     int num333;
+
     int num=0;
     Handler handler;
+
     ImageButton button2 ;
     TextView percent;
     AlertDialog.Builder dialog;
