@@ -56,13 +56,13 @@
                 android:resource="@xml/file_path" />
         </provider>
 
-        <activity android:name=".Splash" />
-        <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.Light">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Splash" >       <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+        <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.Light">
+
         </activity>
         <activity
             android:name=".fitbitAR"
