@@ -68,6 +68,7 @@
                                 android:layout_height="match_parent">
 
                                 <ImageView
+                                    android:layout_marginLeft="10dp"
                                     android:id="@+id/im1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -81,13 +82,16 @@
                                     android:src="@drawable/gongo" />
 
                                 <LinearLayout
+                                    android:layout_marginBottom="20dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:gravity="bottom"
+                                    android:gravity="bottom|left"
                                     android:orientation="horizontal"
-                                    android:paddingLeft="130dp">
+                                    android:paddingLeft="110dp"
+                                    >
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set1"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -102,6 +106,7 @@
 
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/one"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -139,13 +144,15 @@
                                     android:src="@drawable/gongt" />
 
                                 <LinearLayout
+                                    android:layout_marginBottom="20dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
                                     android:orientation="horizontal"
-                                    android:paddingLeft="130dp">
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set12"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -159,6 +166,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/two"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -187,6 +195,7 @@
                                 android:layout_height="match_parent">
 
                                 <ImageView
+                                    android:visibility="gone"
                                     android:id="@+id/im3"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -199,9 +208,10 @@
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
                                     android:orientation="horizontal"
-                                    android:paddingLeft="130dp">
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set13"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -215,6 +225,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/sre"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -225,7 +236,7 @@
                                         android:onClick="onClick"
                                         android:text="3원"
                                         android:textSize="25dp"
-                                        android:visibility="visible" />
+                                        android:visibility="gone" />
 
                                 </LinearLayout>
 
@@ -293,9 +304,10 @@
                                     android:layout_alignParentTop="true"
                                     android:gravity="bottom"
                                     android:orientation="horizontal"
-                                    android:paddingLeft="130dp">
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -309,6 +321,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/one_3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -353,9 +366,10 @@
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
                                     android:orientation="horizontal"
-                                    android:paddingLeft="130dp">
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set32"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -369,6 +383,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/two_3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -412,9 +427,10 @@
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
                                     android:orientation="horizontal"
-                                    android:paddingLeft="130dp">
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set33"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -428,6 +444,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/sre_3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -458,7 +475,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="215dp"
-                android:layout_marginTop="187dp"
+                android:layout_marginTop="195dp"
                 android:layout_weight="7.839035"
                 android:background="#00ffffff">
 
@@ -469,7 +486,7 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="170dp"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="1dp"
                         android:orientation="horizontal"
@@ -504,9 +521,10 @@
                                     android:layout_alignParentTop="true"
                                     android:gravity="bottom"
                                     android:orientation="horizontal"
-                                    android:paddingLeft="130dp">
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -520,6 +538,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/one_2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -534,29 +553,6 @@
 
                                 </LinearLayout>
 
-                                <LinearLayout
-                                    android:id="@+id/linearLayout"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_alignParentTop="true"
-                                    android:layout_marginEnd="200dp"
-                                    android:layout_marginRight="200dp"
-                                    android:layout_marginTop="151dp"
-                                    android:layout_weight="1.255"></LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/linearLayout2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_below="@+id/linearLayout"
-                                    android:layout_marginEnd="200dp"
-                                    android:layout_marginRight="200dp"
-                                    android:layout_marginTop="111dp"
-                                    android:layout_weight="1.22"></LinearLayout>
 
                             </RelativeLayout>
 
@@ -588,9 +584,10 @@
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
                                     android:orientation="horizontal"
-                                    android:paddingLeft="130dp">
+                                    android:paddingLeft="110dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set22"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -604,6 +601,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/two_2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -648,9 +646,11 @@
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
                                     android:orientation="horizontal"
-                                    android:paddingLeft="130dp">
+                                    android:paddingLeft="110dp"
+                                    android:layout_margin="20dp">
 
                                     <Button
+                                        android:background="#a2afe5e9"
                                         android:id="@+id/set23"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -664,6 +664,7 @@
                                         android:visibility="gone" />
 
                                     <Button
+                                        android:background="#9a26bdc2"
                                         android:id="@+id/sre_2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
