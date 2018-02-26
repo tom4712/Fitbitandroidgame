@@ -77,11 +77,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-        dbhelper = new DBhelper(getApplication());
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main2);
+            dbhelper = new DBhelper(getApplication());
         dbhelper.open();
         all_cursor = dbhelper.AllRows();
         all_cursor.moveToFirst();
