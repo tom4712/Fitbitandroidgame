@@ -30,7 +30,8 @@ public class Movie6 extends AppCompatActivity {
     int progress=0;
     int i;
     Thread thread;
-    ImageButton button1 ;
+    ImageButton button1;
+    int num333;
     int num=0;
     Handler handler;
     ImageButton button2 ;
