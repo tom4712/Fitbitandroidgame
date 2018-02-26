@@ -26,7 +26,7 @@ public class ShopActivity extends AppCompatActivity {
     int width;
     int height;
     char[] clothchar;
-    int sex = 1;
+    int sex = 0;
     int Coinresult = 0;
     private DBhelper db;
     private Cursor all_cursor;
@@ -123,6 +123,7 @@ public class ShopActivity extends AppCompatActivity {
         list.clear();
         Cursul();
         Cehcksetwaer();
+        SetCehck();
         setCoinTxv();
 
     }
@@ -631,17 +632,38 @@ public class ShopActivity extends AppCompatActivity {
         String cloth = list.get(1);
         clothchar = cloth.toCharArray();
 
-        if(sex == 0){
-            for(int i = 0; i <= clothchar.length;i++){
-                if(i == 1|| i ==2 || i ==3 || i ==10 || i ==11||i==12||i == 13)
-                if (clothchar[i+1] == '2'){
-                    Setvibutton[i].setText("착용중");
+
+            for (int i = 1; i < clothchar.length; i++) {
+                if (sex == 0) {
+                    if (i >= 1 && i <= 9) {
+                        if (clothchar[i] == '2') {
+                            Setvibutton[i - 1].setText("착용중");
+                            Log.d("DB", "착용했다!");
+                        }
+                        if (clothchar[i] == '1') {
+                            Setvibutton[i - 1].setText("착용");
+                            Log.d("DB", "착용했다!");
+                        }
+
+                    }
                 }
-            }
+                if (sex == 1) {
+                    if (i == 1 || i== 2|| i== 3|| i== 10|| i== 11|| i== 12|| i== 13|| i== 14|| i== 15) {
+                        if (clothchar[i] == '2') {
+                            Setvibutton[i - 1].setText("착용중");
+                        }
+                        if (clothchar[i] == '1') {
+                            Setvibutton[i - 1].setText("착용");
+                        }
+
+                    }
+                }
 
         }
 
     }
+
+
 
 
 }
