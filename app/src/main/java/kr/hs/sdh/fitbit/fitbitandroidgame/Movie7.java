@@ -23,7 +23,7 @@ public class Movie7 extends AppCompatActivity {
     private DBhelper db;
     private Cursor all_cursor;
     private int coinresult;
-
+    int num2;
     ScrollView relativeLayout;
     VideoView vv;
     ProgressBar progressBar;
@@ -58,10 +58,26 @@ public class Movie7 extends AppCompatActivity {
             // 동영상 재생이 완료된후 호출되는 메서드
             public void onCompletion(MediaPlayer player) {
 
-                Toast.makeText(getApplicationContext(), "완료보상으로 7코인이 지급되었습니다!",
-                        Toast.LENGTH_LONG).show();
-                db.updateCoin(coinresult + 7);
+
+                if(num2>=3){
+
+                    Toast.makeText(getApplicationContext(), "3번 이상 시청하셨습니다",
+                            Toast.LENGTH_LONG).show();
+
+                }
+                if(num2<3){
+
+
+                    Toast.makeText(getApplicationContext(), "완료보상으로 7코인이 지급되었습니다!",
+
+                            Toast.LENGTH_LONG).show();
+
+
+                    db.updateCoin(coinresult + 7);
+                }
+
                 finish();
+
             }
         });
         Uri uri = Uri.parse(uriPath);

@@ -23,7 +23,7 @@ public class Movie6 extends AppCompatActivity {
     private DBhelper db;
     private Cursor all_cursor;
     private int coinresult;
-
+    int num2;
     ScrollView relativeLayout;
     VideoView vv;
     ProgressBar progressBar;
@@ -41,13 +41,14 @@ public class Movie6 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie6);
+        Intent intent = getIntent();
+        num2  = intent.getExtras().getInt("num");
 
         resultDB();
 
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
-        Intent intent = getIntent();
-        String num = intent.getStringExtra("num");
+
 
         String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m6;
 

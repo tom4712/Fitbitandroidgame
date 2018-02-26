@@ -23,7 +23,7 @@ public class Movie5 extends AppCompatActivity {
     private DBhelper db;
     private Cursor all_cursor;
     private int coinresult;
-
+    int num2;
     ScrollView relativeLayout;
     VideoView vv;
     ProgressBar progressBar;
@@ -41,13 +41,14 @@ public class Movie5 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie5);
+        Intent intent = getIntent();
+        num2  = intent.getExtras().getInt("num");
 
         resultDB();
 
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
-        Intent intent = getIntent();
-        String num = intent.getStringExtra("num");
+
 
         String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m5;
 
@@ -58,10 +59,26 @@ public class Movie5 extends AppCompatActivity {
             // 동영상 재생이 완료된후 호출되는 메서드
             public void onCompletion(MediaPlayer player) {
 
-                Toast.makeText(getApplicationContext(), "완료보상으로 5코인이 지급되었습니다!",
-                        Toast.LENGTH_LONG).show();
-                db.updateCoin(coinresult + 1);
+
+                if(num2>=3){
+
+                    Toast.makeText(getApplicationContext(), "5번 이상 시청하셨습니다",
+                            Toast.LENGTH_LONG).show();
+
+                }
+                if(num2<3){
+
+
+                    Toast.makeText(getApplicationContext(), "완료보상으로 5코인이 지급되었습니다!",
+
+                            Toast.LENGTH_LONG).show();
+
+
+                    db.updateCoin(coinresult + 1);
+                }
+
                 finish();
+
             }
         });
         Uri uri = Uri.parse(uriPath);

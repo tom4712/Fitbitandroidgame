@@ -31,6 +31,8 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
 
     Date mDate;
 
+    int num2;
+
     SimpleDateFormat mFormat = new SimpleDateFormat("MM-dd");
 
     TextView mTextView;
@@ -73,19 +75,29 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+         num2  = intent.getExtras().getInt("num");
+
+
         setContentView(R.layout.activity_movie);
         resultDB();
         mTextView = (TextView) findViewById(R.id.textView);
         mRefreshBtn = (Button) findViewById(R.id.refreshBtn);
 
         //bind listener
-        mRefreshBtn.setOnClickListener(this);
+//        mRefreshBtn.setOnClickListener(this);
+//        mNow = System.currentTimeMillis();
+//        mDate = new Date(mNow);
+//        if (mDate.getDate()==mDate.getDate()+1){
+//
+//            num2=0;
+//
+//        }
 
 
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
-        Intent intent = getIntent();
-        String num = intent.getStringExtra("num");
 
         String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m1;
 
@@ -96,10 +108,26 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
             // 동영상 재생이 완료된후 호출되는 메서드
             public void onCompletion(MediaPlayer player) {
 
-                Toast.makeText(getApplicationContext(), "완료보상으로 1코인이 지급되었습니다!",
-                        Toast.LENGTH_LONG).show();
-                db.updateCoin(coinresult + 1);
+
+                if(num2>=3){
+
+                    Toast.makeText(getApplicationContext(), "3번 이상 시청하셨습니다",
+                    Toast.LENGTH_LONG).show();
+
+                }
+                if(num2<3){
+
+
+                    Toast.makeText(getApplicationContext(), "완료보상으로 1코인이 지급되었습니다!",
+
+                            Toast.LENGTH_LONG).show();
+
+
+                    db.updateCoin(coinresult + 1);
+                }
+
                 finish();
+
             }
         });
         Uri uri = Uri.parse(uriPath);
@@ -117,9 +145,6 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
             super.onBackPressed();
 
         }
-            if(view.getId()==R.id.refreshBtn){
-                mTextView.setText(getTime());
-            }
 
 
         if (view.getId() == R.id.stop) {
@@ -149,12 +174,7 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
         super.onUserLeaveHint();
 
     }
-    private String getTime(){
-        mNow = System.currentTimeMillis();
-        mDate = new Date(mNow);
-        mDate.setDate(mDate.getDate()+1);
-        return mFormat.format(mDate);
-    }
+
 
 
 
