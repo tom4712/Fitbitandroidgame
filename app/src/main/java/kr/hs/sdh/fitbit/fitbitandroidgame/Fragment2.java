@@ -4,12 +4,14 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
  * Created by Resten on 2018-02-25.
  */
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -23,25 +25,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+
 public class Fragment2 extends Fragment {
 
         BarChart chartView;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_b,container,false);
+
         chartView = v.findViewById(R.id.chart);
         Legend legend = chartView.getLegend();
         List<BarEntry> entries = new ArrayList<>();
         YAxis left = chartView.getAxisLeft();
 
         XAxis xAxis = chartView.getXAxis();
-        entries.add(new BarEntry(0f, 30f));
-        entries.add(new BarEntry(1f, 30f));
-        entries.add(new BarEntry(2f, 30f));
-        entries.add(new BarEntry(3f, 30f));
-        entries.add(new BarEntry(4f, 30f));
-        entries.add(new BarEntry(5f, 30f));
-        entries.add(new BarEntry(6f, 30f));
+        entries.add(new BarEntry(0f, 14513f));
+        entries.add(new BarEntry(1f, 13020f));
+        entries.add(new BarEntry(2f, 7788f));
+        entries.add(new BarEntry(3f, 8425f));
+        entries.add(new BarEntry(4f, 807f));
+        entries.add(new BarEntry(5f, 3053f));
+        entries.add(new BarEntry(6f, 1430f));
         chartView.animateY(1000);
         chartView.setTouchEnabled(false);
         chartView.getXAxis().setEnabled(false);
@@ -51,14 +56,14 @@ public class Fragment2 extends Fragment {
         legend.setEnabled(false);
         legend.setWordWrapEnabled(false);
         chartView.getDescription().setEnabled(false);
-        chartView.setBackgroundColor(Color.parseColor("#FEE751"));
+        chartView.setBackgroundColor(Color.parseColor("#41bdf2"));
         data.setBarWidth(0.7f); // set custom bar width
         xAxis.setDrawGridLines(false);
         left.setDrawLabels(false); // no axis labels
         left.setDrawAxisLine(false); // no axis line
         left.setDrawGridLines(false); // no grid lines
         left.setDrawZeroLine(true); // draw a zero line
-        set.setColor(Color.parseColor("#f7eeb2"));
+        set.setColor(Color.parseColor("#d5f6f8"));
         chartView.getAxisRight().setEnabled(false); // no right axis
         chartView.setData(data);
         chartView.setFitBars(true); // make the x-axis fit exactly all bars
