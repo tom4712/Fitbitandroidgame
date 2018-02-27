@@ -12,13 +12,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Move extends AppCompatActivity implements View.OnClickListener{
+
     long mNow;
-
-
-
-
-
     int num=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,3 +86,4 @@ public class Move extends AppCompatActivity implements View.OnClickListener{
 
 
 }
+
