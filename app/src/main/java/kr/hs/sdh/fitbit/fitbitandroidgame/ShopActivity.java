@@ -26,7 +26,7 @@ public class ShopActivity extends AppCompatActivity {
     int width;
     int height;
     char[] clothchar;
-    int sex = 1;
+    int sex = 0;
     int Coinresult = 0;
     private DBhelper db;
     private Cursor all_cursor;
@@ -45,11 +45,7 @@ public class ShopActivity extends AppCompatActivity {
 
         shopallback = findViewById(R.id.shopallback);
 
-        if(sex == 0){
-            shopallback.setBackgroundResource(R.drawable.shopbackgroundman);
-        }else if(sex == 1){
-            shopallback.setBackgroundResource(R.drawable.shopbagroundgirl);
-        }
+
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -78,6 +74,9 @@ public class ShopActivity extends AppCompatActivity {
 
         Cursul();
 
+        sex = Integer.parseInt(list.get(2));
+        Log.d("DB", "sex "+list.get(2) + "");
+
         try {
             if (Integer.parseInt(list.get(0)) == 0) {
                 db.updateCoin(100);
@@ -104,6 +103,12 @@ public class ShopActivity extends AppCompatActivity {
             imageView9.setImageResource(R.drawable.mat);
         }
 
+        if(sex == 0){
+            shopallback.setBackgroundResource(R.drawable.shopbackgroundman);
+        }else if(sex == 1){
+            shopallback.setBackgroundResource(R.drawable.shopbagroundgirl);
+        }
+
 
         try {
             if (Integer.parseInt(list.get(1)) == 0) {
@@ -114,6 +119,8 @@ public class ShopActivity extends AppCompatActivity {
         }
         Log.d("DB", list.get(0) + "");
         Coinresult = Integer.parseInt(list.get(0));
+        sex = Integer.parseInt(list.get(2));
+        Log.d("DB", "sex "+list.get(2) + "");
         //setCoinresult();
 
         Cursul();
@@ -123,6 +130,7 @@ public class ShopActivity extends AppCompatActivity {
         list.clear();
         Cursul();
         Cehcksetwaer();
+        SetCehck();
         setCoinTxv();
 
     }
@@ -144,6 +152,7 @@ public class ShopActivity extends AppCompatActivity {
                 Log.d("DB", "코인값받아옴");
                 list.add(all_cursor.getString(all_cursor.getColumnIndex("GARMENTS")));
                 Log.d("DB", "옷값받아옴");
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("SEX")));
                 if (!all_cursor.moveToNext())
                     break;
             } catch (Exception e) {
@@ -631,11 +640,30 @@ public class ShopActivity extends AppCompatActivity {
         String cloth = list.get(1);
         clothchar = cloth.toCharArray();
 
-        if(sex == 0){
-            for(int i = 0; i <= clothchar.length;i++){
-                if(i == 1|| i ==2 || i ==3 || i ==10 || i ==11||i==12||i == 13)
-                if (clothchar[i+1] == '2'){
-                    Setvibutton[i].setText("착용중");
+
+        for (int i = 1; i < clothchar.length; i++) {
+            if (sex == 0) {
+                if (i >= 1 && i <= 9) {
+                    if (clothchar[i] == '2') {
+                        Setvibutton[i - 1].setText("착용중");
+                        Log.d("DB", "착용했다!");
+                    }
+                    if (clothchar[i] == '1') {
+                        Setvibutton[i - 1].setText("착용");
+                        Log.d("DB", "착용했다!");
+                    }
+
+                }
+            }
+            if (sex == 1) {
+                if (i == 1 || i== 2|| i== 3|| i== 10|| i== 11|| i== 12|| i== 13|| i== 14|| i== 15) {
+                    if (clothchar[i] == '2') {
+                        Setvibutton[i - 1].setText("착용중");
+                    }
+                    if (clothchar[i] == '1') {
+                        Setvibutton[i - 1].setText("착용");
+                    }
+
                 }
             }
 
@@ -643,5 +671,9 @@ public class ShopActivity extends AppCompatActivity {
 
     }
 
+
+    public void back(View view){
+        finish();
+    }
 
 }

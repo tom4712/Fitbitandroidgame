@@ -1,5 +1,6 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,17 +13,21 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import kr.hs.sdh.fitbit.fitbitandroidgame.MainActivity;
+
 public class MapGame extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private LatLng myPosition;
-    private MarkerOptions myMarker, target;
+    private MarkerOptions myMarker;
+    private MarkerOptions[] target = new MarkerOptions[5];
 
     private gps gps;
 
     private SupportMapFragment mapFragment;
 
-    private double lastLat = 0, lastLon = 0, targetLat, targetLon, clearLat, clearLon;
+    private double lastLat = 0, lastLon = 0, clearLat, clearLon;
+    private double[] targetLat = new double[5], targetLon = new double[5];
 
     private boolean isFirst = true, isTarget;
 
@@ -78,17 +83,19 @@ public class MapGame extends FragmentActivity implements OnMapReadyCallback {
     }
 
     private void makeTarget() {
-        if ((int) (Math.random() * 2) == 1)
-            pointLat = (int) (Math.random() * 5) + 3;
-        else
-            pointLat = (int) (Math.random() * 5) - 8;
-        if ((int) (Math.random() * 2) == 1)
-            pointLon = (int) (Math.random() * 5) + 3;
-        else
-            pointLon = (int) (Math.random() * 5) - 8;
-        targetLat = lastLat + ((double) pointLat / 10000);
-        targetLon = lastLon + ((double) pointLon / 10000);
-        target = new MarkerOptions().position(new LatLng(targetLat, targetLon));
+        for(int i = 0; i < 5; i++) {
+            if ((int) (Math.random() * 2) == 1)
+                pointLat = (int) (Math.random() * 5) + 5;
+            else
+                pointLat = (int) (Math.random() * 5) - 10;
+            if ((int) (Math.random() * 2) == 1)
+                pointLon = (int) (Math.random() * 5) + 5;
+            else
+                pointLon = (int) (Math.random() * 5) - 10;
+            targetLat[i] = lastLat + ((double) pointLat / 10000);
+            targetLon[i] = lastLon + ((double) pointLon / 10000);
+            target[i] = new MarkerOptions().position(new LatLng(targetLat[i], targetLon[i]));
+        }
         Toast.makeText(getApplicationContext(), "타겟 생성", Toast.LENGTH_SHORT).show();
         isTarget = false;
     }
@@ -106,16 +113,21 @@ public class MapGame extends FragmentActivity implements OnMapReadyCallback {
         if (isTarget)
             makeTarget();
         else{
-            clearLat = (targetLat - lastLat) * 10000;
-            clearLon = (targetLon - lastLon) * 10000;
+            for(int i = 0; i < 5; i++) {
+                clearLat = (targetLat[i] - lastLat) * 10000;
+                clearLon = (targetLon[i] - lastLon) * 10000;
 
-            Log.i("clear", clearLat+"  "+clearLon);
-
-            if (clearLon + clearLat <= 2 && clearLon + clearLat >= -2)
+                if (clearLon + clearLat <= 2 && clearLon + clearLat >= -2){
+                    Intent i1 = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(i1);
+                    finish();
+                }
                 Toast.makeText(this, "clear", Toast.LENGTH_SHORT).show();
+            }
         }
 
         if (target != null)
-            this.mMap.addMarker(target).showInfoWindow();
+            for(int i = 0; i < 5; i++)
+                this.mMap.addMarker(target[i]).showInfoWindow();
     }
 }

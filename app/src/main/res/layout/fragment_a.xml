@@ -7,11 +7,204 @@
     <LinearLayout
         android:layout_width="140dp"
         android:layout_gravity="center"
-
+        android:id="@+id/mainchar"
         android:layout_marginTop="30dp"
-        android:background="#585858"
+        android:background="@drawable/maincharm"
         android:layout_height="180dp"
-      ></LinearLayout>
+        android:orientation="horizontal"
+      >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/head1"
+                android:layout_margin="32dp"
+                android:paddingBottom="45dp"
+                android:src="@drawable/gongo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/head2"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="29dp"
+                android:layout_marginBottom="29dp"
+                android:paddingBottom="65dp"
+                android:src="@drawable/gongt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            //남자 바지
+
+                <ImageView
+                    android:visibility="invisible"
+                    android:id="@+id/bottomm1"
+                    android:paddingBottom="13dp"
+                    android:paddingLeft="35dp"
+                    android:paddingRight="35dp"
+                    android:paddingTop="120dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mao"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/bottomm2"
+                android:visibility="invisible"
+                android:paddingBottom="13dp"
+                android:paddingRight="39dp"
+                android:paddingLeft="39dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/mat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/bottomm3"
+                android:visibility="invisible"
+                android:paddingBottom="13dp"
+                android:paddingRight="39dp"
+                android:paddingLeft="39dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/manaeee"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            //여자 바지
+
+            <ImageView
+                android:id="@+id/bottomg1"
+                android:visibility="invisible"
+                android:paddingBottom="13dp"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/mao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/bottomg2"
+                android:visibility="invisible"
+                android:paddingBottom="13dp"
+                android:paddingRight="39dp"
+                android:paddingLeft="39dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/mat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/bottomg3"
+                android:visibility="invisible"
+                android:paddingBottom="13dp"
+                android:paddingRight="38dp"
+                android:paddingLeft="38dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/manawww"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+
+
+
+
+            //티
+
+            <ImageView
+                android:id="@+id/topm1"
+                android:visibility="invisible"
+                android:paddingTop="35dp"
+                android:paddingRight="1.5dp"
+                android:paddingLeft="1.5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginLeft="23dp"
+                android:src="@drawable/go"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/topman2"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="21.5dp"
+                android:layout_marginRight="21.5dp"
+                android:paddingLeft="1.5dp"
+                android:paddingRight="1.5dp"
+                android:paddingTop="85dp"
+                android:paddingBottom="55dp"
+                android:src="@drawable/gt"
+                android:visibility="invisible" />
+            <ImageView
+                android:id="@+id/topman3"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="26.5dp"
+                android:layout_marginRight="26.5dp"
+                android:paddingLeft="1.5dp"
+                android:paddingRight="1.5dp"
+                android:paddingTop="85dp"
+                android:paddingBottom="50dp"
+                android:src="@drawable/gs"
+                android:visibility="invisible" />
+            //여티
+            <ImageView
+                android:id="@+id/topg1"
+                android:visibility="invisible"
+                android:paddingTop="35dp"
+                android:paddingRight="1.5dp"
+                android:paddingLeft="1.5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginLeft="23dp"
+                android:src="@drawable/go"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/topg2"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="21.5dp"
+                android:layout_marginRight="21.5dp"
+                android:paddingLeft="1.5dp"
+                android:paddingRight="1.5dp"
+                android:paddingTop="85dp"
+                android:paddingBottom="55dp"
+                android:src="@drawable/gt"
+                android:visibility="invisible" />
+            <ImageView
+                android:id="@+id/topg3"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="26.5dp"
+                android:layout_marginRight="26.5dp"
+                android:paddingLeft="1.5dp"
+                android:paddingRight="1.5dp"
+                android:paddingTop="85dp"
+                android:paddingBottom="50dp"
+                android:src="@drawable/gr"
+                android:visibility="invisible" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/char_Name"

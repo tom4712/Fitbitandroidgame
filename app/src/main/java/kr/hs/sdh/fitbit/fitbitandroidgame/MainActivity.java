@@ -29,6 +29,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     View container;
@@ -40,11 +41,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String dbName = "coin.db";
     int dbVersion = 1;
     private DBhelper dbhelper;
-
+    private DBhelper db;
+    private ArrayList<String> list = new ArrayList();
 
     private Cursor all_cursor;
 
-    private LinearLayout mainView, settingView;
+    private LinearLayout mainView, settingView,Mainchar;
 
     private TextView Coin, charName, versionInfo;
     private Button Share, thrSec, Game, Shop, Inventory, Cafe, characterDetails, accountManagement, goMain;
@@ -177,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 oo(view);
                 break;
             case R.id.Game:
-                Intent intent1 = new Intent(getApplicationContext(), fitbitAR.class);
+                Intent intent1 = new Intent(getApplicationContext(), MapGame.class);
                 startActivity(intent1);
                 break;
             case R.id.Shop:
@@ -194,6 +196,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.characterDetails:
+                i = new Intent(getApplicationContext(), Charsetting.class);
+                startActivity(i);
                 break;
             case R.id.goMain:
                 thrSec.setClickable(true);
@@ -263,6 +267,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.setType("image/*");
         startActivity(Intent.createChooser(intent,"공유"));
     }
+
+    public void Cursul() {
+        list.clear();
+        db = new DBhelper(this);
+        db.open();
+        all_cursor = db.AllRows();
+        all_cursor.moveToFirst();
+        while (true) {
+            try {
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("COIN")));
+                Log.d("DB", "코인값받아옴");
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("SEX")));
+                if (!all_cursor.moveToNext())
+                    break;
+            } catch (Exception e) {
+
+            }
+
+        }
+    }
+
+    public void setcharback(){
+        Mainchar = findViewById(R.id.mainchar);
+        if(Integer.parseInt(list.get(0)) == 0){
+
+            Mainchar.setBackgroundResource(R.drawable.maincharm);
+        }
+        if (Integer.parseInt(list.get(1)) == 1)
+        {
+            Mainchar.setBackgroundResource(R.drawable.maincharg);
+        }
+    }
+
+    public void Wearitem(){
+
+    }
+
 }
 
 
