@@ -42,7 +42,7 @@
                 android:textColor="#53cacf"
                 android:layout_marginLeft="70dp"
                 android:layout_marginTop="34dp"
-                android:text="일주일 운동 영상"
+                android:text="30초 운동"
 
 
                 android:textSize="24dp" />
