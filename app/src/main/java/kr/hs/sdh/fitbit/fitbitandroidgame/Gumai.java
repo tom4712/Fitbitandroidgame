@@ -28,7 +28,7 @@ public class Gumai extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gumai);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
 
         Log.d("POPUP", "내가 떳따!");
 
@@ -193,7 +193,7 @@ public class Gumai extends Activity {
             for (int i = 0; i < clothchar.length; i++) {
                 input += Character.toString(clothchar[i]);
             }
-            Log.d("DB", price+" 원");
+            Log.d("DB", price + " 원");
 
             db.updateGarments(input);
             Log.d("DB", "DB 옷 값임" + input);

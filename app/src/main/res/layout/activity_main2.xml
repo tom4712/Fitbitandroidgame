@@ -282,5 +282,152 @@
                     android:background="#00111111"/>
             </RelativeLayout>
         </LinearLayout>
+
     </LinearLayout>
+    <LinearLayout
+        android:layout_height="match_parent"
+    android:layout_width="match_parent"
+        android:visibility="invisible"
+        android:id="@+id/gameList">
+
+    <RelativeLayout
+
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="#CC111111">
+
+
+
+        <LinearLayout
+            android:clickable="false"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#26bdc2"
+                android:text="게임"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="#fff"/>
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_height="120dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/ox_quiz_icon"/>
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:textSize="13dp"
+                    android:text="OX퀴즈"/>
+                </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00ff0000"
+                    android:id="@+id/ox_question_move"/>
+            </FrameLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="horizontal">
+            <FrameLayout
+                android:layout_width="80dp"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_height="120dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/map_icon"/>
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:textSize="13dp"
+                        android:text="지도 게임"/>
+                </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00ff0000"
+                    android:id="@+id/map_move"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+               android:layout_marginLeft="80dp"
+                android:layout_height="120dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/ar_icon"/>
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:textSize="13dp"
+                        android:text="AR 게임"/>
+                </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00ff0000"
+                    android:id="@+id/ar_move"/>
+            </FrameLayout>
+
+</LinearLayout>
+<View android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_weight="1"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="닫기"
+            android:background="#A4A4A4"
+            android:id="@+id/close"
+            android:textSize="20dp"
+            android:gravity="center"
+
+            android:textColor="#fff"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+    </LinearLayout>
+
 </FrameLayout>

@@ -31,6 +31,13 @@ public class result_activity extends AppCompatActivity {
         back_button = (Button) findViewById(R.id.back_id);
         listView = (ListView) findViewById(R.id.data_list);
         list_itemArrayList_step = new ArrayList<list_item>();
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         question res = new question();
         Intent intent = getIntent();
         int num = intent.getIntExtra("currect_num", 0);

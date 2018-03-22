@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="kr.hs.sdh.fitbit.fitbitandroidgame">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -30,14 +21,12 @@
     <uses-feature
         android:name="android.hardware.camera.front.autofocus"
         android:required="false" />
-
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="true"
         android:resizeable="true"
         android:smallScreens="true" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -56,14 +45,16 @@
                 android:resource="@xml/file_path" />
         </provider>
 
-        <activity android:name=".Splash" />
-        <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.Light">
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light"></activity>
         <activity
             android:name=".fitbitAR"
             android:configChanges="keyboardHidden|orientation"
@@ -72,35 +63,20 @@
         <activity android:name=".ShopActivity" />
         <activity android:name=".profileManagement" />
         <activity android:name=".Move" />
-        <activity android:name=".Movie2">
-
-        </activity>
-        <activity android:name=".Movie">
-
-        </activity>
-        <activity android:name=".Movie3">
-
-        </activity>
-        <activity android:name=".Movie4">
-
-        </activity>
-        <activity android:name=".Movie5">
-
-        </activity>
-        <activity android:name=".Movie6">
-
-        </activity>
-        <activity android:name=".Movie7">
-
-        </activity>
-
+        <activity android:name=".Movie2"></activity>
+        <activity android:name=".Movie"></activity>
+        <activity android:name=".Movie3"></activity>
+        <activity android:name=".Movie4"></activity>
+        <activity android:name=".Movie5"></activity>
+        <activity android:name=".Movie6"></activity>
+        <activity android:name=".Movie7"></activity>
         <activity
             android:name=".Share"
             android:theme="@android:style/Theme.Dialog" />
         <activity
-            android:name=".Gumai"
+        android:name=".Gumai"
 
-            android:theme="@android:style/Theme.Dialog" />
+        android:theme="@style/AppTheme3" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -108,6 +84,7 @@
 
         <activity android:name=".clear" />
         <activity android:name=".MapGame" />
+        <activity android:name=".Charsetting"></activity>
     </application>
 
 </manifest>

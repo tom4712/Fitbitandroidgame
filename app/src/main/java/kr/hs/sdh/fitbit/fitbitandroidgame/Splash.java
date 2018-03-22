@@ -2,10 +2,12 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -46,26 +48,14 @@ public class Splash extends AppCompatActivity {
     final Context context = this;
     TextView text;
     private LinearLayout layout;
-
+    public static String name="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        ImageView iv = (ImageView) findViewById(R.id.load_img);
-        final AnimationDrawable drawable =
-                (AnimationDrawable) iv.getBackground();
 
-        if (drawable.isRunning()) { // 동작중일 경우
-            // 멈추기
-            drawable.stop();
-
-        } else { // 멈춰있는 경우
-            // 동작 개시하기
-            drawable.start(); // 애니메이션 동작 개시
-
-        }
         layout = (LinearLayout) findViewById(R.id.show_lay);
         mWebView = (WebView) findViewById(R.id.activity_main_webview);
         text = (TextView) findViewById(R.id.text);
@@ -102,25 +92,39 @@ public class Splash extends AppCompatActivity {
                     layout.setVisibility(View.VISIBLE);
                     urlPath = url;
 
+
                     try {
                         res = new HttpTask().execute().get();
-                        int idx = res.indexOf("|");
-                        if (idx != -1) {
-                            String name = res.substring(0, idx);
-                            text.setText(name + "님 환영합니다");
 
+                  //  res= "이승현|MALE#{\"activities-steps\":[{\"dateTime\":\"2018-02-20\",\"value\":\"7950\"},{\"dateTime\":\"2018-02-21\",\"value\":\"14513\"},{\"dateTime\":\"2018-02-22\",\"value\":\"13020\"},{\"dateTime\":\"2018-02-23\",\"value\":\"7788\"},{\"dateTime\":\"2018-02-24\",\"value\":\"8425\"},{\"dateTime\":\"2018-02-25\",\"value\":\"7209\"},{\"dateTime\":\"2018-02-26\",\"value\":\"807\"}]}@{\"activities-calories\":[{\"dateTime\":\"2018-02-20\",\"value\":\"3038\"},{\"dateTime\":\"2018-02-21\",\"value\":\"3575\"},{\"dateTime\":\"2018-02-22\",\"value\":\"3509\"},{\"dateTime\":\"2018-02-23\",\"value\":\"3053\"},{\"dateTime\":\"2018-02-24\",\"value\":\"2934\"},{\"dateTime\":\"2018-02-25\",\"value\":\"2872\"},{\"dateTime\":\"2018-02-26\",\"value\":\"1513\"}]}";
+                            int idx = res.indexOf("|");
+                            if (idx != -1) {
+                                name = res.substring(0, idx);
+                            text.setText(name + "님 환영합니다");
+                                Handler mHandler = new Handler();
+                                mHandler.postDelayed(new Runnable()
+                                {
+                                    @Override     public void run()
+                                    {
+                                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                                        intent.putExtra("json_value",res);
+                                        startActivity(intent);
+                                        finish();
+
+                                    }
+                                }, 3000);
 
                         } else {
                             mWebView.loadUrl("http://tlgj255.cafe24.com/fitbit/index.php");
 
                         }
-
-
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     }
+
+
 
                 }
 

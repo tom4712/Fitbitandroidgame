@@ -641,31 +641,31 @@ public class ShopActivity extends AppCompatActivity {
         clothchar = cloth.toCharArray();
 
 
-            for (int i = 1; i < clothchar.length; i++) {
-                if (sex == 0) {
-                    if (i >= 1 && i <= 9) {
-                        if (clothchar[i] == '2') {
-                            Setvibutton[i - 1].setText("착용중");
-                            Log.d("DB", "착용했다!");
-                        }
-                        if (clothchar[i] == '1') {
-                            Setvibutton[i - 1].setText("착용");
-                            Log.d("DB", "착용했다!");
-                        }
-
+        for (int i = 1; i < clothchar.length; i++) {
+            if (sex == 0) {
+                if (i >= 1 && i <= 9) {
+                    if (clothchar[i] == '2') {
+                        Setvibutton[i - 1].setText("착용중");
+                        Log.d("DB", "착용했다!");
                     }
-                }
-                if (sex == 1) {
-                    if (i == 1 || i== 2|| i== 3|| i== 10|| i== 11|| i== 12|| i== 13|| i== 14|| i== 15) {
-                        if (clothchar[i] == '2') {
-                            Setvibutton[i - 1].setText("착용중");
-                        }
-                        if (clothchar[i] == '1') {
-                            Setvibutton[i - 1].setText("착용");
-                        }
-
+                    if (clothchar[i] == '1') {
+                        Setvibutton[i - 1].setText("착용");
+                        Log.d("DB", "착용했다!");
                     }
+
                 }
+            }
+            if (sex == 1) {
+                if (i == 1 || i== 2|| i== 3|| i== 10|| i== 11|| i== 12|| i== 13|| i== 14|| i== 15) {
+                    if (clothchar[i] == '2') {
+                        Setvibutton[i - 1].setText("착용중");
+                    }
+                    if (clothchar[i] == '1') {
+                        Setvibutton[i - 1].setText("착용");
+                    }
+
+                }
+            }
 
         }
 
