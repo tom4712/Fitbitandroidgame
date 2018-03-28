@@ -1,5 +1,6 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.media.MediaPlayer;
@@ -18,7 +19,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class Movie5 extends AppCompatActivity {
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
+
+public class Movie5 extends YouTubeBaseActivity {
     LinearLayout linearLayout;
     LinearLayout linearLayout2;
     private DBhelper db;
@@ -27,10 +33,10 @@ public class Movie5 extends AppCompatActivity {
     int num2;
     ScrollView relativeLayout;
     VideoView vv;
-    ProgressBar progressBar;
+    ProgressBar progressBar;  YouTubePlayer.OnInitializedListener listener;
     int progress=0;
     int i;
-    Thread thread;
+    Thread thread;    YouTubePlayerView youTubeView;
     ImageButton button1 ;
     int num=0;
     Handler handler;
@@ -38,6 +44,7 @@ public class Movie5 extends AppCompatActivity {
     TextView percent;
     AlertDialog.Builder dialog;
     boolean isPlaying = false;
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +53,7 @@ public class Movie5 extends AppCompatActivity {
         num2  = intent.getExtras().getInt("num");
 
         resultDB();
-
+        youTubeView =     (YouTubePlayerView) findViewById(R.id.youtubeView);
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
         linearLayout = (LinearLayout)findViewById(R.id.RRr);
@@ -54,43 +61,49 @@ public class Movie5 extends AppCompatActivity {
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
 
-        String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m5;
+        listener = new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                youTubePlayer.loadVideo("uUP2ueOtUDk");
+            }
 
-        vv = (VideoView) findViewById(R.id.vv);
-
-        vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-
-            // 동영상 재생이 완료된후 호출되는 메서드
-            public void onCompletion(MediaPlayer player) {
-
-
-                if(num2>=3){
-
-                    Toast.makeText(getApplicationContext(), "5번 이상 시청하셨습니다",
-                            Toast.LENGTH_LONG).show();
-
-                }
-                if(num2<3){
-
-
-                    Toast.makeText(getApplicationContext(), "완료보상으로 5코인이 지급되었습니다!",
-
-                            Toast.LENGTH_LONG).show();
-
-
-                    db.updateCoin(coinresult + 1);
-                }
-
-                finish();
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
 
             }
-        });
-        Uri uri = Uri.parse(uriPath);
+        };
+//
+//        vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//
+//            // 동영상 재생이 완료된후 호출되는 메서드
+//            public void onCompletion(MediaPlayer player) {
+//
+//
+//                if(num2>=3){
+//
+//                    Toast.makeText(getApplicationContext(), "5번 이상 시청하셨습니다",
+//                            Toast.LENGTH_LONG).show();
+//
+//                }
+//                if(num2<3){
+//
+//
+//                    Toast.makeText(getApplicationContext(), "완료보상으로 5코인이 지급되었습니다!",
+//
+//                            Toast.LENGTH_LONG).show();
+//
+//
+//                    db.updateCoin(coinresult + 1);
+//                }
+//
+//                finish();
+//
+//            }
+//        });
 
-        vv.setVideoURI(uri);
         button1 = findViewById(R.id.stop);
         button2 = findViewById(R.id.play);
-        vv.requestFocus();
+
 
 
     }
@@ -112,13 +125,13 @@ public class Movie5 extends AppCompatActivity {
 
 
         if (view.getId() == R.id.stop) {
-            vv.pause();
+
 
             button2.setVisibility(View.VISIBLE);
             button1.setVisibility(View.INVISIBLE);
         }
         if (view.getId() == R.id.play) {
-            vv.start();
+            youTubeView.initialize("AIzaSyAi6zpxpA00Yk3_VJNDzIveO7k_q_fV_mc",listener);
 
             button1.setVisibility(View.VISIBLE);
             button2.setVisibility(View.INVISIBLE);

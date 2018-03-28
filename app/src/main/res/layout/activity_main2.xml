@@ -415,6 +415,7 @@
             android:text="닫기"
             android:background="#A4A4A4"
             android:id="@+id/close"
+            android:onClick="onClick"
             android:textSize="20dp"
             android:gravity="center"
 
