@@ -60,7 +60,7 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="landscape" />
         <activity android:name=".CommunityActivity" />
-        <activity android:name=".ShopActivity" />
+        <activity android:name=".ShopActivity" android:theme="@style/AppTheme4"/>
         <activity android:name=".profileManagement" />
         <activity android:name=".Move" />
         <activity android:name=".Movie2"></activity>
