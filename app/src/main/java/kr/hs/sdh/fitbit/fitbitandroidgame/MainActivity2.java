@@ -204,6 +204,8 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 Shop.setClickable(true);
                 settingView.setVisibility(View.GONE);
                 break;
+
+
         }
     }
 

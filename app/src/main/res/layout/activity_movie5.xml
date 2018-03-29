@@ -136,12 +136,13 @@
                             android:text="5원"
                             android:textSize="20dp" />
                     </RelativeLayout>
-                    <VideoView
+                    <View
                         android:layout_width="match_parent"
                         android:layout_margin="10dp"
-                        android:id="@+id/vv"
-                        android:layout_height="200dp" />
+                        android:id="@+id/youtubeView"
 
+                        class="com.google.android.youtube.player.YouTubePlayerView"
+                        android:layout_height="200dp" />
 
                 </LinearLayout>
 

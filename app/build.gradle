@@ -37,4 +37,5 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     compile 'com.eyalbira.loadingdots:loading-dots:1.0.2'
     implementation project(':openCVLibrary340')
+    implementation files('lib/YouTubeAndroidPlayerApi.jar')
 }

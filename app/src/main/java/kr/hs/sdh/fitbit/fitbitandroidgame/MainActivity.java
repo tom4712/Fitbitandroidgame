@@ -47,18 +47,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout mainView, settingView , gameList;
 
     private TextView Coin, charName, versionInfo;
+
     private Button Share, thrSec, Game, Shop, Inventory, Cafe, characterDetails, accountManagement, goMain;
+
     private ImageButton Settings;
+
     private Switch mSwitch;
 
+
     Toolbar myToolbar;
+
     ViewPager viewPager = null;
+
     TextView a;
+
     private final long FINISH_INTERVAL_TIME = 2000;
 
     private long backPressedTime = 0;
 
     @Override
+
     public void onBackPressed() {
         long tempTime = System.currentTimeMillis();
         long intervalTime = tempTime - backPressedTime;
@@ -186,6 +194,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Shop.setClickable(false);
 
                 gameList.setVisibility(View.VISIBLE);
+                break;
+            case R.id.close:
+                gameList.setVisibility(View.INVISIBLE);
                 break;
             case R.id.Shop:
                 i = new Intent(getApplicationContext(), ShopActivity.class);

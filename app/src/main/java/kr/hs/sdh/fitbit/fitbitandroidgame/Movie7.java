@@ -1,5 +1,6 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.media.MediaPlayer;
@@ -18,7 +19,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class Movie7 extends AppCompatActivity {
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
+
+public class Movie7 extends YouTubeBaseActivity {
     LinearLayout linearLayout;
     LinearLayout linearLayout2;
     private DBhelper db;
@@ -27,8 +33,8 @@ public class Movie7 extends AppCompatActivity {
     int num2;
     ScrollView relativeLayout;
     VideoView vv;
-    ProgressBar progressBar;
-    int progress=0;
+    ProgressBar progressBar;  YouTubePlayer.OnInitializedListener listener;
+    int progress=0;    YouTubePlayerView youTubeView;
     int i;
     Thread thread;
     ImageButton button1 ;
@@ -38,58 +44,66 @@ public class Movie7 extends AppCompatActivity {
     TextView percent;
     AlertDialog.Builder dialog;
     boolean isPlaying = false;
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie7);
 
         resultDB();
-
+        youTubeView =     (YouTubePlayerView) findViewById(R.id.youtubeView);
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
         linearLayout = (LinearLayout)findViewById(R.id.RRr);
         linearLayout2=(LinearLayout)findViewById(R.id.gon);
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
         Intent intent = getIntent();
-        String num = intent.getStringExtra("num");
-
-        String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m7;
-
-        vv = (VideoView) findViewById(R.id.vv);
-
-        vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-
-            // 동영상 재생이 완료된후 호출되는 메서드
-            public void onCompletion(MediaPlayer player) {
 
 
-                if(num2>=3){
+        listener = new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                youTubePlayer.loadVideo("rUy7kH-nzj4");
+            }
 
-                    Toast.makeText(getApplicationContext(), "3번 이상 시청하셨습니다",
-                            Toast.LENGTH_LONG).show();
-
-                }
-                if(num2<3){
-
-
-                    Toast.makeText(getApplicationContext(), "완료보상으로 7코인이 지급되었습니다!",
-
-                            Toast.LENGTH_LONG).show();
-
-
-                    db.updateCoin(coinresult + 7);
-                }
-
-                finish();
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
 
             }
-        });
-        Uri uri = Uri.parse(uriPath);
+        };
+//
+//        vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//
+//            // 동영상 재생이 완료된후 호출되는 메서드
+//            public void onCompletion(MediaPlayer player) {
+//
+//
+//                if(num2>=3){
+//
+//                    Toast.makeText(getApplicationContext(), "3번 이상 시청하셨습니다",
+//                            Toast.LENGTH_LONG).show();
+//
+//                }
+//                if(num2<3){
+//
+//
+//                    Toast.makeText(getApplicationContext(), "완료보상으로 7코인이 지급되었습니다!",
+//
+//                            Toast.LENGTH_LONG).show();
+//
+//
+//                    db.updateCoin(coinresult + 7);
+//                }
+//
+//                finish();
+//
+//            }
+//        });
 
-        vv.setVideoURI(uri);
+
+
         button1 = findViewById(R.id.stop);
         button2 = findViewById(R.id.play);
-        vv.requestFocus();
 
 
     }
@@ -111,13 +125,12 @@ public class Movie7 extends AppCompatActivity {
 
 
         if (view.getId() == R.id.stop) {
-            vv.pause();
 
             button2.setVisibility(View.VISIBLE);
             button1.setVisibility(View.INVISIBLE);
         }
         if (view.getId() == R.id.play) {
-            vv.start();
+            youTubeView.initialize("AIzaSyAi6zpxpA00Yk3_VJNDzIveO7k_q_fV_mc",listener);
 
             button1.setVisibility(View.VISIBLE);
             button2.setVisibility(View.INVISIBLE);

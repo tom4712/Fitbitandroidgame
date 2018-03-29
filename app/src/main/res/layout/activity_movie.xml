@@ -121,8 +121,6 @@
                             android:textSize="30dp" />
 
 
-
-                        출처: http://liveonthekeyboard.tistory.com/129 [키위남]
                         <ImageView
                             android:layout_width="25dp"
                             android:layout_height="25dp"
@@ -139,10 +137,12 @@
                             android:text="1원"
                             android:textSize="20dp" />
                     </RelativeLayout>
-                    <VideoView
+                    <View
                         android:layout_width="match_parent"
                         android:layout_margin="10dp"
-                        android:id="@+id/vv"
+                        android:id="@+id/youtubeView"
+
+                        class="com.google.android.youtube.player.YouTubePlayerView"
                         android:layout_height="200dp" />
 
 
@@ -267,7 +267,7 @@
                             android:onClick="onClick"
                             android:src="@drawable/playpaly"
                             android:background="#00ff0000"
-                            android:id="@+id/play"
+                            android:id="@+id/youtubebutton"
                             />
                         <ImageButton
                             android:layout_width="90dp"

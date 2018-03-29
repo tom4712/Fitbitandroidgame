@@ -1,5 +1,6 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.media.MediaPlayer;
@@ -20,12 +21,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
+
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Movie extends AppCompatActivity implements View.OnClickListener{
+public class Movie extends YouTubeBaseActivity implements View.OnClickListener{
 
     long mNow;
 
@@ -46,7 +52,7 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
 
     ScrollView relativeLayout;
 
-    VideoView vv;
+
 
     ProgressBar progressBar;
 
@@ -57,7 +63,9 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
     Thread thread;
 
     ImageButton button1 ;
-
+    YouTubePlayerView youTubeView;
+    View view;
+    YouTubePlayer.OnInitializedListener listener;
     int num=0;
     LinearLayout linearLayout;
     LinearLayout linearLayout2;
@@ -70,6 +78,7 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
     AlertDialog.Builder dialog;
 
     boolean isPlaying = false;
+    @SuppressLint("WrongViewCast")
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +87,7 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
         Intent intent = getIntent();
          num2  = intent.getExtras().getInt("num");
 
+      youTubeView =     (YouTubePlayerView) findViewById(R.id.youtubeView);
 
         setContentView(R.layout.activity_movie);
         resultDB();
@@ -96,44 +106,21 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
 
-        String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.m1;
 
-        vv = (VideoView) findViewById(R.id.vv);
+        listener = new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                youTubePlayer.loadVideo("IZJwvlPioQs");
+            }
 
-        vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-
-            // 동영상 재생이 완료된후 호출되는 메서드
-            public void onCompletion(MediaPlayer player) {
-
-
-                if(num2>=3){
-
-                    Toast.makeText(getApplicationContext(), "3번 이상 시청하셨습니다",
-                    Toast.LENGTH_LONG).show();
-
-                }
-                if(num2<3){
-
-
-                    Toast.makeText(getApplicationContext(), "완료보상으로 1코인이 지급되었습니다!",
-
-                            Toast.LENGTH_LONG).show();
-
-
-                    db.updateCoin(coinresult + 1);
-                }
-
-                finish();
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
 
             }
-        });
-        Uri uri = Uri.parse(uriPath);
+        };
 
-        vv.setVideoURI(uri);
+
         button1 = findViewById(R.id.stop);
-        button2 = findViewById(R.id.play);
-        vv.requestFocus();
-
 
     }
     public void onClick(View view) {
@@ -158,13 +145,11 @@ public class Movie extends AppCompatActivity implements View.OnClickListener{
 
 
         if (view.getId() == R.id.stop) {
-            vv.pause();
-
             button2.setVisibility(View.VISIBLE);
             button1.setVisibility(View.INVISIBLE);
         }
         if (view.getId() == R.id.play) {
-            vv.start();
+           youTubeView.initialize("AIzaSyAi6zpxpA00Yk3_VJNDzIveO7k_q_fV_mc",listener);
 
             button1.setVisibility(View.VISIBLE);
             button2.setVisibility(View.INVISIBLE);
