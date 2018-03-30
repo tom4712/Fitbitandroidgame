@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -21,12 +24,14 @@
     <uses-feature
         android:name="android.hardware.camera.front.autofocus"
         android:required="false" />
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="true"
         android:resizeable="true"
         android:smallScreens="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -54,29 +59,30 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light"></activity>
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".fitbitAR"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="landscape" />
         <activity android:name=".CommunityActivity" />
-        <activity android:name=".ShopActivity" android:theme="@style/AppTheme4"/>
+        <activity
+            android:name=".ShopActivity"
+            android:theme="@style/AppTheme4" />
         <activity android:name=".profileManagement" />
         <activity android:name=".Move" />
-        <activity android:name=".Movie2"></activity>
-        <activity android:name=".Movie"></activity>
-        <activity android:name=".Movie3"></activity>
-        <activity android:name=".Movie4"></activity>
-        <activity android:name=".Movie5"></activity>
-        <activity android:name=".Movie6"></activity>
-        <activity android:name=".Movie7"></activity>
+        <activity android:name=".Movie2" />
+        <activity android:name=".Movie" />
+        <activity android:name=".Movie3" />
+        <activity android:name=".Movie4" />
+        <activity android:name=".Movie5" />
+        <activity android:name=".Movie6" />
+        <activity android:name=".Movie7" />
         <activity
             android:name=".Share"
             android:theme="@android:style/Theme.Dialog" />
         <activity
-        android:name=".Gumai"
-
-        android:theme="@style/AppTheme3" />
+            android:name=".Gumai"
+            android:theme="@style/AppTheme3" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -84,7 +90,11 @@
 
         <activity android:name=".clear" />
         <activity android:name=".MapGame" />
-        <activity android:name=".Charsetting"></activity>
+        <activity android:name=".Charsetting" />
+        <activity android:name=".beforeGPS" />
+
+        <receiver
+            android:name=".BroadcastD"></receiver>
     </application>
 
 </manifest>

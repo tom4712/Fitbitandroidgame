@@ -1,6 +1,7 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,11 +33,17 @@ public class MapGame extends FragmentActivity implements OnMapReadyCallback {
     private boolean isFirst = true, isTarget;
 
     private int pointLat, pointLon;
+    private SharedPreferences ifIsFIrst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_game);
+        ifIsFIrst = getSharedPreferences("MapGameFirst",0);
+        if(ifIsFIrst.getBoolean("MapGameFirst",true)){
+            Intent i = new Intent(getApplicationContext(), beforeGPS.class);
+            startActivity(i);
+        }
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
