@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
-import android.renderscript.Short4;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +26,6 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,26 +34,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
     String adrss = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + formatter+"capture.jpeg";
 
-    private String sql;
-    private String dbName = "coin.db";
-    int dbVersion = 1;
     private DBhelper dbhelper;
 
 
     private Cursor all_cursor;
 
-    private LinearLayout mainView, settingView , gameList;
+    private LinearLayout settingView , gameList;
 
-    private TextView Coin, charName, versionInfo;
+    private TextView Coin;
 
-    private Button Share, thrSec, Game, Shop, Inventory, Cafe, characterDetails, accountManagement, goMain;
+    private Button Share, thrSec, Game, Shop, Cafe, characterDetails, accountManagement, goMain, ox_question_move, map_move, ar_move;
 
     private ImageButton Settings;
 
     private Switch mSwitch;
-
-
-    Toolbar myToolbar;
 
     ViewPager viewPager = null;
 
@@ -73,10 +65,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (settingView.getVisibility() == View.VISIBLE) {
             thrSec.setClickable(true);
             Game.setClickable(true);
-            Inventory.setClickable(true);
             Shop.setClickable(true);
             settingView.setVisibility(View.GONE);
-        } else if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
+        } else if(gameList.getVisibility() == View.VISIBLE) {
+            thrSec.setClickable(true);
+            Game.setClickable(true);
+            Shop.setClickable(true);
+            gameList.setVisibility(View.GONE);
+
+        }else if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
             super.onBackPressed();
         } else {
             backPressedTime = tempTime;
@@ -105,8 +102,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             dbhelper.updateCoin(5);
         }
         setCustomActionBar();
-        viewPager = (ViewPager)findViewById(R.id.viewpager);
-        a = (TextView)findViewById(R.id.text_back);
+        viewPager = findViewById(R.id.viewpager);
+        a = findViewById(R.id.text_back);
         a.setText("133");
         MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -169,7 +166,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
 
         switch (view.getId()) {
-
+            case R.id.ar_move:
+            Intent i = new Intent(getApplicationContext(), fitbitAR.class);
+            startActivity(i);
+            break;
+            case R.id.ox_question_move:
+                Intent i2 = new Intent(getApplicationContext(), question.class);
+                startActivity(i2);
+                break;
+            case R.id.map_move:
+                Intent i3 = new Intent(getApplicationContext(), MapGame.class);
+                startActivity(i3);
+                break;
             case R.id.Settings:
                 thrSec.setClickable(false);
                 Game.setClickable(false);
@@ -179,8 +187,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.thrSec:
-                Intent i = new Intent(getApplicationContext(), Move.class);
-                startActivity(i);
+                Intent i4 = new Intent(getApplicationContext(), Move.class);
+                startActivity(i4);
                 break;
             case R.id.Share:
                 oo(view);
@@ -196,6 +204,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gameList.setVisibility(View.VISIBLE);
                 break;
             case R.id.close:
+                thrSec.setClickable(true);
+                Game.setClickable(true);
+                Share.setClickable(true);
+                Shop.setClickable(true);
+
                 gameList.setVisibility(View.INVISIBLE);
                 break;
             case R.id.Shop:
