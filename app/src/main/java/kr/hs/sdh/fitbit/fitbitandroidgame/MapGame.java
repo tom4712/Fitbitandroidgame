@@ -33,17 +33,11 @@ public class MapGame extends FragmentActivity implements OnMapReadyCallback {
     private boolean isFirst = true, isTarget;
 
     private int pointLat, pointLon;
-    private SharedPreferences ifIsFIrst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_game);
-        ifIsFIrst = getSharedPreferences("MapGameFirst",0);
-        if(ifIsFIrst.getBoolean("MapGameFirst",true)){
-            Intent i = new Intent(getApplicationContext(), beforeGPS.class);
-            startActivity(i);
-        }
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -129,7 +123,6 @@ public class MapGame extends FragmentActivity implements OnMapReadyCallback {
                     startActivity(i1);
                     finish();
                 }
-                Toast.makeText(this, "clear", Toast.LENGTH_SHORT).show();
             }
         }
 
