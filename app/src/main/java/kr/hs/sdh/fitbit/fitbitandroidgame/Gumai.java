@@ -91,6 +91,7 @@ public class Gumai extends Activity {
         if (sex == 0) {//남자
             if (Coinresult < price) {
                 Toast.makeText(Gumai.this, "코인이 " + (price - Coinresult) + " 개 부족합니다!", Toast.LENGTH_SHORT).show();
+                Shop.finish();
                 Intent i = new Intent(getApplicationContext(), ShopActivity.class);
                 startActivity(i);
                 this.finish();
