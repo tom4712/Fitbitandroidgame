@@ -38,8 +38,8 @@ public class qusetionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        answer_ = (ImageView)findViewById(R.id.answer_);
         setContentView(R.layout.activity_quiz);
+        answer_ = (ImageView)findViewById(R.id.answer_);
         button = (Button)findViewById(R.id.close);
         text_title = (TextView)findViewById(R.id.answer_act);
         text_result = (TextView)findViewById(R.id.answer_text);
