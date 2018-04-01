@@ -18,11 +18,27 @@
                 android:layout_height="match_parent" />
 
             <Button
-                android:id="@+id/buym2"
+                android:id="@+id/buymid2"
                 android:layout_alignParentLeft="true"
                 android:text="구매"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/settingwearmid2"
+                android:layout_alignParentLeft="true"
+                android:text="장착"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/setnowmid2"
+                android:layout_alignParentLeft="true"
+                android:text="장착중"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
 
         </RelativeLayout>
 

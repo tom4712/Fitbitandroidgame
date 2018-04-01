@@ -1,6 +1,7 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -22,12 +23,15 @@ public class Gumai extends Activity {
     private Cursor all_cursor;
     private ArrayList<String> list = new ArrayList();
     private String price, sex, location, descript;
-
+    ShopActivity Shop = (ShopActivity)ShopActivity.shop;
+    private Context mContext = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.mContext = getApplicationContext();
         setContentView(R.layout.activity_gumai);
+
 
 
         Log.d("POPUP", "내가 떳따!");
@@ -47,6 +51,7 @@ public class Gumai extends Activity {
 
     public void nocheck(View view) {
         Toast.makeText(Gumai.this, "취소되었습니다!!", Toast.LENGTH_SHORT).show();
+        Shop.finish();
         Intent i = new Intent(getApplicationContext(), ShopActivity.class);
         startActivity(i);
         this.finish();
@@ -86,6 +91,7 @@ public class Gumai extends Activity {
         if (sex == 0) {//남자
             if (Coinresult < price) {
                 Toast.makeText(Gumai.this, "코인이 " + (price - Coinresult) + " 개 부족합니다!", Toast.LENGTH_SHORT).show();
+                Shop.finish();
                 Intent i = new Intent(getApplicationContext(), ShopActivity.class);
                 startActivity(i);
                 this.finish();
@@ -180,6 +186,7 @@ public class Gumai extends Activity {
         if (clothchar[indexnum] == '1') {
             Log.d("DB", "이미구입함");
             Toast.makeText(this, "이미 구입한 상품입니다.", Toast.LENGTH_SHORT).show();
+            Shop.finish();
             Intent i = new Intent(getApplicationContext(), ShopActivity.class);
             startActivity(i);
             this.finish();
@@ -200,11 +207,12 @@ public class Gumai extends Activity {
             Toast.makeText(this, "구입을 성공하였습니다!!", Toast.LENGTH_SHORT).show();
             list.clear();
             resultDB();
-
             Log.d("DB", "좀 길게 나와라   " + list.get(1));
+            Shop.finish();
             Intent i = new Intent(getApplicationContext(), ShopActivity.class);
             startActivity(i);
-            finish();
+            this.finish();
         }
     }
+
 }

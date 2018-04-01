@@ -80,7 +80,7 @@
             android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".Gumai"
-            android:theme="@style/AppTheme3" />
+            android:theme="@style/AppTheme2" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

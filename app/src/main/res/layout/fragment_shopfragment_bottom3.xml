@@ -17,25 +17,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-            <ImageView
-                android:layout_weight="1"
-                android:id="@+id/top2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+
+
 
                 <LinearLayout
-                    android:layout_weight="1.85"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"></LinearLayout>
+                    <ImageView
+                        android:src="@drawable/ar_icon"
+                        android:scaleType="fitXY"
+                        android:layout_weight="1"
+                        android:id="@+id/bottom3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"></LinearLayout>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_weight="3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"></LinearLayout>
             </LinearLayout>
             <Button
-                android:id="@+id/buy2"
+                android:id="@+id/buybottom3"
                 android:layout_alignParentLeft="true"
                 android:text="구매"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Button
-                android:id="@+id/settingwear2"
+                android:id="@+id/settingwearbottom3"
                 android:layout_alignParentLeft="true"
                 android:text="장착"
                 android:layout_width="wrap_content"
@@ -43,7 +65,7 @@
                 android:visibility="gone"/>
 
             <Button
-                android:id="@+id/setnow2"
+                android:id="@+id/setnowbottom3"
                 android:layout_alignParentLeft="true"
                 android:text="장착중"
                 android:layout_width="wrap_content"

@@ -139,9 +139,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             SharedPreferences.Editor editor = pref.edit();
             editor.putBoolean("isFirst", true);
             editor.commit();
-        } else {
-            //코인 테스트 끝나면 지우면됩니다.
-            dbhelper.updateCoin(5);
         }
         setCustomActionBar();
         viewPager = findViewById(R.id.viewpager);
@@ -276,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.characterDetails:
-                i = new Intent(getApplicationContext(), Cahrsetting.class);
+                i = new Intent(getApplicationContext(), Charsetting.class);
                 startActivity(i);
                 break;
             case R.id.goMain:

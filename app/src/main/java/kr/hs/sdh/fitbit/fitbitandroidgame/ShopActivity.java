@@ -1,5 +1,6 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+import android.app.Activity;
 import android.database.Cursor;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -18,6 +19,7 @@ import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.ShopfragmentTop;
 import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.ShopfragmentTop2;
 import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.ShopfragmentTop3;
 import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.pagerAdapter2;
+import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.pagerAdapter3;
 
 public class ShopActivity extends AppCompatActivity {
 
@@ -39,11 +41,36 @@ public class ShopActivity extends AppCompatActivity {
     private Button[] buyvibutton = new Button[9];
     private Button[] Setvibutton = new Button[9];
 
+    public static Activity shop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
+
+        shop = ShopActivity.this;
+
+        Cursul();
+        sex = Integer.parseInt(list.get(2));
+        shopallback = findViewById(R.id.shopallback);
+
+        if(sex == 0){
+            shopallback.setBackgroundResource(R.drawable.shopbackgroundman);
+        }
+        if(sex == 1){
+            shopallback.setBackgroundResource(R.drawable.shopbagroundgirl);
+        }
+
+                try {
+            if (Integer.parseInt(list.get(0)) == 0) {
+                db.updateCoin(100);
+            }
+        } catch (Exception e) {
+
+        }
+        list.clear();
+        Cursul();
+        setCoinTxv();
 
 
 
@@ -52,7 +79,7 @@ public class ShopActivity extends AppCompatActivity {
         vp3 = findViewById(R.id.container3);
         vp.setAdapter(new pagerAdapter(getSupportFragmentManager()));
         vp2.setAdapter(new pagerAdapter2(getSupportFragmentManager()));
-        vp3.setAdapter(new pagerAdapter(getSupportFragmentManager()));
+        vp3.setAdapter(new pagerAdapter3(getSupportFragmentManager()));
         vp.setCurrentItem(0);
         vp2.setCurrentItem(0);
         vp3.setCurrentItem(0);
@@ -99,7 +126,6 @@ public class ShopActivity extends AppCompatActivity {
         @Override
         public android.support.v4.app.Fragment getItem(int position) {
 
-            final ShopfragmentTop frament = new ShopfragmentTop();
 
 
             switch (position) {
@@ -107,8 +133,8 @@ public class ShopActivity extends AppCompatActivity {
                     return new ShopfragmentTop();
                 case 1:
                     return new ShopfragmentTop2();
-                case 2:
-                    return new ShopfragmentTop3();
+//                case 2:
+//                    return new ShopfragmentTop3();
                 default:
                     return null;
             }
@@ -116,8 +142,47 @@ public class ShopActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
+    }
+        public void Cursul() {
+        list.clear();
+        db = new DBhelper(this);
+        db.open();
+        all_cursor = db.AllRows();
+        all_cursor.moveToFirst();
+        while (true) {
+            try {
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("COIN")));
+                Log.d("DB", "코인값받아옴"+list.get(0));
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("GARMENTS")));
+                Log.d("DB", "옷값받아옴");
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("SEX")));
+                if (!all_cursor.moveToNext())
+                    break;
+            } catch (Exception e) {
+
+            }
+
+        }
+    }
+
+        public void setCoinTxv() {
+        list.clear();
+        Cursul();
+
+        coindTxv = findViewById(R.id.cointext);
+        coindTxv.setText(list.get(0));
+    }
+    public void setcoinother(){
+        list.clear();
+        Cursul();
+
+        coindTxv = findViewById(R.id.cointext);
+        coindTxv.setText(list.get(0));
+    }
+    public void backspace(View view){
+        this.finish();
     }
 }
 
