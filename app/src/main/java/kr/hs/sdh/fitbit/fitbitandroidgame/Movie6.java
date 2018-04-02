@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -24,7 +25,7 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class Movie6 extends YouTubeBaseActivity {
+public class Movie6 extends YouTubeBaseActivity  implements  YouTubePlayer.OnInitializedListener{
     LinearLayout linearLayout;
     LinearLayout linearLayout2;
     private DBhelper db;
@@ -62,24 +63,14 @@ public class Movie6 extends YouTubeBaseActivity {
         num2  = intent.getExtras().getInt("num");
 
         resultDB();
-        youTubeView =     (YouTubePlayerView) findViewById(R.id.youtubeView);
+
+        YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
+
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
         linearLayout = (LinearLayout)findViewById(R.id.RRr);
         linearLayout2=(LinearLayout)findViewById(R.id.gon);
-        relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
-        listener = new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("3sLRiZlCjjU");
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-
-            }
-        };
 //
 //
 //        vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -94,8 +85,6 @@ public class Movie6 extends YouTubeBaseActivity {
 //            }
 //        });
 
-        button1 = findViewById(R.id.stop);
-        button2 = findViewById(R.id.play);
 
 
 
@@ -117,16 +106,9 @@ public class Movie6 extends YouTubeBaseActivity {
         }
 
 
-        if (view.getId() == R.id.stop) {
-
-            button2.setVisibility(View.VISIBLE);
-            button1.setVisibility(View.INVISIBLE);
-        }
-        if (view.getId() == R.id.play) {
-            youTubeView.initialize("AIzaSyAi6zpxpA00Yk3_VJNDzIveO7k_q_fV_mc",listener);
-
-            button1.setVisibility(View.VISIBLE);
-            button2.setVisibility(View.INVISIBLE);
+        if (view.getId() == R.id.youtubebutton) { // 백버튼
+            YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
+            youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
         }
     }
     @Override
@@ -161,4 +143,23 @@ public class Movie6 extends YouTubeBaseActivity {
     }
 
 
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider,
+                                        YouTubePlayer player, boolean wasRestored) {
+        if (!wasRestored) {
+            player.cueVideo("3sLRiZlCjjU");
+        }
+    }
+
+    @SuppressLint("WrongViewCast")
+    protected YouTubePlayer.Provider getYouTubePlayerProvider() {
+        return (YouTubePlayerView) findViewById(R.id.youtubeView);
+    }
+
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider arg0,
+                                        YouTubeInitializationResult arg1) {
+        // TODO Auto-generated method stub
+
+    }
 }

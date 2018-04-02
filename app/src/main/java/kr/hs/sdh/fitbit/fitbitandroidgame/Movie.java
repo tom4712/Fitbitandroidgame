@@ -31,7 +31,7 @@ import org.w3c.dom.Text;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Movie extends YouTubeBaseActivity implements View.OnClickListener{
+public class Movie extends YouTubeBaseActivity implements  YouTubePlayer.OnInitializedListener{
 
     long mNow;
 
@@ -74,7 +74,6 @@ public class Movie extends YouTubeBaseActivity implements View.OnClickListener{
     ImageButton button2 ;
 
     TextView percent;
-
     AlertDialog.Builder dialog;
 
     boolean isPlaying = false;
@@ -87,7 +86,7 @@ public class Movie extends YouTubeBaseActivity implements View.OnClickListener{
         Intent intent = getIntent();
          num2  = intent.getExtras().getInt("num");
 
-      youTubeView =     (YouTubePlayerView) findViewById(R.id.youtubeView);
+        YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
 
         setContentView(R.layout.activity_movie);
         resultDB();
@@ -106,53 +105,24 @@ public class Movie extends YouTubeBaseActivity implements View.OnClickListener{
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
 
 
-
-        listener = new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("IZJwvlPioQs");
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-
-            }
-        };
-
-
-        button1 = findViewById(R.id.stop);
-
     }
     public void onClick(View view) {
 
-        if (view.getId() == R.id.im2) {
+        if (view.getId() == R.id.im2) { // 백버튼
             super.onBackPressed();
 
         }
-
-
-
-        if(view.getId()==R.id.Tip){
+        if (view.getId() == R.id.youtubebutton) { // 백버튼
+            YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
+            youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
+        }
+            if(view.getId()==R.id.Tip){ // 팁버튼
             relativeLayout.setVisibility(View.VISIBLE);
             linearLayout2.setVisibility(View.INVISIBLE);
         }
-        if (view.getId()==R.id.RRr){
+        if (view.getId()==R.id.RRr){ //팁버튼에서 그외 레이아웃 클릭
             linearLayout2.setVisibility(View.VISIBLE);
             relativeLayout.setVisibility(View.GONE);
-        }
-
-
-
-
-        if (view.getId() == R.id.stop) {
-            button2.setVisibility(View.VISIBLE);
-            button1.setVisibility(View.INVISIBLE);
-        }
-        if (view.getId() == R.id.play) {
-           youTubeView.initialize("AIzaSyAi6zpxpA00Yk3_VJNDzIveO7k_q_fV_mc",listener);
-
-            button1.setVisibility(View.VISIBLE);
-            button2.setVisibility(View.INVISIBLE);
         }
 
     }
@@ -190,5 +160,23 @@ public class Movie extends YouTubeBaseActivity implements View.OnClickListener{
 
     }
 
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider,
+                                        YouTubePlayer player, boolean wasRestored) {
+        if (!wasRestored) {
+            player.cueVideo("IZJwvlPioQs");
+        }
+    }
 
+    @SuppressLint("WrongViewCast")
+    protected YouTubePlayer.Provider getYouTubePlayerProvider() {
+        return (YouTubePlayerView) findViewById(R.id.youtubeView);
+    }
+
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider arg0,
+                                        YouTubeInitializationResult arg1) {
+        // TODO Auto-generated method stub
+
+    }
 }
