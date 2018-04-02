@@ -32,11 +32,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:textColor="#fff"
-                    android:text="수면 시간"
-                    android:gravity="center"
+                    android:text="걸음"
                     android:textSize="20dp"
+                    android:gravity="center"
                     android:textAlignment="center"
-                    android:background="#5854af"/>
+                    android:background="#41bdf2"/>
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/chart"
                     android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                    android:background="#5854af"
+                    android:background="#41bdf2"
                 android:textAlignment="center" />
 
                 <LinearLayout
@@ -130,10 +130,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:text="이번 주 수면 시간"
+                    android:text="이번 주 걸음"
                     android:textAlignment="center"
                     android:gravity="center_vertical"
-                    android:background="#5854af"
+                    android:background="#41bdf2"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
                     android:textColor="#fff"

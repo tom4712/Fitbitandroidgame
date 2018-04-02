@@ -24,22 +24,22 @@ import com.github.mikephil.charting.data.BarEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-import static kr.hs.sdh.fitbit.fitbitandroidgame.MainActivity.arrayvalue_step;
 
+import static kr.hs.sdh.fitbit.fitbitandroidgame.MainActivity.arrayvalue_night;
 
-public class Fragment2 extends Fragment {
-
-        BarChart chartView;
+public class Fragment4 extends Fragment {
+    Button move_activty;
+    BarChart chartView;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
+
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_b,container,false);
-        Button move_activty;
+        View v = inflater.inflate(R.layout.fragment_d,container,false);
         move_activty = v.findViewById(R.id.detail_move);
         move_activty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent;
-                intent = new Intent(getActivity(),step_activity.class);
+                intent = new Intent(getActivity(),night_activity.class);
                 startActivity(intent);
 
             }
@@ -48,25 +48,25 @@ public class Fragment2 extends Fragment {
         Legend legend = chartView.getLegend();
         List<BarEntry> entries = new ArrayList<>();
         YAxis left = chartView.getAxisLeft();
+
         XAxis xAxis = chartView.getXAxis();
-        entries.add(new BarEntry(0f, (float) arrayvalue_step[0]));
-        entries.add(new BarEntry(1f, (float) arrayvalue_step[1]));
-        entries.add(new BarEntry(2f, (float) arrayvalue_step[2]));
-        entries.add(new BarEntry(3f, (float) arrayvalue_step[3]));
-        entries.add(new BarEntry(4f, (float) arrayvalue_step[4]));
-        entries.add(new BarEntry(5f, (float) arrayvalue_step[5]));
-        entries.add(new BarEntry(6f, (float) arrayvalue_step[6]));
+        entries.add(new BarEntry(0f, (float)arrayvalue_night[6]));
+        entries.add(new BarEntry(1f, (float)arrayvalue_night[5]));
+        entries.add(new BarEntry(2f, (float)arrayvalue_night[4]));
+        entries.add(new BarEntry(3f, (float)arrayvalue_night[3]));
+        entries.add(new BarEntry(4f, (float)arrayvalue_night[2]));
+        entries.add(new BarEntry(5f, (float)arrayvalue_night[1]));
+        entries.add(new BarEntry(6f, (float)arrayvalue_night[0]));
         chartView.animateY(1000);
         chartView.setTouchEnabled(false);
         chartView.getXAxis().setEnabled(false);
         chartView.setDoubleTapToZoomEnabled(false);
         BarDataSet set = new BarDataSet(entries, "BarDataSet");
         BarData data = new BarData(set);
-        set.setColors(R.color.colorAccent);
         legend.setEnabled(false);
         legend.setWordWrapEnabled(false);
         chartView.getDescription().setEnabled(false);
-        chartView.setBackgroundColor(Color.parseColor("#41bdf2"));
+        chartView.setBackgroundColor(Color.parseColor("#5854af"));
         data.setBarWidth(0.7f); // set custom bar width
         xAxis.setDrawGridLines(false);
         left.setDrawLabels(false); // no axis labels
@@ -80,11 +80,8 @@ public class Fragment2 extends Fragment {
         chartView.invalidate(); // refresh
         return v;
     }
-
-
-
-
-
 }
+
+
 
 

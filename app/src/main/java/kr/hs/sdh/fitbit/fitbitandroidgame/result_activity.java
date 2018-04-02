@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class result_activity extends AppCompatActivity {
     TextView result_num;
     Button back_button;
-    MyListAdapter myListAdapter;
+    MyListAdapter_game myListAdapter;
     ListView listView;
     ArrayList<list_item> list_itemArrayList_step;
     ArrayList<list_item> list_itemArrayList_cal;
@@ -49,7 +49,7 @@ public class result_activity extends AppCompatActivity {
                 list_itemArrayList_step.add(new list_item(res.mQuestion[Integer.valueOf(data[i])], res.mAnswer[Integer.valueOf(data[i])]));
             }
 
-            myListAdapter = new MyListAdapter(result_activity.this, list_itemArrayList_step);
+            myListAdapter = new MyListAdapter_game(result_activity.this, list_itemArrayList_step);
             listView.setAdapter(myListAdapter);
             listViewHeightSet(myListAdapter,listView);
 

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
  */
 
 public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
-    Fragment[] fragments = new Fragment[3];
+    Fragment[] fragments = new Fragment[4];
 
     public MyViewPagerAdapter(FragmentManager fm) {
 
@@ -21,7 +21,7 @@ public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
         fragments[1] = new Fragment2();
 
         fragments[2] = new Fragment3();
-
+        fragments[3] = new Fragment4();
     }
 
     @Override

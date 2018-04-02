@@ -13,12 +13,12 @@ import java.util.ArrayList;
  * Created by Resten on 2018-02-21.
  */
 
-public class MyListAdapter extends BaseAdapter {
+public class MyListAdapter_game extends BaseAdapter {
     Context context;
     ArrayList<list_item> list_itemArrayList;
     TextView value;
     TextView date;
-    public MyListAdapter(Context context, ArrayList<list_item> list_itemArrayList) {
+    public MyListAdapter_game(Context context, ArrayList<list_item> list_itemArrayList) {
         this.context = context;
         this.list_itemArrayList = list_itemArrayList;
     }
@@ -42,7 +42,7 @@ public class MyListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view==null){
-            view = LayoutInflater.from(context).inflate(R.layout.list_items,null);
+            view = LayoutInflater.from(context).inflate(R.layout.item,null);
             date = (TextView)view.findViewById(R.id.date);
             value = (TextView)view.findViewById(R.id.value);
 

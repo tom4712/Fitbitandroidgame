@@ -4,12 +4,14 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
  * Created by Resten on 2018-02-25.
  */
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -22,6 +24,8 @@ import com.github.mikephil.charting.data.BarEntry;
 import java.util.ArrayList;
 import java.util.List;
 
+import static kr.hs.sdh.fitbit.fitbitandroidgame.MainActivity.arrayvalue_caloris;
+
 
 public class Fragment3  extends Fragment {
 
@@ -29,20 +33,30 @@ public class Fragment3  extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_c,container,false);
+        Button move_activty;
+        move_activty = v.findViewById(R.id.detail_move);
+        move_activty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(getActivity(),cal_activity.class);
+                startActivity(intent);
 
+            }
+        });
         chartView = v.findViewById(R.id.chart);
         Legend legend = chartView.getLegend();
         List<BarEntry> entries = new ArrayList<>();
         YAxis left = chartView.getAxisLeft();
 
         XAxis xAxis = chartView.getXAxis();
-        entries.add(new BarEntry(0f, 3575f));
-        entries.add(new BarEntry(1f, 3509f));
-        entries.add(new BarEntry(2f, 3053f));
-        entries.add(new BarEntry(3f, 2934f));
-        entries.add(new BarEntry(4f, 2872f));
-        entries.add(new BarEntry(5f, 2238f));
-        entries.add(new BarEntry(6f, 1099f));
+        entries.add(new BarEntry(0f, (float)arrayvalue_caloris[0]));
+        entries.add(new BarEntry(1f, (float)arrayvalue_caloris[1]));
+        entries.add(new BarEntry(2f, (float)arrayvalue_caloris[2]));
+        entries.add(new BarEntry(3f, (float)arrayvalue_caloris[3]));
+        entries.add(new BarEntry(4f, (float)arrayvalue_caloris[4]));
+        entries.add(new BarEntry(5f, (float)arrayvalue_caloris[5]));
+        entries.add(new BarEntry(6f, (float)arrayvalue_caloris[6]));
         chartView.animateY(1000);
         chartView.setTouchEnabled(false);
         chartView.getXAxis().setEnabled(false);
@@ -59,6 +73,8 @@ public class Fragment3  extends Fragment {
         left.setDrawAxisLine(false); // no axis line
         left.setDrawGridLines(false); // no grid lines
         left.setDrawZeroLine(true); // draw a zero line
+        left.setAxisMaxValue(7000f);
+        set.setValueTextColor(Color.WHITE);
         set.setColor(Color.parseColor("#d5f6f8"));
         chartView.getAxisRight().setEnabled(false); // no right axis
         chartView.setData(data);

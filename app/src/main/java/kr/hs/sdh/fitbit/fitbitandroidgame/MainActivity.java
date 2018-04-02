@@ -26,9 +26,16 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -61,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private long backPressedTime = 0;
 
     static final int PERMISSION_REQUEST_CODE = 1;
+    static int[] arrayvalue_night = new int[7];
+    static int[] arrayvalue_step = new int[7];
+    static int[] arrayvalue_caloris = new int[7];
 
     private void requestNecessaryPermissions(String[] permissions) {
         ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE);
@@ -144,6 +154,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewPager = findViewById(R.id.viewpager);
         a = findViewById(R.id.text_back);
         a.setText("133");
+        // 정상현 - 그래프 파일 가져오기
+        String res = File_reader();
+        String[] split = res.split("@");
+        ListjsonParser_step(split[0]);
+        ListjsonParser_caloris(split[1]);
+        ListjsonParser_night(split[2]);
+        ////////////////////////////////////
         MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
@@ -186,7 +203,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Cafe.setOnClickListener(this);
         characterDetails.setOnClickListener(this);
         accountManagement.setOnClickListener(this);
-
     }
 
     @Override
@@ -346,6 +362,96 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.setType("image/*");
         startActivity(Intent.createChooser(intent, "공유"));
     }
+    //정상현 - 그래프용 JSON
+
+    String File_reader(){
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(getFilesDir()+"text.txt"));
+            String readStr = "";
+            String str = null;
+            while(((str = br.readLine()) != null)){
+                readStr += str +"\n";
+            }
+            br.close();
+            return readStr.substring(0,readStr.length()-1);
+
+
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void ListjsonParser_step(String jsonString) {
+        int idx =jsonString.indexOf("|");
+        String step = jsonString.substring(idx+1);
+        int code = 0;
+        Log.d("data",step);
+
+        try {
+            JSONArray jarray = new JSONObject(step).getJSONArray("activities-steps");
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+                code = jObject.optInt("value");
+                arrayvalue_step[i] = code;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+    public void ListjsonParser_caloris(String jsonString) {
+
+        int code = 0;
+        String date = null;
+
+        try {
+            JSONArray jarray = new JSONObject(jsonString).getJSONArray("activities-calories");
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+                code = jObject.optInt("value");
+                arrayvalue_caloris[i] = code;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+    public void ListjsonParser_night(String jsonString) {
+
+        int code = 0;
+        String date = null;
+
+        try {
+
+            JSONArray jarray = new JSONObject(jsonString).getJSONArray("sleep-time");
+            int idx = 0;
+            if(jarray.length()>7){
+                idx = 7;
+            }else{
+                idx = 7;
+            }
+            for (int i = idx-1; i >-1; i--) {
+                JSONObject jObject = jarray.getJSONObject(i);
+                code = jObject.optInt("value");
+                arrayvalue_night[i] = code;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+
 }
 
 
