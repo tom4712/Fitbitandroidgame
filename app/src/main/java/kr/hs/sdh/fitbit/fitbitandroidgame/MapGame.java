@@ -1,6 +1,7 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -122,7 +123,6 @@ public class MapGame extends FragmentActivity implements OnMapReadyCallback {
                     startActivity(i1);
                     finish();
                 }
-                Toast.makeText(this, "clear", Toast.LENGTH_SHORT).show();
             }
         }
 

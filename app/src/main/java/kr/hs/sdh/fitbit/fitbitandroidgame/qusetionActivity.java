@@ -20,28 +20,21 @@ import java.util.Random;
  */
 
 public class qusetionActivity extends AppCompatActivity {
-    TextView question_text;
-    TextView answer;
-    ImageButton res_o;
-    ImageButton res_x;
-    Intent intent;
-    String no_currect;
-    Button button;
-    TextView text_title;
-    TextView text_result;
-    RelativeLayout answer_lay;
-    int result =0;
-    String result_text;
-    int answer_num;
-    ImageView answer_;
-    String answer_text;
-    TextView quiz_num;
-    boolean clicked = false;
-    int in = 0;
-    int idx = 1;
-    question res = new question();
-    int currect=0;
-    int nocurrect=0;
+    private TextView question_text;
+    private ImageButton res_o;
+    private ImageButton res_x;
+    private Intent intent;
+    private String no_currect;
+    private Button button;
+    private TextView text_title;
+    private TextView text_result;
+    private RelativeLayout answer_lay;
+    private ImageView answer_;
+    private TextView quiz_num;
+    private int in = 0;
+    private int idx = 1;
+    private int currect=0;
+    private int nocurrect=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +44,6 @@ public class qusetionActivity extends AppCompatActivity {
         text_title = (TextView)findViewById(R.id.answer_act);
         text_result = (TextView)findViewById(R.id.answer_text);
         question_text = (TextView)findViewById(R.id.question);
-        // answer = (TextView)findViewById(R.id.answer);
         quiz_num = (TextView)findViewById(R.id.question_num);
         res_o = (ImageButton)findViewById(R.id.button_O) ;
         res_x = (ImageButton)findViewById(R.id.button_X) ;
@@ -60,28 +52,7 @@ public class qusetionActivity extends AppCompatActivity {
         final Intent intent = new Intent(qusetionActivity.this,result_activity.class);
 
 
-
-//        View.OnClickListener listener= new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//                Intent intent = new Intent(MainActivity.this, popup_activity.class);
-////                intent.putExtra("res_num", answer_num);
-////                intent.putExtra("res_text",answer_text);
-//                startActivity(intent);
-//                in++;
-//
-//            }
-//        };
-
         final question res = new question();
-//        Random rnd = new Random();
-//        int idx = rnd.nextInt(10);
-//
-//        question_text.setText(a.mQuestion[idx]);
-//        answer.setText(a.mAnswer[idx]);
         Random rnd = new Random();
         final int[] num = new int[5];
         for(int i = 0; i<5; i++){

@@ -3,11 +3,13 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
-import android.renderscript.Short4;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -27,35 +29,28 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     View container;
     FileOutputStream fos;
     SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
-    String adrss = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + formatter+"capture.jpeg";
+    String adrss = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + formatter + "capture.jpeg";
 
-    private String sql;
-    private String dbName = "coin.db";
-    int dbVersion = 1;
     private DBhelper dbhelper;
 
 
     private Cursor all_cursor;
 
-    private LinearLayout mainView, settingView , gameList;
+    private LinearLayout settingView, gameList;
 
-    private TextView Coin, charName, versionInfo;
+    private TextView Coin;
 
-    private Button Share, thrSec, Game, Shop, Inventory, Cafe, characterDetails, accountManagement, goMain;
+    private Button Share, thrSec, Game, Shop, Cafe, characterDetails, accountManagement, goMain, ox_question_move, map_move, ar_move;
 
     private ImageButton Settings;
 
     private Switch mSwitch;
-
-
-    Toolbar myToolbar;
 
     ViewPager viewPager = null;
 
@@ -65,6 +60,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private long backPressedTime = 0;
 
+    static final int PERMISSION_REQUEST_CODE = 1;
+
+    private void requestNecessaryPermissions(String[] permissions) {
+        ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE: {
+                //퍼미션을 거절했을 때 메시지 출력 후 종료
+                if (!hasPermissions(PERMISSIONS)) {
+                    Toast.makeText(getApplicationContext(), "퍼미션을 승인하셔야 합니다.", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                return;
+            }
+        }
+    }
+    String[] PERMISSIONS = {"android.permission.ACCESS_COARSE_LOCATION"};
+    String[] PERMISSIONS2 = {"android.permission.CAMERA"};
+
+    private boolean hasPermissions(String[] permissions) {
+        // 퍼미션 확인
+        int result = -1;
+        for (int i = 0; i < permissions.length; i++) {
+            result = ContextCompat.checkSelfPermission(getApplicationContext(), permissions[i]);
+        }
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
     @Override
 
     public void onBackPressed() {
@@ -73,9 +104,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (settingView.getVisibility() == View.VISIBLE) {
             thrSec.setClickable(true);
             Game.setClickable(true);
-            Inventory.setClickable(true);
             Shop.setClickable(true);
             settingView.setVisibility(View.GONE);
+        } else if (gameList.getVisibility() == View.VISIBLE) {
+            thrSec.setClickable(true);
+            Game.setClickable(true);
+            Shop.setClickable(true);
+            gameList.setVisibility(View.GONE);
+
         } else if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
             super.onBackPressed();
         } else {
@@ -85,11 +121,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main2);
-            dbhelper = new DBhelper(getApplication());
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+        ox_question_move = findViewById(R.id.ox_question_move);
+        map_move = findViewById(R.id.map_move);
+        ar_move = findViewById(R.id.ar_move);
+        dbhelper = new DBhelper(getApplication());
         dbhelper.open();
         all_cursor = dbhelper.AllRows();
         all_cursor.moveToFirst();
@@ -100,20 +139,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             SharedPreferences.Editor editor = pref.edit();
             editor.putBoolean("isFirst", true);
             editor.commit();
-        } else {
-            //코인 테스트 끝나면 지우면됩니다.
-            dbhelper.updateCoin(5);
         }
         setCustomActionBar();
-        viewPager = (ViewPager)findViewById(R.id.viewpager);
-        a = (TextView)findViewById(R.id.text_back);
+        viewPager = findViewById(R.id.viewpager);
+        a = findViewById(R.id.text_back);
         a.setText("133");
         MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
 
         // 찾기
-            gameList =  findViewById(R.id.gameList);
+        gameList = findViewById(R.id.gameList);
         goMain = findViewById(R.id.goMain);
         settingView = findViewById(R.id.settingView);
         Settings = findViewById(R.id.Settings);
@@ -138,6 +174,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        ox_question_move.setOnClickListener(this);
+        map_move.setOnClickListener(this);
+        ar_move.setOnClickListener(this);
         goMain.setOnClickListener(this);
         Settings.setOnClickListener(this);
         Share.setOnClickListener(this);
@@ -149,6 +188,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         accountManagement.setOnClickListener(this);
 
     }
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -167,27 +207,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
+        Intent i;
         switch (view.getId()) {
-
+            case R.id.ar_move:
+                if (!hasPermissions(PERMISSIONS2)) {
+                    requestNecessaryPermissions(PERMISSIONS2);
+                }else {
+                    i = new Intent(getApplicationContext(), fitbitAR.class);
+                    startActivity(i);
+                }
+                break;
+            case R.id.ox_question_move:
+                i = new Intent(getApplicationContext(), qusetionActivity.class);
+                startActivity(i);
+                break;
+            case R.id.map_move:
+                if (!hasPermissions(PERMISSIONS)) {
+                    requestNecessaryPermissions(PERMISSIONS);
+                }else {
+                    i = new Intent(getApplicationContext(), MapGame.class);
+                    startActivity(i);
+                }
+                break;
             case R.id.Settings:
                 thrSec.setClickable(false);
                 Game.setClickable(false);
-
                 Shop.setClickable(false);
                 settingView.setVisibility(View.VISIBLE);
                 break;
 
             case R.id.thrSec:
-                Intent i = new Intent(getApplicationContext(), Move.class);
+               i = new Intent(getApplicationContext(), Move.class);
                 startActivity(i);
                 break;
             case R.id.Share:
                 oo(view);
                 break;
             case R.id.Game:
-//                Intent intent1 = new Intent(getApplicationContext(), fitbitAR.class);
-//                startActivity(intent1)
                 thrSec.setClickable(false);
                 Game.setClickable(false);
                 Share.setClickable(false);
@@ -196,6 +252,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gameList.setVisibility(View.VISIBLE);
                 break;
             case R.id.close:
+                thrSec.setClickable(true);
+                Game.setClickable(true);
+                Share.setClickable(true);
+                Shop.setClickable(true);
+
                 gameList.setVisibility(View.INVISIBLE);
                 break;
             case R.id.Shop:
@@ -212,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.characterDetails:
-                i = new Intent(getApplicationContext(), Cahrsetting.class);
+                i = new Intent(getApplicationContext(), Charsetting.class);
                 startActivity(i);
                 break;
             case R.id.goMain:
@@ -243,22 +304,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-    public void setCustomActionBar(){
+
+    public void setCustomActionBar() {
         ActionBar actionBar = getSupportActionBar();
 
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setDisplayShowTitleEnabled(true);
 
-        View mCustomView = LayoutInflater.from(this).inflate(R.layout.main_top_layout,null);
+        View mCustomView = LayoutInflater.from(this).inflate(R.layout.main_top_layout, null);
         actionBar.setCustomView(mCustomView);
         Toolbar parent = (Toolbar) mCustomView.getParent();
-        parent.setContentInsetsAbsolute(0,0);
+        parent.setContentInsetsAbsolute(0, 0);
 
-        ActionBar.LayoutParams params = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT,ActionBar.LayoutParams.MATCH_PARENT);
-        actionBar.setCustomView(mCustomView,params);
+        ActionBar.LayoutParams params = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
+        actionBar.setCustomView(mCustomView, params);
     }
-    public void oo(View view){
+
+    public void oo(View view) {
 
         container = getWindow().getDecorView();
 
@@ -266,11 +329,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Bitmap captureView = container.getDrawingCache();
 
-        try{
+        try {
 
             fos = new FileOutputStream(adrss);
 
-            captureView.compress(Bitmap.CompressFormat.JPEG,100,fos);
+            captureView.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 
 
         } catch (FileNotFoundException e) {
@@ -279,9 +342,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Uri uri = Uri.fromFile(new File(adrss));
         Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_STREAM,uri);
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
         intent.setType("image/*");
-        startActivity(Intent.createChooser(intent,"공유"));
+        startActivity(Intent.createChooser(intent, "공유"));
     }
 }
 

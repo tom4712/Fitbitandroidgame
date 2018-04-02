@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +20,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -30,6 +32,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -54,90 +60,123 @@ public class Splash extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-
-        layout = (LinearLayout) findViewById(R.id.show_lay);
-        mWebView = (WebView) findViewById(R.id.activity_main_webview);
         text = (TextView) findViewById(R.id.text);
-        WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        mWebView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-        });
 
-        mWebView.loadUrl("http://tlgj255.cafe24.com/fitbit/index.php");
+        if(isNetworkConnected()) {
+            layout = (LinearLayout) findViewById(R.id.show_lay);
+            mWebView = (WebView) findViewById(R.id.activity_main_webview);
 
-        mWebView.setWebViewClient(new WebViewClient() {
-            // 페이지 읽기가 시작되었을 때의 동작을 설정한다
-
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap b) {
-
-
-                if (mWebView.getVisibility() == View.INVISIBLE) {
-                    if (url.contains("www.fitbit.com/login")) {
-                        show();
-                        layout.setVisibility(View.INVISIBLE);
-                        mWebView.setVisibility(View.VISIBLE);
-
-
-                    }
+            WebSettings webSettings = mWebView.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+            mWebView.setWebViewClient(new WebViewClient() {
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    view.loadUrl(url);
+                    return true;
                 }
-                if (url.contains("?code") && url.contains("&state")) {
-                    mWebView.setVisibility(View.INVISIBLE);
-                    layout.setVisibility(View.VISIBLE);
-                    urlPath = url;
+            });
+
+            mWebView.loadUrl("http://tlgj255.cafe24.com/fitbit/index.php");
+
+            mWebView.setWebViewClient(new WebViewClient() {
+                // 페이지 읽기가 시작되었을 때의 동작을 설정한다
+
+                @Override
+                public void onPageStarted(WebView view, String url, Bitmap b) {
 
 
-                    try {
-                        res = new HttpTask().execute().get();
+                    if (mWebView.getVisibility() == View.INVISIBLE) {
+                        if (url.contains("www.fitbit.com/login")) {
+                            show();
+                            layout.setVisibility(View.INVISIBLE);
+                            mWebView.setVisibility(View.VISIBLE);
 
-                  //  res= "이승현|MALE#{\"activities-steps\":[{\"dateTime\":\"2018-02-20\",\"value\":\"7950\"},{\"dateTime\":\"2018-02-21\",\"value\":\"14513\"},{\"dateTime\":\"2018-02-22\",\"value\":\"13020\"},{\"dateTime\":\"2018-02-23\",\"value\":\"7788\"},{\"dateTime\":\"2018-02-24\",\"value\":\"8425\"},{\"dateTime\":\"2018-02-25\",\"value\":\"7209\"},{\"dateTime\":\"2018-02-26\",\"value\":\"807\"}]}@{\"activities-calories\":[{\"dateTime\":\"2018-02-20\",\"value\":\"3038\"},{\"dateTime\":\"2018-02-21\",\"value\":\"3575\"},{\"dateTime\":\"2018-02-22\",\"value\":\"3509\"},{\"dateTime\":\"2018-02-23\",\"value\":\"3053\"},{\"dateTime\":\"2018-02-24\",\"value\":\"2934\"},{\"dateTime\":\"2018-02-25\",\"value\":\"2872\"},{\"dateTime\":\"2018-02-26\",\"value\":\"1513\"}]}";
+
+                        }
+                    }
+                    if (url.contains("?code") && url.contains("&state")) {
+                        mWebView.setVisibility(View.INVISIBLE);
+                        layout.setVisibility(View.VISIBLE);
+                        urlPath = url;
+
+
+                        try {
+                            res = new HttpTask().execute().get();
+
+                            //  res= "이승현|MALE#{\"activities-steps\":[{\"dateTime\":\"2018-02-20\",\"value\":\"7950\"},{\"dateTime\":\"2018-02-21\",\"value\":\"14513\"},{\"dateTime\":\"2018-02-22\",\"value\":\"13020\"},{\"dateTime\":\"2018-02-23\",\"value\":\"7788\"},{\"dateTime\":\"2018-02-24\",\"value\":\"8425\"},{\"dateTime\":\"2018-02-25\",\"value\":\"7209\"},{\"dateTime\":\"2018-02-26\",\"value\":\"807\"}]}@{\"activities-calories\":[{\"dateTime\":\"2018-02-20\",\"value\":\"3038\"},{\"dateTime\":\"2018-02-21\",\"value\":\"3575\"},{\"dateTime\":\"2018-02-22\",\"value\":\"3509\"},{\"dateTime\":\"2018-02-23\",\"value\":\"3053\"},{\"dateTime\":\"2018-02-24\",\"value\":\"2934\"},{\"dateTime\":\"2018-02-25\",\"value\":\"2872\"},{\"dateTime\":\"2018-02-26\",\"value\":\"1513\"}]}";
                             int idx = res.indexOf("|");
                             if (idx != -1) {
                                 name = res.substring(0, idx);
-                            text.setText(name + "님 환영합니다");
+                                text.setText(name + "님 환영합니다");
+                                File_recoder(res);
                                 Handler mHandler = new Handler();
-                                mHandler.postDelayed(new Runnable()
-                                {
-                                    @Override     public void run()
-                                    {
-                                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                                        intent.putExtra("json_value",res);
+                                mHandler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        intent.putExtra("json_value", res);
                                         startActivity(intent);
                                         finish();
 
                                     }
                                 }, 3000);
 
-                        } else {
-                            mWebView.loadUrl("http://tlgj255.cafe24.com/fitbit/index.php");
+                            } else {
+                                mWebView.loadUrl("http://tlgj255.cafe24.com/fitbit/index.php");
 
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
                         }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
+
+
                     }
 
+                }
 
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    Log.d("jsh1", url);
+
+                }
+
+            });
+        }
+       else{
+                if(File_reader()!=""){
+                    String back_res = File_reader();
+                    int idx = back_res.indexOf("|");
+                    name = back_res.substring(0, idx);
+                    text.setText(name + "님 환영합니다\n 오프라인 모드로 진행합니다.");
+                    Handler mHandler = new Handler();
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.putExtra("json_value", res);
+                            startActivity(intent);
+                            finish();
+
+                        }
+                    }, 3000);
+                }
+                else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("네트워크 확인");
+                    builder.setMessage("최초 로그인을 위해 네트워크 연결이 필요합니다");
+                    builder.setPositiveButton("확인",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Splash.this.finish();
+                                }
+                            });
+                    builder.show();
 
                 }
 
             }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                Log.d("jsh1", url);
-
-            }
-
-        });
-
     }
 
 
@@ -153,6 +192,43 @@ public class Splash extends AppCompatActivity {
                 });
 
         builder.show();
+    }
+
+    String File_reader(){
+        String readStr = "";
+        String str = null;
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(getFilesDir()+"text.txt"));
+
+            while(((str = br.readLine()) != null)){
+                readStr += str +"\n";
+            }
+            br.close();
+            return readStr.substring(0, readStr.length()-1);
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+            return null;
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    void File_recoder(String response){
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(getFilesDir() + "text.txt", false));
+            bw.write(response);
+            bw.close();
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
+
+    }
+    public  boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null;
     }
 
 

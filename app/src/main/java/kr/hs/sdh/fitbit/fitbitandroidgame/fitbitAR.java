@@ -1,30 +1,21 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
@@ -38,7 +29,7 @@ import org.opencv.core.Mat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class fitbitAR extends AppCompatActivity
+public class fitbitAR  extends AppCompatActivity
         implements CameraBridgeViewBase.CvCameraViewListener2 {
 
     private static final String TAG = "opencv";
@@ -102,7 +93,7 @@ public class fitbitAR extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.fitbit_ar);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -150,9 +141,6 @@ public class fitbitAR extends AppCompatActivity
 
         if (lastTime != nowTime) {
             editor = SPF.edit();
-            editor.remove("round");
-            editor.remove("time");
-
             editor.putInt("round", 0);
             editor.putInt("time", nowDate());
             editor.commit();
@@ -243,11 +231,10 @@ public class fitbitAR extends AppCompatActivity
             if (temp != 10) {
                 temp++;
                 editor = SPF.edit();
-                editor.remove("round");
                 editor.putInt("round", temp);
                 editor.commit();
             }
-            Intent i = new Intent(getApplicationContext(), clear.class);
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);
             finish();
         }
