@@ -62,14 +62,15 @@
         <activity android:name=".CommunityActivity" />
         <activity android:name=".ShopActivity" android:theme="@style/AppTheme4"/>
         <activity android:name=".profileManagement" />
-        <activity android:name=".Move" />
-        <activity android:name=".Movie2"></activity>
-        <activity android:name=".Movie"></activity>
-        <activity android:name=".Movie3"></activity>
-        <activity android:name=".Movie4"></activity>
-        <activity android:name=".Movie5"></activity>
-        <activity android:name=".Movie6"></activity>
-        <activity android:name=".Movie7"></activity>
+        <activity android:name=".Move" android:screenOrientation="portrait"
+            />
+        <activity android:name=".Movie2" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Movie" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Movie3" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Movie4" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Movie5" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Movie6" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Movie7" android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Share"
             android:theme="@android:style/Theme.Dialog" />

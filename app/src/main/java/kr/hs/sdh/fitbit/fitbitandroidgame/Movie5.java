@@ -152,7 +152,7 @@ public class Movie5 extends YouTubeBaseActivity implements  YouTubePlayer.OnInit
     public void onInitializationSuccess(YouTubePlayer.Provider provider,
                                         YouTubePlayer player, boolean wasRestored) {
         if (!wasRestored) {
-            player.cueVideo("IZJwvlPioQs");
+            player.cueVideo("uUP2ueOtUDk");
         }
     }
 

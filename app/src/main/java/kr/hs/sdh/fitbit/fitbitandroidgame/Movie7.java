@@ -54,7 +54,7 @@ public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
         resultDB();
 
         YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
-       
+
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
         linearLayout = (LinearLayout)findViewById(R.id.RRr);
         linearLayout2=(LinearLayout)findViewById(R.id.gon);
@@ -94,6 +94,7 @@ public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
 
 
     }
+
     public void onClick(View view) {
 
         if (view.getId() == R.id.im2) {
@@ -151,7 +152,7 @@ public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
     public void onInitializationSuccess(YouTubePlayer.Provider provider,
                                         YouTubePlayer player, boolean wasRestored) {
         if (!wasRestored) {
-            player.cueVideo("IZJwvlPioQs");
+            player.cueVideo("rUy7kH-nzj4");
         }
     }
 

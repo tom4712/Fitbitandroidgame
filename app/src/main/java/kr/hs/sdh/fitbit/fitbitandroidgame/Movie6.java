@@ -147,7 +147,7 @@ public class Movie6 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
     public void onInitializationSuccess(YouTubePlayer.Provider provider,
                                         YouTubePlayer player, boolean wasRestored) {
         if (!wasRestored) {
-            player.cueVideo("IZJwvlPioQs");
+            player.cueVideo("3sLRiZlCjjU");
         }
     }
 
