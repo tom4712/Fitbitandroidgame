@@ -162,6 +162,7 @@ public class ShopActivity extends AppCompatActivity {
     }
 
 
+
         public void setCoinTxv() {
         list.clear();
         Cursul();
