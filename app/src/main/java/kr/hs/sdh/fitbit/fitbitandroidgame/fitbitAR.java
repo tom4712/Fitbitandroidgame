@@ -2,13 +2,16 @@ package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceView;
@@ -16,6 +19,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
@@ -27,6 +31,7 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class fitbitAR  extends AppCompatActivity
@@ -72,6 +77,55 @@ public class fitbitAR  extends AppCompatActivity
 
     private SharedPreferences SPF;
     private SharedPreferences.Editor editor;
+
+
+    private DBhelper db;
+    private Cursor all_cursor;
+    private ArrayList<String> list = new ArrayList();
+
+    public void giverewards(int level){
+        Cursul();
+        int money = 5;
+        money = money * level;
+        AlertDialog.Builder di = new AlertDialog.Builder(fitbitAR.this);
+        di.setTitle("ARgame");
+        di.setMessage(level+"단계 클리어!! "+money+"코인을 획득 하였습니다!");
+        money = Integer.parseInt(list.get(0)) + money;
+        di.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finishend();
+            }
+        });
+        di.setCancelable(false);
+        di.show();
+        db.updateCoin(money);
+    }
+    public void finishend(){
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    public void Cursul() {
+        list.clear();
+        db = new DBhelper(this);
+        db.open();
+        all_cursor = db.AllRows();
+        all_cursor.moveToFirst();
+        while (true) {
+            try {
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("COIN")));
+                Log.d("DB", "코인값받아옴"+list.get(0));
+                if (!all_cursor.moveToNext())
+                    break;
+            } catch (Exception e) {
+
+            }
+
+        }
+    }
+
 
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
@@ -147,6 +201,14 @@ public class fitbitAR  extends AppCompatActivity
             temp = 0;
         }
         Log.i("temp", temp + "");
+        if (temp > 8){
+            AlertDialog.Builder di = new AlertDialog.Builder(this);
+            di.setTitle("Subit");
+            di.setMessage("최종단계에 도달하여 참치가 스폰됩니다!");
+            di.setNegativeButton("확인",null);
+            di.setCancelable(false);
+            di.show();
+        }
         if (temp < 2)
             bt.setImageResource(R.drawable.carrot);
         else if (temp < 4)
@@ -159,6 +221,7 @@ public class fitbitAR  extends AppCompatActivity
 
         }
         else if (temp < 10) {
+
             GlideDrawableImageViewTarget gif = new GlideDrawableImageViewTarget(bt);
             Glide.with(this).load(R.drawable.chamchi).into(gif);
         }
@@ -234,9 +297,9 @@ public class fitbitAR  extends AppCompatActivity
                 editor.putInt("round", temp);
                 editor.commit();
             }
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(i);
-            finish();
+
+
+            giverewards(temp);
         }
         level++;
         if ((int) (Math.random() * 2) == 0)
@@ -335,6 +398,8 @@ public class fitbitAR  extends AppCompatActivity
                     break;
             }
         }
+
+
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int i) {
