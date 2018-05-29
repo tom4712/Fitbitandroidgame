@@ -57,6 +57,7 @@ public class Fragment1 extends Fragment {
 
         }
 
+
         sex = Integer.parseInt(list.get(1));
 
         setcharback();

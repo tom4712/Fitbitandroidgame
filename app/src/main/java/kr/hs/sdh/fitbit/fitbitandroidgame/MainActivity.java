@@ -378,7 +378,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         a = all_cursor.getString(all_cursor.getColumnIndex("COIN"));
 
-        Log.d("qawse", a + "");
+
+
 
 
         Coin.setText(a + "코인");
