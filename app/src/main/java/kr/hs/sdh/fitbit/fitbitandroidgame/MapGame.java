@@ -1,9 +1,12 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -13,6 +16,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 import kr.hs.sdh.fitbit.fitbitandroidgame.MainActivity;
 
@@ -31,6 +36,10 @@ public class MapGame extends FragmentActivity implements OnMapReadyCallback {
     private double[] targetLat = new double[5], targetLon = new double[5];
 
     private boolean isFirst = true, isTarget;
+
+    private DBhelper db;
+    private Cursor all_cursor;
+    private ArrayList<String> list = new ArrayList();
 
     private int pointLat, pointLon;
 
@@ -119,9 +128,20 @@ public class MapGame extends FragmentActivity implements OnMapReadyCallback {
                 clearLon = (targetLon[i] - lastLon) * 10000;
 
                 if (clearLon + clearLat <= 2 && clearLon + clearLat >= -2){
-                    Intent i1 = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(i1);
-                    finish();
+                    AlertDialog.Builder di = new AlertDialog.Builder(MapGame.this);
+                    di.setTitle("ARgame");
+                    di.setMessage("목표 도착 보상으로 4코인 지급 되었습니다!");
+                    di.setCancelable(false);
+                    di.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            db.updateCoin(4);
+                            finishend();
+                        }
+                    });
+                    di.show();
+
+
                 }
             }
         }
@@ -129,5 +149,11 @@ public class MapGame extends FragmentActivity implements OnMapReadyCallback {
         if (target != null)
             for(int i = 0; i < 5; i++)
                 this.mMap.addMarker(target[i]).showInfoWindow();
+    }
+
+    public void finishend(){
+        Intent i1 = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i1);
+        finish();
     }
 }

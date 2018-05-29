@@ -61,13 +61,6 @@ public class ShopActivity extends AppCompatActivity {
             shopallback.setBackgroundResource(R.drawable.shopbagroundgirl);
         }
 
-                try {
-            if (Integer.parseInt(list.get(0)) == 0) {
-                db.updateCoin(100);
-            }
-        } catch (Exception e) {
-
-        }
         list.clear();
         Cursul();
         setCoinTxv();

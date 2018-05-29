@@ -165,7 +165,7 @@ public class ShopfragmentBottom3 extends Fragment {
             clothchar[15]='2';
         }
         weardb();
-        Toast.makeText(getContext(), "창착이 완료 되었습니다!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "장착이 완료 되었습니다!", Toast.LENGTH_SHORT).show();
     }
 
     public void weardb(){
