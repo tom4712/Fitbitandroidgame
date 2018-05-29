@@ -1,6 +1,7 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -182,8 +183,22 @@ public class ShopActivity extends AppCompatActivity {
         coindTxv.setText(list.get(0));
     }
     public void backspace(View view){
-        this.finish();
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
+        finish();
     }
+
+    public void onBackPressed()
+    {
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
+        finish();
+        super.onBackPressed();
+
+
+    }
+
+
 }
 
 

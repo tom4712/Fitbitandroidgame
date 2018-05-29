@@ -35,6 +35,7 @@
     android:id="@+id/btnHistory"
     android:layout_width="80dp"
     android:layout_height="35dp"
+        android:onClick="onClick"
     android:background="@drawable/coin_lay" />
     <TextView
         android:layout_width="70dp"

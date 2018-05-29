@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -58,28 +59,31 @@ public class Fragment1 extends Fragment {
 
         sex = Integer.parseInt(list.get(1));
 
-        setcharback(v);
+        setcharback();
         String cloth = list.get(2);
         clothchar = cloth.toCharArray();
-        Wearitem(v);
+        Wearitem();
 
-        Mainchar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Cursul();
-                setcharback(v);
-                String cloth = list.get(2);
-                clothchar = cloth.toCharArray();
-                Wearitem(v);
 
-            }
-        });
 
 
 
         return v;
     }
-
+    @Override
+public void onPause(){
+       super.onPause();
+        Log.d("pp",  "퍼지걸림");
+}
+public void onResume(){
+        super.onResume();
+    Cursul();
+    setcharback();
+    String cloth = list.get(2);
+    clothchar = cloth.toCharArray();
+    Wearitem();
+    Log.d("pp",  "다시");
+}
     public void Cursul() {
         list.clear();
         db = new DBhelper(getActivity());
@@ -106,7 +110,7 @@ public class Fragment1 extends Fragment {
         }
     }
 
-    public void setcharback(View v){
+    public void setcharback(){
 
         if(Integer.parseInt(list.get(1)) == 0){
 
@@ -119,23 +123,23 @@ public class Fragment1 extends Fragment {
 
     }
 
-    public void Wearitem(View v){
+    public void Wearitem(){
 
-        image[0] = v.findViewById(R.id.head1);
-        image[1] = v.findViewById(R.id.head2);
-        image[2] = v.findViewById(R.id.head2);
-        image[3] = v.findViewById(R.id.topm1);
-        image[4] = v.findViewById(R.id.topman2);
-        image[5] = v.findViewById(R.id.topman3);
-        image[6] = v.findViewById(R.id.bottomm1);
-        image[7] = v.findViewById(R.id.bottomm2);
-        image[8] = v.findViewById(R.id.bottomm3);
-        image[9] = v.findViewById(R.id.topg1);
-        image[10] = v.findViewById(R.id.topg2);
-        image[11] = v.findViewById(R.id.topg3);
-        image[12] = v.findViewById(R.id.bottomg1);
-        image[13] = v.findViewById(R.id.bottomg2);
-        image[14] = v.findViewById(R.id.bottomg3);
+        image[0] = Mainchar.findViewById(R.id.head1);
+        image[1] = Mainchar.findViewById(R.id.head2);
+        image[2] = Mainchar.findViewById(R.id.head2);
+        image[3] = Mainchar.findViewById(R.id.topm1);
+        image[4] = Mainchar.findViewById(R.id.topman2);
+        image[5] = Mainchar.findViewById(R.id.topman3);
+        image[6] = Mainchar.findViewById(R.id.bottomm1);
+        image[7] = Mainchar.findViewById(R.id.bottomm2);
+        image[8] = Mainchar.findViewById(R.id.bottomm3);
+        image[9] = Mainchar.findViewById(R.id.topg1);
+        image[10] = Mainchar.findViewById(R.id.topg2);
+        image[11] = Mainchar.findViewById(R.id.topg3);
+        image[12] = Mainchar.findViewById(R.id.bottomg1);
+        image[13] = Mainchar.findViewById(R.id.bottomg2);
+        image[14] = Mainchar.findViewById(R.id.bottomg3);
 
         for(int g = 0; g < 15;g++ ){
             Log.d("db","asdasd"+g);

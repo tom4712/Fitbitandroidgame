@@ -37,6 +37,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     View container;
@@ -45,15 +46,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String adrss = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + formatter + "capture.jpeg";
 
     private DBhelper dbhelper;
-
-
+    private TextView coindTxv;
+    private ArrayList<String> list = new ArrayList();
+    static final int PICK_CONTACT_REQUEST = 1;
     private Cursor all_cursor;
 
     private LinearLayout settingView, gameList;
 
     private TextView Coin;
 
-    private Button Share, thrSec, Game, Shop, Cafe, characterDetails, accountManagement, goMain, ox_question_move, map_move, ar_move;
+    private Button Share, thrSec, Game, Shop, Cafe, characterDetails, accountManagement, goMain, ox_question_move, map_move, ar_move, btnhistory;
 
     private ImageButton Settings;
 
@@ -142,6 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbhelper.open();
         all_cursor = dbhelper.AllRows();
         all_cursor.moveToFirst();
+        Toast.makeText(this,"ㅇㅇ",Toast.LENGTH_LONG).show();
         SharedPreferences pref = getSharedPreferences("isFirst", Activity.MODE_PRIVATE);
         boolean first = pref.getBoolean("isFirst", false);
         if (first == false) {
@@ -152,8 +155,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         setCustomActionBar();
         viewPager = findViewById(R.id.viewpager);
-        a = findViewById(R.id.text_back);
-        a.setText("133");
+        Cursul();
+        setCoinTxv();
         // 정상현 - 그래프 파일 가져오기
         String res = File_reader();
         String[] split = res.split("@");
@@ -219,12 +222,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {
 
         }
+
+        setCoinTxv();
     }
+    public void onPause() {
+        super.onPause();
+
+    }
+
 
     @Override
     public void onClick(View view) {
         Intent i;
         switch (view.getId()) {
+            case R.id.btnHistory:
+                setCoinTxv();
+                break;
+
             case R.id.ar_move:
                 if (!hasPermissions(PERMISSIONS2)) {
                     requestNecessaryPermissions(PERMISSIONS2);
@@ -276,9 +290,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gameList.setVisibility(View.INVISIBLE);
                 break;
             case R.id.Shop:
-                i = new Intent(getApplicationContext(), ShopActivity.class);
-
-                startActivity(i);
+                onPause();
+                i = new Intent(MainActivity.this,ShopActivity.class);
+                startActivityForResult(i, PICK_CONTACT_REQUEST);
                 break;
             case R.id.accountManagement:
                 i = new Intent(getApplicationContext(), profileManagement.class);
@@ -300,8 +314,61 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 settingView.setVisibility(View.GONE);
                 break;
         }
+
+
+    }
+    public void Cursul() {
+        list.clear();
+        dbhelper = new DBhelper(this);
+        dbhelper.open();
+        all_cursor = dbhelper.AllRows();
+        all_cursor.moveToFirst();
+        while (true) {
+            try {
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("COIN")));
+                Log.d("DB", "코인값받아옴"+list.get(0));
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("GARMENTS")));
+                Log.d("DB", "옷값받아옴");
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("SEX")));
+                if (!all_cursor.moveToNext())
+                    break;
+            } catch (Exception e) {
+
+            }
+
+        }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == PICK_CONTACT_REQUEST) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+
+                Toast.makeText(this,"OKOK",Toast.LENGTH_LONG).show();
+                list.clear();
+                Cursul();
+                onResume();
+                coindTxv = findViewById(R.id.text_back);
+                coindTxv.setText(list.get(0));
+            }
+        }
+    }
+    public void setCoinTxv() {
+        list.clear();
+        Cursul();
+
+        coindTxv = findViewById(R.id.text_back);
+        coindTxv.setText(list.get(0));
+    }
+    public void setcoinother(){
+        list.clear();
+        Cursul();
+
+        coindTxv = findViewById(R.id.text_back);
+        coindTxv.setText(list.get(0));
+    }
     public void setCoin() {
         String a;
         Coin = findViewById(R.id.Coin);
