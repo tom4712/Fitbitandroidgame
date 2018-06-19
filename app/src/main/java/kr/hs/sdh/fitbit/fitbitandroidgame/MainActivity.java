@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView Coin;
 
-    private Button Share, thrSec, Game, Shop, Cafe, characterDetails, accountManagement, goMain, ox_question_move, map_move, ar_move, btnhistory;
+    private Button Share, thrSec, Game, Shop, Cafe, characterDetails, accountManagement, goMain, ox_question_move, map_move, ar_move, btnhistory,help;
 
     private ImageButton Settings;
 
@@ -177,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         thrSec = findViewById(R.id.thrSec);
         Game = findViewById(R.id.Game);
         Shop = findViewById(R.id.Shop);
+        help = findViewById(R.id.help);
 
         Cafe = findViewById(R.id.Cafe);
         characterDetails = findViewById(R.id.characterDetails);
@@ -206,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Cafe.setOnClickListener(this);
         characterDetails.setOnClickListener(this);
         accountManagement.setOnClickListener(this);
+        help.setOnClickListener(this);
     }
 
     @Override
@@ -317,6 +319,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Share.setClickable(true);
                 Shop.setClickable(true);
                 settingView.setVisibility(View.GONE);
+                break;
+            case R.id.help:
+                i = new Intent(getApplicationContext(), help.class);
+                startActivity(i);
                 break;
         }
 

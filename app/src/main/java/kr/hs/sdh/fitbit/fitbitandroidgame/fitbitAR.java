@@ -323,9 +323,9 @@ public class fitbitAR  extends AppCompatActivity
                     timestamp = sensorEvent.timestamp;
                     if (dt - timestamp * NS2S != 0) {
 
-                /* 각속도 성분을 적분 -> 회전각(pitch, roll)으로 변환.
-                 * 여기까지의 pitch, roll의 단위는 '라디안'이다.
-                 * SO 아래 로그 출력부분에서 멤버변수 'RAD2DGR'를 곱해주어 degree로 변환해줌.  */
+                        /* 각속도 성분을 적분 -> 회전각(pitch, roll)으로 변환.
+                         * 여기까지의 pitch, roll의 단위는 '라디안'이다.
+                         * SO 아래 로그 출력부분에서 멤버변수 'RAD2DGR'를 곱해주어 degree로 변환해줌.  */
                         pitch = pitch + sensorEvent.values[0] * dt;
                         roll = roll + sensorEvent.values[1] * dt;
                         LayoutParams = new RelativeLayout.LayoutParams(250, 250);
