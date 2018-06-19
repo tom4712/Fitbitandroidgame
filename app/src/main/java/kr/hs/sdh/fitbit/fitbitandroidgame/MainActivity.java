@@ -216,7 +216,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onResume() {
+
         super.onResume();
+
         try {
             setCoin();
         } catch (Exception e) {
@@ -230,6 +232,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    public void ddd(View vie){
+        dbhelper.updateCoin(100);
+    }
 
     @Override
     public void onClick(View view) {

@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.ShopfragmentTop;
 import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.ShopfragmentTop2;
 import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.ShopfragmentTop3;
+import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.ShopfragmentTop4;
+import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.ShopfragmentTop5;
 import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.pagerAdapter2;
 import kr.hs.sdh.fitbit.fitbitandroidgame.shopitem.pagerAdapter3;
 
@@ -87,19 +89,19 @@ public class ShopActivity extends AppCompatActivity {
                 switch (v.getId()){
                     case R.id.container1:
                         tag = (int) v.getTag();
-                        Log.d("TAG",tag+"");
+                        Log.d("TAG",tag+"DDD");
                         vp.setCurrentItem(tag);
                         break;
                     case R.id.container2:
                         tag = (int) v.getTag();
 
-                        Log.d("TAG",tag+"");
+                        Log.d("TAG",tag+"DDDDD");
                         vp2.setCurrentItem(tag);
                         break;
                     case R.id.container3:
                         tag = (int) v.getTag();
 
-                        Log.d("TAG",tag+"");
+                        Log.d("TAG",tag+"DDDB");
                         vp3.setCurrentItem(tag);
                         break;
 
@@ -127,16 +129,21 @@ public class ShopActivity extends AppCompatActivity {
                     return new ShopfragmentTop();
                 case 1:
                     return new ShopfragmentTop2();
-//                case 2:
-//                    return new ShopfragmentTop3();
-                default:
+                case 2:
+                    return new ShopfragmentTop3();
+
+                case 3:
+                    return new ShopfragmentTop4();
+                case 4:
+                    return new ShopfragmentTop5();
+                    default:
                     return null;
             }
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 5;
         }
     }
         public void Cursul() {

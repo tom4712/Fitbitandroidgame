@@ -45,6 +45,12 @@
         android:textSize="15dp"
         android:textColor="#fff"
         android:gravity="center_vertical|right"/>
+    <Button
+        android:layout_width="20dp"
+        android:onClick="ddd"
+        android:id="@+id/btn5"
+        android:layout_height="35dp"
+        ></Button>
 </FrameLayout>
 
     <ImageButton

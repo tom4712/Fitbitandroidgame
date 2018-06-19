@@ -1,9 +1,7 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame.shopitem;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +19,7 @@ import kr.hs.sdh.fitbit.fitbitandroidgame.DBhelper;
 import kr.hs.sdh.fitbit.fitbitandroidgame.Gumai;
 import kr.hs.sdh.fitbit.fitbitandroidgame.R;
 
-
-public class ShopfragmentTop3 extends Fragment {
+public class ShopfragmentBottom5 extends Fragment {
     ImageView imageView;
     Button btn1,setting,nowset;
     char[] clothchar;
@@ -32,8 +28,9 @@ public class ShopfragmentTop3 extends Fragment {
     private Cursor all_cursor;
     private ArrayList<String> list = new ArrayList();
     private int sex,price;
-    public ShopfragmentTop3()
-    {
+
+    public ShopfragmentBottom5() {
+        // Required empty public constructor
     }
 
 
@@ -45,12 +42,14 @@ public class ShopfragmentTop3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_shopfragment_top3, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_shopfragment_bottom5, container, false);
+
         Cursul();
         sex = Integer.parseInt(list.get(2));
-        btn1 = view.findViewById(R.id.buy3);
-        nowset = view.findViewById(R.id.setnow3);
-        setting = view.findViewById(R.id.settingwear3);
+        btn1 = view.findViewById(R.id.buybottom5);
+        nowset = view.findViewById(R.id.setnowbottom5);
+        setting = view.findViewById(R.id.settingwearbottom5);
         checkown();
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +57,8 @@ public class ShopfragmentTop3 extends Fragment {
                 checkwearset();
             }
         });
-        price = Integer.parseInt(getString(R.string.top3));
+
+        price = Integer.parseInt(getString(R.string.mid3));
         btn1.setText(price+"원");
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,14 +66,21 @@ public class ShopfragmentTop3 extends Fragment {
                 Intent i = new Intent(getContext(), Gumai.class);
                 i.putExtra("price", "" + price);
                 i.putExtra("sex", "" + sex);
-                i.putExtra("location", "" + 1);
+                i.putExtra("location", "" + 3);
                 i.putExtra("descript", "" + 3);
                 startActivity(i);
                 checkown();
             }
         });
-        imageView = view.findViewById(R.id.top3);
-        imageView.setImageResource(R.drawable.gongf);
+        if(sex == 0) {
+            imageView = view.findViewById(R.id.bottom5);
+            imageView.setImageResource(R.drawable.tmat);
+        }
+        if(sex == 1) {
+            imageView = view.findViewById(R.id.bottom5);
+            imageView.setImageResource(R.drawable.tgat);
+        }
+
         return view;
     }
 
@@ -112,14 +119,14 @@ public class ShopfragmentTop3 extends Fragment {
     public void checkown(){
         Cursul();
         if(sex == 0){
-            if(clothchar[3] == '1'||clothchar[3] == '2'){
+            if(clothchar[9] == '1'||clothchar[9] == '2'){
                 btn1.setVisibility(View.GONE);
                 setting.setVisibility(View.VISIBLE);
                 nowset.setVisibility(View.GONE);
             }
         }
         if(sex == 1){
-            if(clothchar[3] == '1'||clothchar[3] == '2'){
+            if(clothchar[15] == '1'||clothchar[15] == '2'){
                 btn1.setVisibility(View.GONE);
                 setting.setVisibility(View.VISIBLE);
                 nowset.setVisibility(View.GONE);
@@ -130,21 +137,30 @@ public class ShopfragmentTop3 extends Fragment {
     public void checkwearset(){
         Cursul();
         if(sex == 0){
-            for (int i = 1;i<=3;i++) {
-                if(clothchar[i] == '2') {
-                    clothchar[i]='1';
-                }
-                clothchar[3]='2';
+            if(clothchar[7] == '2') {
+                clothchar[7]='1';
             }
+            if(clothchar[8] == '2') {
+                clothchar[8]='1';
+            }
+            if(clothchar[9] == '2') {
+                clothchar[9]='1';
+            }
+            clothchar[9]='2';
+
 
         }
         if(sex == 1){
-            for (int i = 1;i<=3;i++) {
-                if(clothchar[i] == '2') {
-                    clothchar[i]='1';
-                }
-                clothchar[3]='2';
+            if(clothchar[13] == '2') {
+                clothchar[13]='1';
             }
+            if(clothchar[14] == '2') {
+                clothchar[14]='1';
+            }
+            if(clothchar[15] == '2') {
+                clothchar[15]='1';
+            }
+            clothchar[15]='2';
         }
         weardb();
         Toast.makeText(getContext(), "장착이 완료 되었습니다!", Toast.LENGTH_SHORT).show();
@@ -159,6 +175,5 @@ public class ShopfragmentTop3 extends Fragment {
 
         Log.d("DB",""+input);
     }
-
 
 }

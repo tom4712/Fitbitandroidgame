@@ -24,6 +24,13 @@ public class pagerAdapter2 extends FragmentStatePagerAdapter {
                 return new ShopfragmentMid2();
             case 2:
                 return new ShopfragmentMid3();
+            case 3:
+                return new ShopfragmentMid4();
+            case 4:
+                return new ShopfragmentMid5();
+            case 5:
+                return new ShopfragmentMid6();
+
             default:
                 return null;
         }
@@ -31,7 +38,7 @@ public class pagerAdapter2 extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 6;
     }
 
 }
