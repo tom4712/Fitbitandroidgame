@@ -1,7 +1,9 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame.shopitem;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +30,7 @@ public class ShopfragmentTop4 extends Fragment {
     private TextView coin;
     private DBhelper db;
     private Cursor all_cursor;
-    private ArrayList<String> list = new ArrayList();
+    private ArrayList<String> list = new ArrayList(30);
     private int sex,price;
     public ShopfragmentTop4()
     {
@@ -55,7 +58,7 @@ public class ShopfragmentTop4 extends Fragment {
                 checkwearset();
             }
         });
-        price = Integer.parseInt(getString(R.string.top3));
+        price = Integer.parseInt("20");
         btn1.setText(price+"원");
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +67,7 @@ public class ShopfragmentTop4 extends Fragment {
                 i.putExtra("price", "" + price);
                 i.putExtra("sex", "" + sex);
                 i.putExtra("location", "" + 1);
-                i.putExtra("descript", "" + 3);
+                i.putExtra("descript", "" + 4);
                 startActivity(i);
                 checkown();
             }
@@ -89,7 +92,7 @@ public class ShopfragmentTop4 extends Fragment {
                 list.add(all_cursor.getString(all_cursor.getColumnIndex("SEX")));
                 try {
                     if (Integer.parseInt(list.get(1)) == 0) {
-                        db.updateGarments("1000000000000000");
+                        db.updateGarments("100000000000000000000000000000");
                     }
                 } catch (Exception e) {
 
@@ -109,14 +112,14 @@ public class ShopfragmentTop4 extends Fragment {
     public void checkown(){
         Cursul();
         if(sex == 0){
-            if(clothchar[3] == '1'||clothchar[3] == '2'){
+            if(clothchar[16] == '1'||clothchar[16] == '2'){
                 btn1.setVisibility(View.GONE);
                 setting.setVisibility(View.VISIBLE);
                 nowset.setVisibility(View.GONE);
             }
         }
         if(sex == 1){
-            if(clothchar[3] == '1'||clothchar[3] == '2'){
+            if(clothchar[16] == '1'||clothchar[16] == '2'){
                 btn1.setVisibility(View.GONE);
                 setting.setVisibility(View.VISIBLE);
                 nowset.setVisibility(View.GONE);
@@ -126,23 +129,22 @@ public class ShopfragmentTop4 extends Fragment {
     }
     public void checkwearset(){
         Cursul();
-        if(sex == 0){
-            for (int i = 1;i<=3;i++) {
-                if(clothchar[i] == '2') {
-                    clothchar[i]='1';
-                }
-                clothchar[3]='2';
-            }
 
+
+        if(clothchar[1] == '2') {
+            clothchar[1]='1';
         }
-        if(sex == 1){
-            for (int i = 1;i<=3;i++) {
-                if(clothchar[i] == '2') {
-                    clothchar[i]='1';
-                }
-                clothchar[3]='2';
-            }
+        if(clothchar[2] == '2') {
+            clothchar[2]='1';
+        }if(clothchar[3] == '2') {
+            clothchar[3]='1';
+        }if(clothchar[16] == '2') {
+            clothchar[16]='1';
+        }if(clothchar[17] == '2') {
+            clothchar[17]='1';
         }
+
+        clothchar[16]='2';
         weardb();
         Toast.makeText(getContext(), "장착이 완료 되었습니다!", Toast.LENGTH_SHORT).show();
     }

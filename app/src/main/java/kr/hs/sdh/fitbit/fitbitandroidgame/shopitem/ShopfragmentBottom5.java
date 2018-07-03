@@ -26,7 +26,7 @@ public class ShopfragmentBottom5 extends Fragment {
     private TextView coin;
     private DBhelper db;
     private Cursor all_cursor;
-    private ArrayList<String> list = new ArrayList();
+    private ArrayList<String> list = new ArrayList(30);
     private int sex,price;
 
     public ShopfragmentBottom5() {
@@ -58,7 +58,8 @@ public class ShopfragmentBottom5 extends Fragment {
             }
         });
 
-        price = Integer.parseInt(getString(R.string.mid3));
+
+        price = Integer.parseInt("40");
         btn1.setText(price+"원");
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +68,7 @@ public class ShopfragmentBottom5 extends Fragment {
                 i.putExtra("price", "" + price);
                 i.putExtra("sex", "" + sex);
                 i.putExtra("location", "" + 3);
-                i.putExtra("descript", "" + 3);
+                i.putExtra("descript", "" + 5);
                 startActivity(i);
                 checkown();
             }
@@ -99,7 +100,7 @@ public class ShopfragmentBottom5 extends Fragment {
                 list.add(all_cursor.getString(all_cursor.getColumnIndex("SEX")));
                 try {
                     if (Integer.parseInt(list.get(1)) == 0) {
-                        db.updateGarments("1000000000000000");
+                        db.updateGarments("100000000000000000000000000000");
                     }
                 } catch (Exception e) {
 
@@ -119,14 +120,14 @@ public class ShopfragmentBottom5 extends Fragment {
     public void checkown(){
         Cursul();
         if(sex == 0){
-            if(clothchar[9] == '1'||clothchar[9] == '2'){
+            if(clothchar[22] == '1'||clothchar[22] == '2'){
                 btn1.setVisibility(View.GONE);
                 setting.setVisibility(View.VISIBLE);
                 nowset.setVisibility(View.GONE);
             }
         }
         if(sex == 1){
-            if(clothchar[15] == '1'||clothchar[15] == '2'){
+            if(clothchar[28] == '1'||clothchar[28] == '2'){
                 btn1.setVisibility(View.GONE);
                 setting.setVisibility(View.VISIBLE);
                 nowset.setVisibility(View.GONE);
@@ -146,7 +147,16 @@ public class ShopfragmentBottom5 extends Fragment {
             if(clothchar[9] == '2') {
                 clothchar[9]='1';
             }
-            clothchar[9]='2';
+            if(clothchar[21] == '2') {
+                clothchar[21]='1';
+            }
+            if(clothchar[22] == '2') {
+                clothchar[22]='1';
+            }
+            if(clothchar[23] == '2') {
+                clothchar[23]='1';
+            }
+            clothchar[22]='2';
 
 
         }
@@ -160,7 +170,16 @@ public class ShopfragmentBottom5 extends Fragment {
             if(clothchar[15] == '2') {
                 clothchar[15]='1';
             }
-            clothchar[15]='2';
+            if(clothchar[28] == '2') {
+                clothchar[28]='1';
+            }
+            if(clothchar[27] == '2') {
+                clothchar[27]='1';
+            }
+            if(clothchar[29] == '2') {
+                clothchar[29]='1';
+            }
+            clothchar[28]='2';
         }
         weardb();
         Toast.makeText(getContext(), "장착이 완료 되었습니다!", Toast.LENGTH_SHORT).show();

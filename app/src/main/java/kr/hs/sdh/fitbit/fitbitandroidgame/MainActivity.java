@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private DBhelper dbhelper;
     private TextView coindTxv;
-    private ArrayList<String> list = new ArrayList();
+    private ArrayList<String> list = new ArrayList(30);
     static final int PICK_CONTACT_REQUEST = 1;
     private Cursor all_cursor;
 

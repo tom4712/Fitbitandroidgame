@@ -26,14 +26,14 @@ public class Fragment1 extends Fragment {
     private int sex = 0;
 
     private DBhelper db;
-    private ArrayList<String> list = new ArrayList();
+    private ArrayList<String> list = new ArrayList(30);
 
     private Cursor all_cursor;
 
     private LinearLayout Mainchar;
 
     char[] clothchar;
-    private ImageView[] image = new ImageView[15];
+    private ImageView[] image = new ImageView[30];
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,7 +49,7 @@ public class Fragment1 extends Fragment {
 
         try {
             if (Integer.parseInt(list.get(2)) == 0) {
-                db.updateGarments("1000000000000000");
+                db.updateGarments("100000000000000000000000000000");
                 Cursul();
                 Log.d("db","아아ㅏㅇ"+list.get(2));
             }
@@ -123,12 +123,13 @@ public void onResume(){
         }
 
     }
-
     public void Wearitem(){
 
         image[0] = Mainchar.findViewById(R.id.head1);
+
         image[1] = Mainchar.findViewById(R.id.head2);
-        image[2] = Mainchar.findViewById(R.id.head2);
+        image[2] = Mainchar.findViewById(R.id.head3);
+
         image[3] = Mainchar.findViewById(R.id.topm1);
         image[4] = Mainchar.findViewById(R.id.topman2);
         image[5] = Mainchar.findViewById(R.id.topman3);
@@ -142,14 +143,39 @@ public void onResume(){
         image[13] = Mainchar.findViewById(R.id.bottomg2);
         image[14] = Mainchar.findViewById(R.id.bottomg3);
 
-        for(int g = 0; g < 15;g++ ){
+        image[15] = Mainchar.findViewById(R.id.head4);
+        image[16] = Mainchar.findViewById(R.id.head5);
+        //남자티2
+        image[17] = Mainchar.findViewById(R.id.topman4);
+        image[18] = Mainchar.findViewById(R.id.topman5);
+        image[19] = Mainchar.findViewById(R.id.topman6);
+        //남자바지2
+        image[20] = Mainchar.findViewById(R.id.bottomm4);
+        image[21] = Mainchar.findViewById(R.id.bottomm5);
+        image[22] = Mainchar.findViewById(R.id.bottomm6);
+
+        //여자티2
+        image[23] = Mainchar.findViewById(R.id.topg4);
+        image[24] = Mainchar.findViewById(R.id.topg5);
+        image[25] = Mainchar.findViewById(R.id.topg6);
+        //여자바지2
+        image[26] = Mainchar.findViewById(R.id.bottomg4);
+        image[27] = Mainchar.findViewById(R.id.bottomg5);
+        image[28] = Mainchar.findViewById(R.id.bottomg6);
+
+
+        for(int g = 0; g < 29;g++ ){
             Log.d("db","asdasd"+g);
             image[g].setVisibility(View.INVISIBLE);
         }
 
         Log.d("db","안녕 ");
 
-        if(sex == 0){
+        for(int i =0;i<clothchar.length;i++){
+            Log.d("dddd","씨발"+i);
+        }
+
+        if(sex == 0){ //남자
 
             Log.d("db","안녕 남자네");
             for(int i = 0;i < 9 ; i++){
@@ -158,7 +184,16 @@ public void onResume(){
                     image[i].setVisibility(View.VISIBLE);
                 }
             }
+
+            for(int i = 15;i < 23; i++){
+                if (clothchar[i+1] == '2' ){
+
+                    image[i].setVisibility(View.VISIBLE);
+                }
+            }
+
         }
+
 
         if (sex == 1){
             Log.d("db","안녕 여자네");
@@ -169,8 +204,20 @@ public void onResume(){
                 }
             }
 
-            for (int i = 9;i < 15 ; i++){
+            for (int i = 9;i < 15; i++){
                 if (clothchar[i + 1] == '2') {
+                    image[i].setVisibility(View.VISIBLE);
+                }
+            }
+
+            if(clothchar[16]=='2'){
+                image[15].setVisibility(View.VISIBLE);
+            }
+            if(clothchar[17]=='2'){
+                image[16].setVisibility(View.VISIBLE);
+            }
+            for (int i = 23;i < 29 ; i++){
+                if (clothchar[i+1] == '2') {
                     image[i].setVisibility(View.VISIBLE);
                 }
             }
@@ -178,5 +225,3 @@ public void onResume(){
 
     }
 }
-
-

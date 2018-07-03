@@ -30,7 +30,7 @@ public class ShopfragmentMid2 extends Fragment {
     private TextView coin;
     private DBhelper db;
     private Cursor all_cursor;
-    private ArrayList<String> list = new ArrayList();
+    private ArrayList<String> list = new ArrayList(30);
     private int sex,price;
     public ShopfragmentMid2()
     {
@@ -102,7 +102,7 @@ public class ShopfragmentMid2 extends Fragment {
                 list.add(all_cursor.getString(all_cursor.getColumnIndex("SEX")));
                 try {
                     if (Integer.parseInt(list.get(1)) == 0) {
-                        db.updateGarments("1000000000000000");
+                        db.updateGarments("100000000000000000000000000000");
                     }
                 } catch (Exception e) {
 
@@ -149,6 +149,16 @@ public class ShopfragmentMid2 extends Fragment {
             if(clothchar[6] == '2') {
                 clothchar[6]='1';
             }
+            if(clothchar[18] == '2') {
+                clothchar[18]='1';
+            }
+            if(clothchar[19] == '2') {
+                clothchar[19]='1';
+            }
+            if(clothchar[20] == '2') {
+                clothchar[20]='1';
+            }
+
             clothchar[5]='2';
 
 
@@ -163,6 +173,16 @@ public class ShopfragmentMid2 extends Fragment {
             if(clothchar[12] == '2') {
                 clothchar[12]='1';
             }
+            if(clothchar[24] == '2') {
+                clothchar[24]='1';
+            }
+            if(clothchar[25] == '2') {
+                clothchar[25]='1';
+            } if(clothchar[26] == '2') {
+                clothchar[26]='1';
+            }
+
+
             clothchar[11]='2';
         }
         weardb();

@@ -28,7 +28,7 @@ public class ShopfragmentBottom3 extends Fragment {
     private TextView coin;
     private DBhelper db;
     private Cursor all_cursor;
-    private ArrayList<String> list = new ArrayList();
+    private ArrayList<String> list = new ArrayList(30);
     private int sex,price;
 
     public ShopfragmentBottom3() {
@@ -101,7 +101,7 @@ public class ShopfragmentBottom3 extends Fragment {
                 list.add(all_cursor.getString(all_cursor.getColumnIndex("SEX")));
                 try {
                     if (Integer.parseInt(list.get(1)) == 0) {
-                        db.updateGarments("1000000000000000");
+                        db.updateGarments("100000000000000000000000000000");
                     }
                 } catch (Exception e) {
 

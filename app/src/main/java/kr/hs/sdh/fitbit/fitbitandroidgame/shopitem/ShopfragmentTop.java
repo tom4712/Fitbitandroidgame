@@ -30,7 +30,7 @@ public class ShopfragmentTop extends Fragment {
     private TextView coin;
     private DBhelper db;
     private Cursor all_cursor;
-    private ArrayList<String> list = new ArrayList();
+    private ArrayList<String> list = new ArrayList(30);
     private int sex,price;
     public ShopfragmentTop()
     {
@@ -93,7 +93,7 @@ public class ShopfragmentTop extends Fragment {
                 list.add(all_cursor.getString(all_cursor.getColumnIndex("SEX")));
                 try {
             if (Integer.parseInt(list.get(1)) == 0) {
-                    db.updateGarments("1000000000000000");
+                    db.updateGarments("100000000000000000000000000000");
                 }
             } catch (Exception e) {
 
@@ -130,23 +130,22 @@ public class ShopfragmentTop extends Fragment {
     }
     public void checkwearset(){
         Cursul();
-        if(sex == 0){
-                for (int i = 1;i<=3;i++) {
-                    if(clothchar[i] == '2') {
-                        clothchar[i]='1';
-                    }
-                    clothchar[1]='2';
-                }
 
+
+        if(clothchar[1] == '2') {
+            clothchar[1]='1';
         }
-        if(sex == 1){
-            for (int i = 1;i<=3;i++) {
-                if(clothchar[i] == '2') {
-                    clothchar[i]='1';
-                }
-                clothchar[1]='2';
-            }
+        if(clothchar[2] == '2') {
+            clothchar[2]='1';
+        }if(clothchar[3] == '2') {
+            clothchar[3]='1';
+        }if(clothchar[16] == '2') {
+            clothchar[16]='1';
+        }if(clothchar[17] == '2') {
+            clothchar[17]='1';
         }
+
+        clothchar[1]='2';
         weardb();
         Toast.makeText(getContext(), "장착이 완료 되었습니다!", Toast.LENGTH_SHORT).show();
     }

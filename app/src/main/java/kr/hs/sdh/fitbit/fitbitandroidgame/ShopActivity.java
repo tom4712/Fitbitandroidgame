@@ -38,7 +38,7 @@ public class ShopActivity extends AppCompatActivity {
     int Coinresult = 0;
     private DBhelper db;
     private Cursor all_cursor;
-    private ArrayList<String> list = new ArrayList();
+    private ArrayList<String> list = new ArrayList(30);
     private LinearLayout item_scroll, itempadding1, itempadding2, itempadding3, itempadding4, itempadding5, itempadding6, itempadding7, itempadding8, itempadding9, shopallback;
     private TextView coindTxv;
     private Button[] buyvibutton = new Button[9];

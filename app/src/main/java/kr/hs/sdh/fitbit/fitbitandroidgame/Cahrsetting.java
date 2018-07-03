@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Cahrsetting extends AppCompatActivity {
 
     private Cursor all_cursor;
-    private ArrayList<String> list = new ArrayList();
+    private ArrayList<String> list = new ArrayList(30);
     private int sex;
     private LinearLayout mainLi ;
     private DBhelper db;

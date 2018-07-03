@@ -17,14 +17,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView
-                android:visibility="invisible"
-                android:id="@+id/head1"
-                android:layout_margin="32dp"
-                android:paddingBottom="45dp"
-                android:src="@drawable/gongo"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+
+             <ImageView
+            android:visibility="invisible"
+            android:id="@+id/head1"
+            android:layout_margin="32dp"
+            android:paddingBottom="45dp"
+            android:src="@drawable/gongo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
 
             <ImageView
                 android:visibility="invisible"
@@ -36,20 +37,55 @@
                 android:src="@drawable/gongt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/head3"
+                android:src="@drawable/gongf"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="29dp"
+                android:layout_marginBottom="29dp"
+                android:paddingBottom="50dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/head4"
+                android:src="@drawable/gongfa"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="29dp"
+               android:layout_margin="28dp"
+                android:paddingBottom="50dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/head5"
+                android:src="@drawable/gongs"
+                android:layout_margin="45dp"
+                android:layout_marginBottom="79dp"
+                android:paddingBottom="50dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
 
             //남자 바지
 
-                <ImageView
-                    android:visibility="invisible"
-                    android:id="@+id/bottomm1"
-                    android:paddingBottom="13dp"
-                    android:paddingLeft="35dp"
-                    android:paddingRight="35dp"
-                    android:paddingTop="120dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/mao"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/bottomm1"
+                android:paddingBottom="13dp"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/mao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <ImageView
                 android:id="@+id/bottomm2"
@@ -72,6 +108,40 @@
                 android:paddingTop="120dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/manaeee"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/bottomm4"
+                android:visibility="invisible"
+                android:paddingBottom="13dp"
+                android:paddingRight="39dp"
+                android:paddingLeft="39dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+android:src="@drawable/tmao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/bottomm5"
+                android:visibility="invisible"
+                android:paddingBottom="13dp"
+                android:paddingRight="39dp"
+                android:paddingLeft="39dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+android:src="@drawable/tmat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/bottomm6"
+                android:visibility="invisible"
+                android:paddingBottom="13dp"
+                android:paddingRight="39dp"
+                android:paddingLeft="39dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+android:src="@drawable/tmath"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
@@ -113,6 +183,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
+            <ImageView
+                android:id="@+id/bottomg4"
+                android:visibility="invisible"
+                android:paddingBottom="13dp"
+                android:paddingRight="38dp"
+                android:paddingLeft="38dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+            android:src="@drawable/tgao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/bottomg5"
+                android:visibility="invisible"
+                android:paddingBottom="13dp"
+                android:paddingRight="38dp"
+                android:paddingLeft="38dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+android:src="@drawable/tgt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/bottomg6"
+                android:visibility="invisible"
+                android:paddingBottom="13dp"
+                android:paddingRight="38dp"
+                android:paddingLeft="38dp"
+                android:paddingTop="120dp"
+                android:scaleType="fitXY"
+android:src="@drawable/tgth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
 
 
@@ -159,6 +262,48 @@
                 android:paddingBottom="50dp"
                 android:src="@drawable/gs"
                 android:visibility="invisible" />
+            <ImageView
+                android:id="@+id/topman4"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+
+                android:paddingTop="85dp"
+                android:paddingBottom="55dp"
+                android:src="@drawable/tmo"
+                android:visibility="invisible" />
+            <ImageView
+                android:id="@+id/topman5"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:paddingLeft="1.5dp"
+                android:paddingRight="1.5dp"
+                android:src="@drawable/tmt"
+                android:paddingTop="85dp"
+                android:paddingBottom="50dp"
+
+                android:visibility="invisible" />
+            <ImageView
+                android:id="@+id/topman6"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:paddingLeft="1.5dp"
+                android:paddingRight="1.5dp"
+                android:src="@drawable/tmth"
+                android:paddingTop="85dp"
+                android:paddingBottom="50dp"
+
+                android:visibility="invisible" />
+
+
             //여티
             <ImageView
                 android:id="@+id/topg1"
@@ -178,8 +323,8 @@
                 android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="21.5dp"
-                android:layout_marginRight="21.5dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
                 android:paddingLeft="1.5dp"
                 android:paddingRight="1.5dp"
                 android:paddingTop="85dp"
@@ -191,13 +336,57 @@
                 android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="26.5dp"
-                android:layout_marginRight="26.5dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
                 android:paddingLeft="1.5dp"
                 android:paddingRight="1.5dp"
                 android:paddingTop="85dp"
                 android:paddingBottom="50dp"
                 android:src="@drawable/gr"
+                android:visibility="invisible" />
+            <ImageView
+                android:id="@+id/topg4"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:paddingLeft="1.5dp"
+                android:src="@drawable/tgo"
+                android:paddingRight="1.5dp"
+                android:paddingTop="85dp"
+                android:paddingBottom="50dp"
+
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/topg5"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/tgt"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:paddingLeft="1.5dp"
+                android:paddingRight="1.5dp"
+                android:paddingTop="85dp"
+                android:paddingBottom="50dp"
+
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/topg6"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:paddingLeft="1.5dp"
+                android:paddingRight="1.5dp"
+                android:src="@drawable/tgth"
+                android:paddingTop="85dp"
+                android:paddingBottom="50dp"
+
                 android:visibility="invisible" />
 
 
