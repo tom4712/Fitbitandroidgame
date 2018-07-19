@@ -14,13 +14,14 @@
 
     public class Gumai extends Activity {
 
+        int num = 40;
+        private ArrayList<String> list = new ArrayList(num);
         ShopActivity shop;
         Button check, cancle;
-        char[] clothchar;
+        char[] clothchar = new char[30];
         int Coinresult = 0;
         private DBhelper db;
         private Cursor all_cursor;
-        private ArrayList<String> list = new ArrayList(30);
         private String price, sex, location, descript;
         ShopActivity Shop = (ShopActivity)ShopActivity.shop;
         private Context mContext = null;
@@ -76,6 +77,7 @@
                 } catch (Exception e) {
                 }
             }
+
             Coinresult = Integer.parseInt(list.get(0));
             String cloth = list.get(1);
             clothchar = cloth.toCharArray();

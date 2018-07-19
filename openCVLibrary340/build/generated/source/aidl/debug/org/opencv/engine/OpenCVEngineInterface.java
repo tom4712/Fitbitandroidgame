@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\Project\\30420 LSH\\androidProject\\Fitbitandroidgame\\openCVLibrary340\\src\\main\\aidl\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
+ * Original file: D:\\AndroidStuioproject\\Fitbitandroidgame\\openCVLibrary340\\src\\main\\aidl\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
  */
 package org.opencv.engine;
 /**

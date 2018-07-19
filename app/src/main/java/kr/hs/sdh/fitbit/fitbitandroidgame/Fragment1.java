@@ -26,13 +26,13 @@ public class Fragment1 extends Fragment {
     private int sex = 0;
 
     private DBhelper db;
-    private ArrayList<String> list = new ArrayList(30);
-
+    int num = 40;
+    private ArrayList<String> list = new ArrayList(num);
     private Cursor all_cursor;
 
     private LinearLayout Mainchar;
 
-    char[] clothchar;
+    char[] clothchar = new char[30];
     private ImageView[] image = new ImageView[30];
 
     @Override
@@ -60,8 +60,12 @@ public class Fragment1 extends Fragment {
 
         sex = Integer.parseInt(list.get(1));
 
+
         setcharback();
         String cloth = list.get(2);
+
+        Log.d("씨발12341251235235345",list.get(2));
+
         clothchar = cloth.toCharArray();
         Wearitem();
 

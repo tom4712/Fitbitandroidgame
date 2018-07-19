@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String adrss = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + formatter + "capture.jpeg";
 
     private DBhelper dbhelper;
-    private TextView coindTxv;
-    private ArrayList<String> list = new ArrayList(30);
+    private TextView coindTxv;int num = 40;
+    private ArrayList<String> list = new ArrayList(num);
     static final int PICK_CONTACT_REQUEST = 1;
     private Cursor all_cursor;
 

@@ -26,11 +26,12 @@ import kr.hs.sdh.fitbit.fitbitandroidgame.R;
 public class ShopfragmentTop3 extends Fragment {
     ImageView imageView;
     Button btn1,setting,nowset;
-    char[] clothchar;
+    char[] clothchar = new char[30];
     private TextView coin;
     private DBhelper db;
     private Cursor all_cursor;
-    private ArrayList<String> list = new ArrayList(30);
+    int num = 40;
+    private ArrayList<String> list = new ArrayList(num);
     private int sex,price;
     public ShopfragmentTop3()
     {

@@ -24,7 +24,7 @@ public class DBhelper {
     private SQLiteStatement insertStmt;
 
     private static final String DATABASE_CREATE="CREATE TABLE " +DATABASE_TABLE+ "" +
-            " (    ID    INTEGER PRIMARY    KEY AUTOINCREMENT,    COIN INTEGER,    GARMENTS INTEGER,    ALARM INTEGER,    SEX INTEGER)";
+            " (    ID    INTEGER PRIMARY    KEY AUTOINCREMENT,    COIN INTEGER,    GARMENTS  TEXT,    ALARM INTEGER,    SEX INTEGER)";
 
 
     public static class DatabaseHelper extends SQLiteOpenHelper {

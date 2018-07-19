@@ -33,12 +33,13 @@ public class ShopActivity extends AppCompatActivity {
 
     int width;
     int height;
-    char[] clothchar;
+    char[] clothchar = new char[30];
     int sex = 0;
     int Coinresult = 0;
     private DBhelper db;
     private Cursor all_cursor;
-    private ArrayList<String> list = new ArrayList(30);
+    int num = 40;
+    private ArrayList<String> list = new ArrayList(num);
     private LinearLayout item_scroll, itempadding1, itempadding2, itempadding3, itempadding4, itempadding5, itempadding6, itempadding7, itempadding8, itempadding9, shopallback;
     private TextView coindTxv;
     private Button[] buyvibutton = new Button[9];
