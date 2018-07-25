@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,6 +26,8 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import java.util.ArrayList;
+
 public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnInitializedListener{
     LinearLayout linearLayout;
     LinearLayout linearLayout2;
@@ -37,6 +40,8 @@ public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
     ProgressBar progressBar;  YouTubePlayer.OnInitializedListener listener;
     int progress=0;    YouTubePlayerView youTubeView;
     int i;
+    private ArrayList<String> list = new ArrayList();
+
     Thread thread;
     ImageButton button1 ;
     int num=0;
@@ -94,7 +99,34 @@ public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
 
 
     }
+    public void giverewards(){
 
+        Cursul();
+        int money = 11;
+
+        money = Integer.parseInt(list.get(0)) + money;
+
+        db.updateCoin(money);
+    }
+
+    public void Cursul() {
+        list.clear();
+        db = new DBhelper(this);
+        db.open();
+        all_cursor = db.AllRows();
+        all_cursor.moveToFirst();
+        while (true) {
+            try {
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("COIN")));
+                Log.d("DB", "코인값받아옴"+list.get(0));
+                if (!all_cursor.moveToNext())
+                    break;
+            } catch (Exception e) {
+
+            }
+
+        }
+    }
     public void onClick(View view) {
 
         if (view.getId() == R.id.im2) {
@@ -114,6 +146,14 @@ public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
         if (view.getId() == R.id.youtubebutton) { // 백버튼
             YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
             youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
+            Handler handler = new Handler(){
+                public void handleMessage(Message msg){
+                    super.handleMessage(msg);
+                    giverewards();
+                    finish();
+                }
+            };
+            handler.sendEmptyMessageDelayed(0,30000);
         }
     }
     @Override

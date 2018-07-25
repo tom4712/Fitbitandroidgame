@@ -357,7 +357,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
 
-                Toast.makeText(this,"OKOK",Toast.LENGTH_LONG).show();
+
                 list.clear();
                 Cursul();
                 onResume();

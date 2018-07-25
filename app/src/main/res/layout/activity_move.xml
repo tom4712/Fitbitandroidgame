@@ -51,13 +51,13 @@
                 android:id="@+id/back_1"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="340dp"
+                android:padding="5dp"
+                android:layout_marginLeft="320dp"
                 android:scaleType="fitCenter"
                 android:layout_marginTop="16dp"
                 android:background="#00ff0000"
                 android:onClick="onClick"
                 android:src="@drawable/back" />
-
 
         </RelativeLayout>
     </LinearLayout>
@@ -106,7 +106,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="1원"
+                android:text="5원"
                 android:textSize="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
@@ -152,7 +152,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="2원"
+                android:text="6원"
                 android:textSize="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
@@ -200,7 +200,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="3원"
+                android:text="7원"
                 android:textSize="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
@@ -245,7 +245,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="4원"
+                android:text="8원"
                 android:textSize="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
@@ -291,7 +291,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="5원"
+                android:text="9원"
                 android:textSize="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
@@ -337,7 +337,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="6원"
+                android:text="10원"
                 android:textSize="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
@@ -384,7 +384,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="7원"
+                android:text="11원"
                 android:textSize="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"

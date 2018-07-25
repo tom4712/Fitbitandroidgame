@@ -1,11 +1,13 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +31,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Movie extends YouTubeBaseActivity implements  YouTubePlayer.OnInitializedListener{
@@ -39,6 +42,7 @@ public class Movie extends YouTubeBaseActivity implements  YouTubePlayer.OnIniti
 
     int num2;
 
+    private ArrayList<String> list = new ArrayList();
 
     TextView mTextView;
 
@@ -106,6 +110,37 @@ public class Movie extends YouTubeBaseActivity implements  YouTubePlayer.OnIniti
 
 
     }
+    public void giverewards(){
+
+        Cursul();
+        int money = 5;
+
+        money = Integer.parseInt(list.get(0)) + money;
+
+        db.updateCoin(money);
+    }
+
+    public void Cursul() {
+        list.clear();
+        db = new DBhelper(this);
+        db.open();
+        all_cursor = db.AllRows();
+        all_cursor.moveToFirst();
+        while (true) {
+            try {
+                list.add(all_cursor.getString(all_cursor.getColumnIndex("COIN")));
+                Log.d("DB", "코인값받아옴"+list.get(0));
+                if (!all_cursor.moveToNext())
+                    break;
+            } catch (Exception e) {
+
+            }
+
+        }
+    }
+
+
+
     public void onClick(View view) {
 
         if (view.getId() == R.id.im2) { // 백버튼
@@ -115,6 +150,14 @@ public class Movie extends YouTubeBaseActivity implements  YouTubePlayer.OnIniti
         if (view.getId() == R.id.youtubebutton) { // 백버튼
             YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
             youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
+            Handler handler = new Handler(){
+                public void handleMessage(Message msg){
+                    super.handleMessage(msg);
+                    giverewards();
+                    finish();
+                }
+            };
+            handler.sendEmptyMessageDelayed(0,30000);
         }
             if(view.getId()==R.id.Tip){ // 팁버튼
             relativeLayout.setVisibility(View.VISIBLE);

@@ -101,12 +101,6 @@ public class fitbitAR  extends AppCompatActivity
         di.show();
         db.updateCoin(money);
     }
-    public void finishend(){
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(i);
-        finish();
-    }
-
     public void Cursul() {
         list.clear();
         db = new DBhelper(this);
@@ -124,6 +118,12 @@ public class fitbitAR  extends AppCompatActivity
             }
 
         }
+    }
+
+    public void finishend(){
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
 
