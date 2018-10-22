@@ -11,149 +11,171 @@
         <!--android:background="#afe5e9"-->
         <!--/>-->
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-    android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="280dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-
-    </android.support.v4.view.ViewPager>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:weightSum="1"
-        android:layout_weight="0.5"
-        android:orientation="horizontal">
-        <FrameLayout android:layout_height="match_parent"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:background="@drawable/button_layout">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/thrSec"
-                android:background="#00ff0000"></Button>
-            <LinearLayout
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                >
-        <ImageView
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
             android:layout_width="match_parent"
-            android:layout_marginTop="15dp"
-            android:layout_height="60dp" android:src="@drawable/three_icon"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:textSize="15dp"
-                android:text="30초 운동"
-                android:gravity="center"
-                android:textColor="#26bdc2"
-                />
-            </LinearLayout>
+            android:layout_height="280dp"
+            android:orientation="vertical">
 
-    </FrameLayout>
-        <FrameLayout android:layout_height="match_parent"
-            android:layout_width="0dp"
+
+        </android.support.v4.view.ViewPager>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_layout">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/Game"
-                android:background="#00ff0000"></Button>
-            <LinearLayout
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                >
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:layout_height="60dp" android:src="@drawable/game_icon"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:textSize="15dp"
-                    android:text="게임"
-                    android:gravity="center"
-                    android:textColor="#26bdc2"
-                    />
-            </LinearLayout>
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-        </FrameLayout>
-    </LinearLayout>
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@drawable/button_layout">
 
-    <LinearLayout
-        android:layout_weight="0.5"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:weightSum="1"
-        android:orientation="horizontal">
-        <FrameLayout android:layout_height="match_parent"
-            android:layout_width="0dp"
+                <Button
+                    android:id="@+id/thrSec"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00ff0000"></Button>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/img"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:src="@drawable/three_icon" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:text="30초 운동"
+                        android:textColor="#26bdc2"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@drawable/button_layout">
+
+                <Button
+                    android:id="@+id/Game"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00ff0000"></Button>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:src="@drawable/game_icon" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:text="게임"
+                        android:textColor="#26bdc2"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_layout">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/Shop"
-                android:background="#00ff0000"></Button>
-            <LinearLayout
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                >
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:layout_height="60dp" android:src="@drawable/shop_icon"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:textSize="15dp"
-                    android:text="상점"
-                    android:gravity="center"
-                    android:textColor="#26bdc2"
-                    />
-            </LinearLayout>
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-        </FrameLayout>
-        <FrameLayout android:layout_height="match_parent"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:background="@drawable/button_layout">
-            <Button
-                android:layout_width="match_parent"
-                android:id="@+id/Share"
+            <FrameLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="#00ff0000"></Button>
-            <LinearLayout
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                >
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:layout_height="60dp" android:src="@drawable/share_icon"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:textSize="15dp"
-                    android:text="공유"
-                    android:gravity="center"
-                    android:textColor="#26bdc2"
-                    />
-            </LinearLayout>
+                android:layout_weight="0.5"
+                android:background="@drawable/button_layout">
 
-        </FrameLayout>
-    </LinearLayout>
+                <Button
+                    android:id="@+id/Shop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00ff0000"></Button>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:src="@drawable/shop_icon" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:text="상점"
+                        android:textColor="#26bdc2"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@drawable/button_layout">
+
+                <Button
+                    android:id="@+id/Share"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00ff0000"></Button>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:src="@drawable/share_icon"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:text="공유"
+                        android:textColor="#26bdc2"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
     </LinearLayout>
 
 

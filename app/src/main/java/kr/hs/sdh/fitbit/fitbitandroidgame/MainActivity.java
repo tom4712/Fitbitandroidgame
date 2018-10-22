@@ -144,7 +144,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbhelper.open();
         all_cursor = dbhelper.AllRows();
         all_cursor.moveToFirst();
-        Toast.makeText(this,"ㅇㅇ",Toast.LENGTH_LONG).show();
         SharedPreferences pref = getSharedPreferences("isFirst", Activity.MODE_PRIVATE);
         boolean first = pref.getBoolean("isFirst", false);
         if (first == false) {

@@ -33,30 +33,16 @@ public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
     LinearLayout linearLayout2;
     private DBhelper db;
     private Cursor all_cursor;
-    private int coinresult;
-    int num2;
     ScrollView relativeLayout;
-    VideoView vv;
-    ProgressBar progressBar;  YouTubePlayer.OnInitializedListener listener;
-    int progress=0;    YouTubePlayerView youTubeView;
+    int list;
     int i;
-    private ArrayList<String> list = new ArrayList();
-
-    Thread thread;
-    ImageButton button1 ;
     int num=0;
-    Handler handler;
-    ImageButton button2 ;
     TextView percent;
-    AlertDialog.Builder dialog;
-    boolean isPlaying = false;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie7);
-
-        resultDB();
 
         YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
 
@@ -104,21 +90,19 @@ public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
         Cursul();
         int money = 11;
 
-        money = Integer.parseInt(list.get(0)) + money;
+        money += list;
 
         db.updateCoin(money);
     }
 
     public void Cursul() {
-        list.clear();
         db = new DBhelper(this);
         db.open();
         all_cursor = db.AllRows();
         all_cursor.moveToFirst();
         while (true) {
             try {
-                list.add(all_cursor.getString(all_cursor.getColumnIndex("COIN")));
-                Log.d("DB", "코인값받아옴"+list.get(0));
+                list = all_cursor.getInt(all_cursor.getColumnIndex("COIN"));
                 if (!all_cursor.moveToNext())
                     break;
             } catch (Exception e) {
@@ -168,24 +152,6 @@ public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
 
     }
 
-    public void resultDB(){
-        db = new DBhelper(this);
-        db.open();
-        all_cursor = db.AllRows();
-        all_cursor.moveToFirst();
-        while (true) {
-            try {
-                coinresult = Integer.parseInt(all_cursor.getString(all_cursor.getColumnIndex("COIN")));
-                Log.d("DB", "코인값받아옴");
-                if (!all_cursor.moveToNext())
-                    break;
-            } catch (Exception e) {
-
-            }
-
-        }
-
-    }
 
 
     @Override
