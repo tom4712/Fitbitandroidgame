@@ -92,6 +92,9 @@
         <activity android:name=".MapGame" />
         <activity android:name=".Charsetting" />
         <activity android:name=".help"></activity>
+        <activity android:name=".step_activity"/>
+        <activity android:name=".cal_activity"/>
+        <activity android:name=".night_activity"/>
     </application>
 
 </manifest>

@@ -39,6 +39,9 @@ public class help extends AppCompatActivity {
         arrayar.add("        휴대폰을 가로로 잡은뒤");
         arrayar.add("        화살표 방향을 따라 아이템을");
         arrayar.add("        잡으면 클리어 됩니다.");
+        arrayar.add("  3.코인 보상");
+        arrayar.add("        기본5개에 레벨당 1개를 추가로 더 줍니다.");
+        arrayar.add("        최대 15개까지 증가합니다.");
         ArrayList<String> arraymap = new ArrayList<String>();
         arraymap.add("  1.지도게임 구성");
         arraymap.add("       플레이어가 게임에 접속했을때");
@@ -56,8 +59,13 @@ public class help extends AppCompatActivity {
         arrayox.add("       나오는 순서 또한 랜덤으로 나오게 됩니다.");
         arrayox.add("       정답은 O X 중에 고를 수 있습니다.");
         arrayox.add("  2.코인 보상");
-        arrayox.add("       맞춘 문제에 따라서 코인이 다르게 지급되며");
-        arrayox.add("       2문제 이상 맞추지 못했을 때엔 지급되지 않습니다.");
+        arrayox.add("       맞춘 문제에 따라서 코인이 다르게 지급됩니다.");
+        arrayox.add("       문제당 2개의 코인을 지급합니다.");
+        ArrayList<String> arrexer = new ArrayList<String>();
+        arraymap.add("  1.30초운동 구성");
+        arrexer.add("       월요일에서 일요일까지");
+        arrexer.add("       7가지의 운동동영상이 있습니다.");
+        arrexer.add("       다 보면 요일에 맞는 코인을 받습니다.");
         arrayChild.put(arrayGroup.get(0), arrayar);
         arrayChild.put(arrayGroup.get(1), arraymap);
         arrayChild.put(arrayGroup.get(2), arrayox);
