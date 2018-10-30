@@ -127,7 +127,7 @@ public class MapGame extends FragmentActivity implements OnMapReadyCallback {
                 clearLat = (targetLat[i] - lastLat) * 10000;
                 clearLon = (targetLon[i] - lastLon) * 10000;
 
-                if (clearLon + clearLat <= 2 && clearLon + clearLat >= -2){
+                if (clearLon + clearLat <= 1 && clearLon + clearLat >= -1){
                     AlertDialog.Builder di = new AlertDialog.Builder(MapGame.this);
                     di.setTitle("ARgame");
                     di.setMessage("목표 도착 보상으로 4코인 지급 되었습니다!");

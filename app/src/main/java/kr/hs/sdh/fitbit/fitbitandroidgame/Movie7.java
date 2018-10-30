@@ -52,39 +52,22 @@ public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
 
         Intent intent = getIntent();
 
-
-//
-//        vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//
-//            // 동영상 재생이 완료된후 호출되는 메서드
-//            public void onCompletion(MediaPlayer player) {
-//
-//
-//                if(num2>=3){
-//
-//                    Toast.makeText(getApplicationContext(), "3번 이상 시청하셨습니다",
-//                            Toast.LENGTH_LONG).show();
-//
-//                }
-//                if(num2<3){
-//
-//
-//                    Toast.makeText(getApplicationContext(), "완료보상으로 7코인이 지급되었습니다!",
-//
-//                            Toast.LENGTH_LONG).show();
-//
-//
-//                    db.updateCoin(coinresult + 7);
-//                }
-//
-//                finish();
-//
-//            }
-//        });
-
-
-
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
+        youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
+        Handler handler = new Handler(){
+            public void handleMessage(Message msg){
+                super.handleMessage(msg);
+                giverewards();
+                finish();
+            }
+        };
+        handler.sendEmptyMessageDelayed(0,30000);
+    }
+
     public void giverewards(){
 
         Cursul();
@@ -125,19 +108,6 @@ public class Movie7 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
         if (view.getId()==R.id.RRr){
             linearLayout2.setVisibility(View.VISIBLE);
             relativeLayout.setVisibility(View.GONE);
-        }
-
-        if (view.getId() == R.id.youtubebutton) { // 백버튼
-            YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
-            youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
-            Handler handler = new Handler(){
-                public void handleMessage(Message msg){
-                    super.handleMessage(msg);
-                    giverewards();
-                    finish();
-                }
-            };
-            handler.sendEmptyMessageDelayed(0,30000);
         }
     }
     @Override

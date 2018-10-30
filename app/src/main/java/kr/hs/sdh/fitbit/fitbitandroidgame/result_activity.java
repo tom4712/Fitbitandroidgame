@@ -1,6 +1,7 @@
 package kr.hs.sdh.fitbit.fitbitandroidgame;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -23,24 +24,28 @@ public class result_activity extends AppCompatActivity {
     ListView listView;
     ArrayList<list_item> list_itemArrayList_step;
     ArrayList<list_item> list_itemArrayList_cal;
+    private DBhelper db;
+    private Cursor all_cursor;
+    int list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_result);
-        result_num = (TextView) findViewById(R.id.currect_num);
-        back_button = (Button) findViewById(R.id.back_id);
-        listView = (ListView) findViewById(R.id.data_list);
+        result_num =  findViewById(R.id.currect_num);
+        back_button = findViewById(R.id.back_id);
+        listView = findViewById(R.id.data_list);
         list_itemArrayList_step = new ArrayList<list_item>();
-
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
+        Cursul();
         question res = new question();
         Intent intent = getIntent();
         int num = intent.getIntExtra("currect_num", 0);
+        db.updateCoin(list+(num*2));
         result_num.setText("5/"+num);
         String value = intent.getStringExtra("no_currect_num");
         if (value != "") {
@@ -57,7 +62,22 @@ public class result_activity extends AppCompatActivity {
 
         }
     }
+    public void Cursul() {
+        db = new DBhelper(this);
+        db.open();
+        all_cursor = db.AllRows();
+        all_cursor.moveToFirst();
+        while (true) {
+            try {
+                list = all_cursor.getInt(all_cursor.getColumnIndex("COIN"));
+                if (!all_cursor.moveToNext())
+                    break;
+            } catch (Exception e) {
 
+            }
+
+        }
+    }
 
     private void listViewHeightSet(Adapter listAdapter, ListView listView){
         int totalHeight = 0;

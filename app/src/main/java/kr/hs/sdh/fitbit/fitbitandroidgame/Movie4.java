@@ -53,6 +53,20 @@ public class Movie4 extends YouTubeBaseActivity implements  YouTubePlayer.OnInit
 
         db.updateCoin(money);
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
+        youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
+        Handler handler = new Handler(){
+            public void handleMessage(Message msg){
+                super.handleMessage(msg);
+                giverewards();
+                finish();
+            }
+        };
+        handler.sendEmptyMessageDelayed(0,30000);
+    }
 
     public void Cursul() {
         db = new DBhelper(this);
@@ -86,19 +100,6 @@ public class Movie4 extends YouTubeBaseActivity implements  YouTubePlayer.OnInit
             relativeLayout.setVisibility(View.GONE);
         }
 
-
-        if (view.getId() == R.id.youtubebutton) { // 백버튼
-            YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
-            youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
-            Handler handler = new Handler(){
-                public void handleMessage(Message msg){
-                    super.handleMessage(msg);
-                    giverewards();
-                    finish();
-                }
-            };
-            handler.sendEmptyMessageDelayed(0,30000);
-        }
     }
     @Override
 

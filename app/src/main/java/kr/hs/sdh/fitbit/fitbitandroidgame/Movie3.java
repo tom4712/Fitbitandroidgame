@@ -44,6 +44,21 @@ public class Movie3 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
         linearLayout2=(LinearLayout)findViewById(R.id.gon);
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
+        youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
+        Handler handler = new Handler(){
+            public void handleMessage(Message msg){
+                super.handleMessage(msg);
+                giverewards();
+                finish();
+            }
+        };
+        handler.sendEmptyMessageDelayed(0,30000);
+    }
+
     public void giverewards(){
 
         Cursul();
@@ -87,20 +102,6 @@ public class Movie3 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
             relativeLayout.setVisibility(View.GONE);
         }
 
-
-
-        if (view.getId() == R.id.youtubebutton) { // 백버튼
-            YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
-            youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
-            Handler handler = new Handler(){
-                public void handleMessage(Message msg){
-                    super.handleMessage(msg);
-                    giverewards();
-                    finish();
-                }
-            };
-            handler.sendEmptyMessageDelayed(0,30000);
-        }
     }
     @Override
 
@@ -108,8 +109,6 @@ public class Movie3 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
 
 //여기서 감지
         super.onBackPressed();
-        Toast.makeText(getApplicationContext(), "홈버튼",
-                Toast.LENGTH_LONG).show();
         super.onUserLeaveHint();
 
     }

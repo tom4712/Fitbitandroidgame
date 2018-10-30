@@ -39,15 +39,15 @@ public class qusetionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        answer_ = (ImageView)findViewById(R.id.answer_);
-        button = (Button)findViewById(R.id.close);
-        text_title = (TextView)findViewById(R.id.answer_act);
-        text_result = (TextView)findViewById(R.id.answer_text);
-        question_text = (TextView)findViewById(R.id.question);
-        quiz_num = (TextView)findViewById(R.id.question_num);
-        res_o = (ImageButton)findViewById(R.id.button_O) ;
-        res_x = (ImageButton)findViewById(R.id.button_X) ;
-        answer_lay = (RelativeLayout)findViewById(R.id.result);
+        answer_ = findViewById(R.id.answer_);
+        button = findViewById(R.id.close);
+        text_title = findViewById(R.id.answer_act);
+        text_result = findViewById(R.id.answer_text);
+        question_text = findViewById(R.id.question);
+        quiz_num = findViewById(R.id.question_num);
+        res_o = findViewById(R.id.button_O) ;
+        res_x = findViewById(R.id.button_X) ;
+        answer_lay = findViewById(R.id.result);
         no_currect = "";
         final Intent intent = new Intent(qusetionActivity.this,result_activity.class);
 

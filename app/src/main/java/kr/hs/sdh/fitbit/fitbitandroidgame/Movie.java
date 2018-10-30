@@ -49,9 +49,23 @@ public class Movie extends YouTubeBaseActivity implements  YouTubePlayer.OnIniti
         linearLayout = (LinearLayout)findViewById(R.id.RRr);
         linearLayout2=(LinearLayout)findViewById(R.id.gon);
         relativeLayout = (ScrollView) findViewById(R.id.Reeee);
-
-
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
+        youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
+        Handler handler = new Handler(){
+            public void handleMessage(Message msg){
+                super.handleMessage(msg);
+                giverewards();
+                finish();
+            }
+        };
+        handler.sendEmptyMessageDelayed(0,30000);
+    }
+
     public void giverewards(){
 
         Cursul();
@@ -87,19 +101,6 @@ public class Movie extends YouTubeBaseActivity implements  YouTubePlayer.OnIniti
 
         if (view.getId() == R.id.im2) { // 백버튼
             super.onBackPressed();
-
-        }
-        if (view.getId() == R.id.youtubebutton) { // 백버튼
-            YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
-            youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
-            Handler handler = new Handler(){
-                public void handleMessage(Message msg){
-                    super.handleMessage(msg);
-                    giverewards();
-                    finish();
-                }
-            };
-            handler.sendEmptyMessageDelayed(0,30000);
         }
             if(view.getId()==R.id.Tip){ // 팁버튼
             relativeLayout.setVisibility(View.VISIBLE);

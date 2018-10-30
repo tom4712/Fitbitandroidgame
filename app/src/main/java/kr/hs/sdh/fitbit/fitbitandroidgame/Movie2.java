@@ -47,6 +47,21 @@ public class Movie2 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
         YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
+        youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
+        Handler handler = new Handler(){
+            public void handleMessage(Message msg){
+                super.handleMessage(msg);
+                giverewards();
+                finish();
+            }
+        };
+        handler.sendEmptyMessageDelayed(0,30000);
+    }
+
     public void giverewards(){
 
         Cursul();
@@ -86,21 +101,6 @@ public class Movie2 extends YouTubeBaseActivity  implements  YouTubePlayer.OnIni
         if (view.getId()==R.id.RRr){
             linearLayout2.setVisibility(View.VISIBLE);
             relativeLayout.setVisibility(View.GONE);
-        }
-
-
-
-        if (view.getId() == R.id.youtubebutton) { // 백버튼
-            YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
-            youTubeView.initialize("AIzaSyBnhv56KxpyX8pROVeFqkTbCPAihqwd1_8", this);
-            Handler handler = new Handler(){
-                public void handleMessage(Message msg){
-                    super.handleMessage(msg);
-                    giverewards();
-                    finish();
-                }
-            };
-            handler.sendEmptyMessageDelayed(0,30000);
         }
     }
     @Override

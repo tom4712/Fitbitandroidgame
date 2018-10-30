@@ -250,25 +250,6 @@ android:text="푸쉬업 자세를 취한 뒤, 어깨부터 발꿈치까지 몸�
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                            <ImageButton
-                                android:layout_width="90dp"
-                                android:layout_height="40dp"
-                                android:layout_centerInParent="true"
-                                android:scaleType="fitCenter"
-                                android:layout_marginTop="10dp"
-                                android:onClick="onClick"
-                                android:src="@drawable/playpaly"
-                                android:background="#00ff0000"
-                                android:id="@+id/youtubebutton"
-                                />
-
-
-
-                        </RelativeLayout>
-
 
                     </LinearLayout>
 
