@@ -7,7 +7,6 @@
     tools:context="kr.hs.sdh.fitbit.fitbitandroidgame.Splash"
     android:orientation="horizontal"
     android:background="@drawable/splash">
-
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

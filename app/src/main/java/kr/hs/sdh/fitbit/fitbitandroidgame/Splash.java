@@ -14,6 +14,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -61,6 +64,7 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         text = (TextView) findViewById(R.id.text);
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.gone);
 
         if(isNetworkConnected()) {
             layout = (LinearLayout) findViewById(R.id.show_lay);
@@ -177,8 +181,7 @@ public class Splash extends AppCompatActivity {
                 }
 
             }
-    }
-
+        }
 
     void show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
