@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView Coin;
 
-    private Button Share, thrSec, Game, Shop, Cafe, characterDetails, accountManagement, goMain, ox_question_move, map_move, ar_move, btnhistory,help;
+    private Button Share, thrSec, Game, Shop, Cafe, characterDetails, goMain, ox_question_move, map_move, ar_move, btnhistory,help;
 
     private ImageButton Settings;
 
@@ -84,8 +84,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case PERMISSION_REQUEST_CODE: {
                 //퍼미션을 거절했을 때 메시지 출력 후 종료
                 if (!hasPermissions(PERMISSIONS)) {
-                    Toast.makeText(getApplicationContext(), "퍼미션을 승인하셔야 합니다.", Toast.LENGTH_LONG).show();
-                    finish();
+                }
+                Intent i;
+                if(permissions == PERMISSIONS2) {
+                    i = new Intent(getApplicationContext(), fitbitAR.class);
+                    startActivity(i);
+                }
+                if(permissions == PERMISSIONS ) {
+                    i = new Intent(getApplicationContext(), MapGame.class);
+                    startActivity(i);
                 }
                 return;
             }
@@ -93,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     String[] PERMISSIONS = {"android.permission.ACCESS_COARSE_LOCATION"};
     String[] PERMISSIONS2 = {"android.permission.CAMERA"};
+    String[] PERMISSIONS3 ={"android.permission.WRITE_EXTERNAL_STORAGE"};
+    String[] PERMISSIONS4 = {"android.permission.READ_EXTERNAL_STORAGE"};
 
     private boolean hasPermissions(String[] permissions) {
         // 퍼미션 확인
@@ -137,6 +146,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        if (!hasPermissions(PERMISSIONS3)) {
+            requestNecessaryPermissions(PERMISSIONS3);
+        }
+        if (!hasPermissions(PERMISSIONS4)) {
+            requestNecessaryPermissions(PERMISSIONS4);
+        }
         ox_question_move = findViewById(R.id.ox_question_move);
         map_move = findViewById(R.id.map_move);
         ar_move = findViewById(R.id.ar_move);
@@ -180,7 +195,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Cafe = findViewById(R.id.Cafe);
         characterDetails = findViewById(R.id.characterDetails);
-        accountManagement = findViewById(R.id.accountManagement);
         mSwitch = findViewById(R.id.Switch);
 
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -205,7 +219,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Shop.setOnClickListener(this);
         Cafe.setOnClickListener(this);
         characterDetails.setOnClickListener(this);
-        accountManagement.setOnClickListener(this);
         help.setOnClickListener(this);
     }
 
@@ -260,6 +273,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.map_move:
                 if (!hasPermissions(PERMISSIONS)) {
                     requestNecessaryPermissions(PERMISSIONS);
+                    if (hasPermissions(PERMISSIONS)) {
+                        i = new Intent(getApplicationContext(), MapGame.class);
+                        startActivity(i);
+                    }
                 }else {
                     i = new Intent(getApplicationContext(), MapGame.class);
                     startActivity(i);
@@ -299,10 +316,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 onPause();
                 i = new Intent(MainActivity.this,ShopActivity.class);
                 startActivityForResult(i, PICK_CONTACT_REQUEST);
-                break;
-            case R.id.accountManagement:
-                i = new Intent(getApplicationContext(), profileManagement.class);
-                startActivity(i);
                 break;
             case R.id.Cafe:
                 i = new Intent(getApplicationContext(), CommunityActivity.class);
@@ -438,7 +451,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         intent.setType("image/*");
-        startActivity(Intent.createChooser(intent, "공유"));
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        Intent chooser = Intent.createChooser(intent, "공유");
+        startActivity(chooser);
     }
     //정상현 - 그래프용 JSON
 
