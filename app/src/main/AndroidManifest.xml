@@ -49,6 +49,12 @@
         </provider>
 
         <activity android:name=".Splash">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
@@ -75,6 +81,7 @@
         <activity
             android:name=".Share"
             android:theme="@android:style/Theme.Dialog" />
+
         <activity
             android:name=".Gumai"
             android:theme="@style/AppTheme2" />
@@ -90,13 +97,6 @@
         <activity android:name=".step_activity" />
         <activity android:name=".cal_activity" />
         <activity android:name=".night_activity" />
-        <activity android:name=".fakesp">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

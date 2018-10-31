@@ -22,6 +22,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,7 +65,6 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         text = (TextView) findViewById(R.id.text);
-        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.gone);
 
         if(isNetworkConnected()) {
             layout = (LinearLayout) findViewById(R.id.show_lay);
@@ -81,7 +81,6 @@ public class Splash extends AppCompatActivity {
             });
 
             mWebView.loadUrl("http://tlgj255.cafe24.com/fitbit/index.php");
-
             mWebView.setWebViewClient(new WebViewClient() {
                 // 페이지 읽기가 시작되었을 때의 동작을 설정한다
 
@@ -123,7 +122,7 @@ public class Splash extends AppCompatActivity {
                                         finish();
 
                                     }
-                                }, 3000);
+                                }, 2000);
 
                             } else {
                                 mWebView.loadUrl("http://tlgj255.cafe24.com/fitbit/index.php");

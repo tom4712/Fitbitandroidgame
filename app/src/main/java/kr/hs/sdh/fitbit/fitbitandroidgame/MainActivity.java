@@ -294,7 +294,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.Share:
-                oo(view);
+                try{
+                    oo(view);
+                }catch (Exception e){
+                    Toast.makeText(this, "미구현입니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.Game:
                 thrSec.setClickable(false);
